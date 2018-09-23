@@ -18,8 +18,6 @@
 @implementation AllGamesForDayTableVC
 
 
-
-
 -(void)setUSerData:(NSArray*)games
 {
     data=games;
@@ -86,10 +84,9 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    Game  *game=[data objectAtIndex:indexPath.row];
+    Game *game=[data objectAtIndex:indexPath.row];
     
-   // NSLog(@"ROW AT PATH %@", data);
-    
+    //NSLog(@"ROW AT PATH %@", data);
     NSDate  *date=game.gameDate;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"d MMM y H:m:s"];
@@ -107,18 +104,14 @@
     {
         typeString=@"Duration Game";
     }
-    
-    
-    
+
      NSString  *duration=[NSString stringWithFormat:@"%f",[game.duration floatValue]];
     // NSString  *strength=[NSString stringWithFormat:@"%f",[game.power floatValue]];
      cell.textLabel.text=[NSString stringWithFormat:@"%@  %@ %@",typeString,attemptDateString,game.gameDirection];
      cell.detailTextLabel.text=[NSString stringWithFormat:@"Duration :%@",duration];
     // Configure the cell...
-    
-  //  NSLog(@"this cell %@", cell.textLabel.text);
+    //NSLog(@"this cell %@", cell.textLabel.text);
 
-    
     return cell;
 }
 

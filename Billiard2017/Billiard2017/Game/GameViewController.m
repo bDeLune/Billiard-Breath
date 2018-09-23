@@ -1,11 +1,3 @@
-//
-//  GameViewController.m
-//  BilliardBreath
-//
-//  Created by barry on 09/12/2013.
-//  Copyright (c) 2013 rocudo. All rights reserved.
-//
-
 #import "GameViewController.h"
 #import "User.h"
 #import "BilliardBallViewController.h"
@@ -32,6 +24,8 @@
     UIEffectDesignerView *particleEffect;
     NSTimer  *effectTimer;
     bool wasExhaling;
+    NSTimer *timer;
+    int MyTimer;
 }
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
@@ -54,15 +48,10 @@
 -(void)userListDismissRequest:(UserListViewController *)caller
 {
     [[GCDQueue mainQueue]queueBlock:^{
-        
-        
         [UIView transitionFromView:self.navcontroller.view toView:self.view duration:0.5 options:UIViewAnimationOptionTransitionFlipFromRight completion:^(BOOL finished){
-            
             self.userList.sharedPSC=self.sharedPSC;
             self.userList.delegate=self;
-            
         }];
-        
     }];
     
 }
@@ -726,10 +715,28 @@
         [self resetGame:nil];
     }];
     
-    [self saveCurrentSession];
+    //[self saveCurrentSession];
     
-    
+    MyTimer = 0;
+    timer = [NSTimer scheduledTimerWithTimeInterval:2
+                                                  target:self
+                                                selector:@selector(testAddSession:)
+                                                userInfo:nil
+                                                 repeats:YES];
 }
+
+-(void)testAddSession: (NSTimer*)mytimer{
+    NSLog(@"test add session");
+    [self saveCurrentSession];
+    MyTimer++;
+    if(MyTimer == 500)
+    {
+        NSLog(@"stopped timer");
+        [timer invalidate];
+        return;
+    }
+}
+
 -(void)midiNoteContinuingForDuration:(MidiController*)midi
 {
     [[GCDQueue mainQueue]queueBlock:^{
@@ -1022,18 +1029,15 @@
 
 -(void)saveCurrentSession
 {
-    //NSLog(@"Save Current Session");
+    NSLog(@"Save Current Session");
     
     self.currentSession.sessionType=[NSNumber numberWithInt:self.currentGameType];
     
-        AddNewScoreOperation  *operation=[[AddNewScoreOperation alloc]initWithData:self.gameUser session:self.currentSession sharedPSC:self.sharedPSC];
-    
+    AddNewScoreOperation  *operation=[[AddNewScoreOperation alloc]initWithData:self.gameUser session:self.currentSession sharedPSC:self.sharedPSC];
     
     NSLog(@"SAVING CURRENT SESSION");
-    
-        [self.addGameQueue addOperation:operation];
-
-       [self startSession];
+    [self.addGameQueue addOperation:operation];
+   // [self startSession];
 
 }
 
