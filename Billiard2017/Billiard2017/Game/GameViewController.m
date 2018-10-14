@@ -14,7 +14,6 @@
 #import "BTLEManager.h"
 #import "UserListViewController.h"
 
-
 @interface GameViewController ()<BTLEManagerDelegate>
 {
     int threshold;
@@ -27,8 +26,8 @@
     NSTimer *timer;
     int MyTimer;
 }
-@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property(nonatomic,strong)NSOperationQueue  *addGameQueue;
 @property(nonatomic,strong)BilliardBallViewController  *billiardViewController;
 @property(nonatomic,strong)MidiController  *midiController;
@@ -40,7 +39,6 @@
 @property(nonatomic,strong)BTLEManager  *btleManager;
 @property(nonatomic,strong)UIImageView  *btOnOfImageView;
 @property(nonatomic,strong)UserListViewController  *userList;
-
 @property(nonatomic,strong)UINavigationController *navcontroller;
 @end
 
@@ -65,10 +63,7 @@
         
         self.userList.sharedPSC=self.sharedPSC;
         self.userList.delegate=self;
-        
     }];
-    
-    
 }
 
 
@@ -78,17 +73,14 @@
         [self.btOnOfImageView setImage:[UIImage imageNamed:@"Bluetooth-CONNECTED"]];
         
     });
-    
 }
 
 -(void)btleManagerDisconnected:(BTLEManager *)manager
-
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         
         [self.btOnOfImageView setImage:[UIImage imageNamed:@"Bluetooth-DISCONNECTED"]];
     });
-    
 }
 
 #pragma mark -
@@ -109,19 +101,19 @@
 {
     if (object == self.midiController && [keyPath isEqualToString:@"numberOfSources"]) {
         
-        if (self.midiController.numberOfSources == 0) {
+      //  if (self.midiController.numberOfSources == 0) {
             // [self performSelectorOnMainThread:@selector(hideActivityIndicator) withObject:nil waitUntilDone:NO];
-            NSLog(@"No Midi Sources!!!");
-            UIAlertView  *alert=[[UIAlertView alloc]initWithTitle:@"Midi Message" message:@"No Midi Device Detected" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [[GCDQueue mainQueue]queueBlock:^{
-                [alert show];
-            }];
+      //      NSLog(@"No Midi Sources!!!");
+      //      UIAlertView  *alert=[[UIAlertView alloc]initWithTitle:@"Midi Message" message:@"No Midi Device Detected" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+      //      [[GCDQueue mainQueue]queueBlock:^{
+      ///          [alert show];
+       //     }];
             //[self.delegate LoginSucceeded:self user:[self user:self.usernameTextField.text]];
-        }else
-        {
-            NSLog(@" Midi Sources Detected!!!");
-
-        }
+       // }else
+       // {
+      ///      NSLog(@" Midi Sources Detected!!!");
+//
+     ///  }
     }
     else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
@@ -155,8 +147,6 @@
         [self.btleManager startWithDeviceName:@"GroovTube" andPollInterval:0.1];
         [self.btleManager setRangeReduction:2];
         [self.btleManager setTreshold:60];
-
-        
         [self startSession];
 
         self.btOnOfImageView=[[UIImageView alloc]initWithFrame:CGRectMake(self.view.bounds.size.width-230, 30, 100, 100)];
@@ -180,7 +170,6 @@
         [self midiNoteBegan:nil];
     
     }else{
-    
         NSLog(@"FIRST MIDI NOTE BEGAN DISALLOWED!");
     }
 }
@@ -194,23 +183,16 @@
     [self midiNoteStopped:nil];
 }
 
-
 -(void)btleManager:(BTLEManager*)manager inhaleWithValue:(float)percentOfmax{
-
-    
     wasExhaling = false;
     
     if (self.midiController.toggleIsON==NO) {
-        
-        
         NSLog(@"INHALING AND RETURNING");
         return;
     }
     self.midiController.velocity=127.0*percentOfmax;
-     self.midiController.speed= (fabs( self.midiController.velocity- self.midiController.previousVelocity));
-     self.midiController.previousVelocity= self.midiController.velocity;
-    
-        
+    self.midiController.speed= (fabs( self.midiController.velocity- self.midiController.previousVelocity));
+    self.midiController.previousVelocity= self.midiController.velocity;
     [self midiNoteContinuing: self.midiController];
 }
 
@@ -228,10 +210,6 @@
     
     
     [self midiNoteContinuing: self.midiController];
-    
-
-
-
 }
 
 
