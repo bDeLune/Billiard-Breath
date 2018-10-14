@@ -827,20 +827,20 @@
     
     switch (pvalue) {
         case 0:
-            threshold=10;
+            threshold=18; //was 10
             NSLog(@"SETTING DIFFICULTY THRESHOLD TO 0 or %d", threshold);
             [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:0] forKey:@"difficulty"];
             [self.settingsButton setBackgroundImage:[UIImage imageNamed:@"DifficultyButtonLOW"] forState:UIControlStateNormal];
             break;
             
         case 1:
-            threshold=25;
+            threshold=25;  //was 25
              NSLog(@"SETTING DIFFICULTY THRESHOLD TO 1 or %d", threshold);
             [self.settingsButton setBackgroundImage:[UIImage imageNamed:@"DifficultyButtonMEDIUM"] forState:UIControlStateNormal];
             [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:1] forKey:@"difficulty"];
             break;
         case 2:
-            threshold=50;
+            threshold=50;   //was 50
              NSLog(@"SETTING DIFFICULTY THRESHOLD TO 2 or %d", threshold);
              [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:2] forKey:@"difficulty"];
             [self.settingsButton setBackgroundImage:[UIImage imageNamed:@"DifficultyButtonHIGH"] forState:UIControlStateNormal];

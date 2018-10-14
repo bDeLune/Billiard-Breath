@@ -1,11 +1,3 @@
-//
-//  AppDelegate.m
-//  BilliardBreath
-//
-//  Created by barry on 09/12/2013.
-//  Copyright (c) 2013 rocudo. All rights reserved.
-//
-
 #import "AppDelegate.h"
 #import "AddNewScoreOperation.h"
 
@@ -13,7 +5,6 @@
 {
     UIImageView  *startupImageView;
     NSTimer      *startupTimer;
-    
 }
 
 @end
@@ -21,10 +12,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    
-    ///[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
-    
     return YES;
 }
 

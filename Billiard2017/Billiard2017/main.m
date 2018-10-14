@@ -1,11 +1,3 @@
-//
-//  main.m
-//  BB2017
-//
-//  Created by Brian Dillon on 02/02/2017.
-//  Copyright © 2017 ROCUDO. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 

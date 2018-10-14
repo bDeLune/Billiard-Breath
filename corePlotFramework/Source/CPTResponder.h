@@ -1,5 +1,5 @@
 
-#import "CPTPlatformSpecificDefines.h"
+ #import "CPTPlatformSpecificDefines.h"
 
 /**
  *  @brief The basis of all event processing in Core Plot.
