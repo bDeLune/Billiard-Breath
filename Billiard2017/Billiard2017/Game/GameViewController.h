@@ -2,7 +2,6 @@
 #import "User.h"
 #import "Game.h"
 #import "AbstractGame.h"
-#import "MidiController.h"
 
 @protocol GameViewProtocol <NSObject>
 
@@ -10,7 +9,7 @@
 
 @end
 
-@interface GameViewController : UIViewController<MidiControllerProtocol,GameProtocol>
+@interface GameViewController : UIViewController<GameProtocol>
 
 @property(nonatomic,weak)IBOutlet  UIButton  *backToLoginButton;
 @property(nonatomic,weak)IBOutlet  UIButton *toggleDirectionButton;
@@ -36,8 +35,5 @@
 -(IBAction)toggleGameMode:(id)sender;
 -(IBAction)presentSettings:(id)sender;
 -(IBAction)resetGame:(id)sender;
--(void)testAddSession;
--(IBAction)testButtonDown:(id)sender;
--(IBAction)testButtonUp:(id)sender;
 
 @end

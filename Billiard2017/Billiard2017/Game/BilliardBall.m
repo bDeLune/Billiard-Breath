@@ -169,10 +169,6 @@
 
 -(void)animateForPower
 {
-    // [self setForce:_midiSource.velocity*100];
-    
-    ///NSLog(@"FORCE %f", force);
-    
     if (isaccelerating) {
         // force+=500;
         

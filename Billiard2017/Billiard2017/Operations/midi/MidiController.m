@@ -261,8 +261,6 @@ static void	MyMIDIReadProc(const MIDIPacketList *pktlist, void *refCon, void *co
 {
 	
 	MidiController *vc = (__bridge MidiController*) refCon;
-    
-	
 	MIDIPacket *packet = (MIDIPacket *)pktlist->packet;
 	int midiCommand = packet->data[0] >> 4;
     int note = packet->data[1] & 0x7F;
@@ -270,42 +268,28 @@ static void	MyMIDIReadProc(const MIDIPacketList *pktlist, void *refCon, void *co
 
     if (midiCommand == 0x09) {
         vc.midiIsOn=YES;
-        
-        
        // [vc.delegate sendLogToOutput:[NSString stringWithFormat:@"Command =%d ,Note=%d, Velocity=%d",midiCommand, note, veolocity]];
         [vc midiNoteBegan:note vel:veolocity];
     }
     
     if (midiCommand==11) {
-        
         if (note==2) {
-            
-           
                 [vc continueMidiNote:veolocity];
-
-            
-                        
         }else
         {
             //ended
-            
-
             [vc stopMidiNote];
-           
-           
         }
     }
-    
-  
-	
 }
+
 void MyMIDINotifyProc (const MIDINotification  *message, void *refCon) {
-	MidiController *vc = (__bridge MidiController*) refCon;
+	//MidiController *vc = (__bridge MidiController*) refCon;
     /** [vc appendToTextView:[NSString stringWithFormat:
      @"MIDI Notify, messageId=%ld,", message->messageID]];**/
     
-    [vc.delegate sendLogToOutput:[NSString stringWithFormat:
-                                  @"MIDI Notify, messageId=%ld,", message->messageID]];
+    //[vc.delegate sendLogToOutput:[NSString stringWithFormat:
+      //                            @"MIDI Notify, messageId=%ld,", message->messageID]];
 	
 }
 @end

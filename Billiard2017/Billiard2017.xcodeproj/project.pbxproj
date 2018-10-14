@@ -74,7 +74,6 @@
 		71C9FA021E53356C0078070D /* GCDObjCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9F9EF1E53356C0078070D /* GCDObjCTests.m */; };
 		71C9FA031E53356C0078070D /* GCDQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9F9F11E53356C0078070D /* GCDQueue.m */; };
 		71C9FA041E53356C0078070D /* GCDSemaphore.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9F9F31E53356C0078070D /* GCDSemaphore.m */; };
-		71C9FA051E53356C0078070D /* MidiController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9F9F61E53356C0078070D /* MidiController.m */; };
 		71C9FA061E53356C0078070D /* AddNewScoreOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9F9F91E53356C0078070D /* AddNewScoreOperation.m */; };
 		71C9FA071E53356C0078070D /* AddNewUserOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9F9FB1E53356C0078070D /* AddNewUserOperation.m */; };
 		71C9FA081E53356C0078070D /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9F9FE1E53356C0078070D /* NSData+Base64.m */; };
@@ -243,8 +242,6 @@
 		71C9F9F11E53356C0078070D /* GCDQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDQueue.m; sourceTree = "<group>"; };
 		71C9F9F21E53356C0078070D /* GCDSemaphore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDSemaphore.h; sourceTree = "<group>"; };
 		71C9F9F31E53356C0078070D /* GCDSemaphore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDSemaphore.m; sourceTree = "<group>"; };
-		71C9F9F51E53356C0078070D /* MidiController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MidiController.h; sourceTree = "<group>"; };
-		71C9F9F61E53356C0078070D /* MidiController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MidiController.m; sourceTree = "<group>"; };
 		71C9F9F81E53356C0078070D /* AddNewScoreOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewScoreOperation.h; sourceTree = "<group>"; };
 		71C9F9F91E53356C0078070D /* AddNewScoreOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewScoreOperation.m; sourceTree = "<group>"; };
 		71C9F9FA1E53356C0078070D /* AddNewUserOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewUserOperation.h; sourceTree = "<group>"; };
@@ -483,22 +480,12 @@
 			path = GCDObjC;
 			sourceTree = "<group>";
 		};
-		71C9F9F41E53356C0078070D /* midi */ = {
-			isa = PBXGroup;
-			children = (
-				71C9F9F51E53356C0078070D /* MidiController.h */,
-				71C9F9F61E53356C0078070D /* MidiController.m */,
-			);
-			path = midi;
-			sourceTree = "<group>";
-		};
 		71C9F9F71E53356C0078070D /* Operations */ = {
 			isa = PBXGroup;
 			children = (
 				71C9F9DE1E5334A90078070D /* AHEasing */,
 				7186DEA51E4DC59F00F71F0C /* btlemanager */,
 				71C9F9EA1E53356C0078070D /* GCDObjC */,
-				71C9F9F41E53356C0078070D /* midi */,
 				71C9F9FC1E53356C0078070D /* UIEffectDesignerView */,
 				7186DE171E4DBF7100F71F0C /* CustomIOSAlertView.h */,
 				7186DE191E4DBF7100F71F0C /* CustomIOSAlertView.m */,
@@ -683,7 +670,6 @@
 				7186DE0A1E4DBF5F00F71F0C /* BilliardBallViewController.m in Sources */,
 				7186DE311E4DBF7100F71F0C /* PlotItem.m in Sources */,
 				71C9FA061E53356C0078070D /* AddNewScoreOperation.m in Sources */,
-				71C9FA051E53356C0078070D /* MidiController.m in Sources */,
 				71C9FA011E53356C0078070D /* GCDGroup.m in Sources */,
 				71C9F9DD1E53341D0078070D /* SequenceGame.m in Sources */,
 				71C9F9D91E53341D0078070D /* User.m in Sources */,

@@ -1,11 +1,3 @@
-//
-//  SequenceGame.m
-//  BilliardBreath
-//
-//  Created by barry on 10/12/2013.
-//  Copyright (c) 2013 rocudo. All rights reserved.
-//
-
 #import "SequenceGame.h"
 #import <AVFoundation/AVFoundation.h>
 
@@ -29,10 +21,8 @@
         self.totalBallsAttempted=0;
         gamewon=NO;
         self.saveable=NO;
-        self.halt=NO;
-        self.time=0;
-        
-
+        self.halt= NO;
+        self.time= 0;
     }
     
     return self;

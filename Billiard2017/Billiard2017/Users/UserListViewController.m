@@ -12,13 +12,12 @@
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
-
 @property (nonatomic, strong) UIBarButtonItem *activityIndicator;
-
 @property (nonatomic) NSMutableArray *userList;
 @property(nonatomic,strong)GraphViewController  *graph;
 @property(nonatomic,assign)User  *deleteUser;
 @end
+
 @implementation UserListViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -29,6 +28,7 @@
     }
     return self;
 }
+
 -(NSArray*)sortedDateArrayForUser:(User*)user
 {
     NSArray *alldates=[user.game allObjects];
