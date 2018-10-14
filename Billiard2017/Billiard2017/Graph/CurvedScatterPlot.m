@@ -78,29 +78,24 @@ NSString *const kSecond = @"Inhale";
     
     return result;
 }
+
 //duration == type 2
 -(NSArray*)noPowerArray
 
 {  NSArray *src=nil;
     
     src=[self.userData.game allObjects];
-    
-    
     NSMutableArray  *durationOnly=[NSMutableArray new];
     
     for (Game *agame in src) {
-        
-        
         if ([agame.gameType intValue]==2) {
             [durationOnly addObject:agame];
         }
     }
-    
-    
-    
+
     return durationOnly;
-    
 }
+
 -(void)makeDateArrayNoTimes
 {
     NSCalendar *cal = [NSCalendar currentCalendar];
@@ -143,7 +138,7 @@ NSString *const kSecond = @"Inhale";
         return [first compare:second];
     }];
     
-    sortedArray=[[sortedArray reverseObjectEnumerator] allObjects];
+    ///sortedArray=[[sortedArray reverseObjectEnumerator] allObjects];
     
     if ([array count]==0) {
         return;
@@ -305,7 +300,7 @@ NSString *const kSecond = @"Inhale";
     for (int i=0; i<[sortedArray count]; i++) {
         NSLog(@"DATE PLACER i %d", i);
         NSLog(@"sortedArray %lu", (unsigned long)[sortedArray count]);
-        NSLog(@"sortedArray %@", sortedArray);
+       // NSLog(@"sortedArray %@", sortedArray);
         
         Game *game=[sortedArray objectAtIndex:i];
         NSDate *date = game.gameDate;
@@ -340,7 +335,7 @@ NSString *const kSecond = @"Inhale";
         NSString *myString = [yValue stringValue];
         NSNumber* myplotPoint = [NSNumber numberWithInt:b+1];
         NSString *myString1 = [myplotPoint stringValue];
-        myString = [myString substringToIndex: MIN(3, [myString length])];
+        myString = [myString substringToIndex: MIN(4, [myString length])];
         CPTAxisLabel *ylabel = [[CPTAxisLabel alloc] initWithText:myString  textStyle:y.labelTextStyle];
         ylabel.tickLocation = yValue;
         ylabel.offset = 4;
@@ -348,8 +343,8 @@ NSString *const kSecond = @"Inhale";
         [yAxisLabels addObject:ylabel];
     }
     
-    NSLog(@"customTickLocations %@", customXTickLocations);
-    NSLog(@"xAxisLabels %@", xAxisLabels);
+    //NSLog(@"customTickLocations %@", customXTickLocations);
+    //NSLog(@"xAxisLabels %@", xAxisLabels);
 
     x.axisLabels = xAxisLabels;
     x.majorTickLocations = customXTickLocations;

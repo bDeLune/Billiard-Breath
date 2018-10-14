@@ -6,7 +6,7 @@
 #import "PlotItem.h"
 #import "CurvedScatterPlot.h"
 #import "AllGamesForDayTableVC.h"
-#import "GCDQueue.h";
+#import "GCDQueue.h"
 
 @interface UserListViewController()<UIActionSheetDelegate,HeaderViewProtocl>
 
@@ -51,6 +51,7 @@
     NSArray *cleanedArray = [[NSSet setWithArray:datesstrings] allObjects];
     NSMutableArray *mutable=[[NSMutableArray alloc]initWithArray:cleanedArray];
     [mutable sortUsingSelector:@selector(compare:)];
+
     
     return mutable;
 }
@@ -69,6 +70,7 @@
     NSArray *cleanedArray = [[NSSet setWithArray:datesstrings] allObjects];
     NSMutableArray *mutable=[[NSMutableArray alloc]initWithArray:cleanedArray];
     [mutable sortUsingSelector:@selector(compare:)];
+    
     return [mutable count];
     return 0;
 }
@@ -145,7 +147,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    int sections=[self.userList count];
+    int sections = [self.userList count];
     return sections;
 }
 
@@ -223,14 +225,16 @@
     AllGamesForDayTableVC  *detailViewController=[[AllGamesForDayTableVC alloc]initWithNibName:@"AllGamesForDayTableVC" bundle:nil];
     NSArray *array = [self gamesMatchingDate:[dates objectAtIndex:indexPath.row] user:user];
     
-    NSLog(@"ALL GAMES RECIEVED");
-    NSLog(@"%@", array);
+    //NSLog(@"ALL GAMES RECIEVED");
+    //NSLog(@"%@", array);
     
     NSMutableArray  *durationOnly=[NSMutableArray new];
     
     for (Game *agame in array) {
         [durationOnly addObject:agame];
     }
+    
+    NSLog(@"durationOnly, %@", durationOnly);
     
     [detailViewController setUSerData:durationOnly];
     [self.navigationController pushViewController:detailViewController animated:YES];

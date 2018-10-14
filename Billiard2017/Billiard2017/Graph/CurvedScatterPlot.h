@@ -1,9 +1,3 @@
-//
-//  CurvedScatterPlot.h
-//  Plot_Gallery_iOS
-//
-//  Created by Nino Ag on 23/10/11.
-
 #import "PlotItem.h"
 #import "User.h"
 @interface CurvedScatterPlot : PlotItem<CPTPlotSpaceDelegate,

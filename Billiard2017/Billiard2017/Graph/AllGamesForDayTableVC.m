@@ -106,6 +106,9 @@
     }
 
      NSString  *duration=[NSString stringWithFormat:@"%f",[game.duration floatValue]];
+    
+    NSLog(@"plotting %@ ", duration);
+    
     // NSString  *strength=[NSString stringWithFormat:@"%f",[game.power floatValue]];
      cell.textLabel.text=[NSString stringWithFormat:@"%@  %@ %@",typeString,attemptDateString,game.gameDirection];
      cell.detailTextLabel.text=[NSString stringWithFormat:@"Duration :%@",duration];

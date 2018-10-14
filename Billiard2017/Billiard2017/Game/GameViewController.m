@@ -1007,7 +1007,8 @@
     
     NSLog(@"SAVING CURRENT SESSION");
     [self.addGameQueue addOperation:operation];
-   // [self startSession];
+   
+    [self startSession]; //added
 
 }
 

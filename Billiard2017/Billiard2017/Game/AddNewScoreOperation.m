@@ -37,6 +37,11 @@
     if ([self.session.sessionDuration floatValue]<=0.0) {
         return;
     }
+    
+    NSLog(@"setting game date as ");
+    
+    NSLog(@"%@", self.session.sessionDate);
+    
     [game setDuration:self.session.sessionDuration];
     [game setGameDate:self.session.sessionDate];
     [game setPower:self.session.sessionStrength];
