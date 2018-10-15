@@ -7,7 +7,6 @@
 //
 //  Lincesed under The MIT License (MIT)
 //  http://opensource.org/licenses/MIT
-//
 
 #import "CustomIOSAlertView.h"
 #import <QuartzCore/QuartzCore.h>
@@ -149,11 +148,11 @@ CGFloat buttonSpacerHeight = 0;
 }
 
 // Default button behaviour
-- (void)customIOS7dialogButtonTouchUpInside: (CustomIOSAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    NSLog(@"Button Clicked! %d, %d", (int)buttonIndex, (int)[alertView tag]);
-    [self close];
-}
+//- (void)customIOS7dialogButtonTouchUpInside: (CustomIOSAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//    NSLog(@"Button Clicked! %d, %d", (int)buttonIndex, (int)[alertView tag]);
+ ///   [self close];
+//}
 
 // Dialog close animation then cleaning and removing the view from the parent
 - (void)close

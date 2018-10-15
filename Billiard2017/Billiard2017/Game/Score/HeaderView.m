@@ -46,7 +46,6 @@
 -(void)deleteAction
 {
     [self.delegate deleteMember:self];
-
 }
 
 @end

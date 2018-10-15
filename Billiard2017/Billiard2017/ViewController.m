@@ -1,11 +1,3 @@
-//
-//  ViewController.m
-//  BilliardBreath
-//
-//  Created by barry on 09/12/2013.
-//  Copyright (c) 2013 rocudo. All rights reserved.
-//
-
 #import "ViewController.h"
 #import "AddNewUserOperation.h"
 #import "User.h"
@@ -16,13 +8,12 @@
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
-@property(nonatomic,strong)LoginViewController  *loginViewController;
-@property(nonatomic,strong)GameViewController  *gameViewController;
-
-@property(nonatomic,strong)User  *currentUser;
-@property(nonatomic,strong)Game  *currentGame;
-@property(nonatomic,strong)UIImageView *startupImageView;
-@property(nonatomic,strong)UIImageView  *btOnOfImageView;
+@property (nonatomic,strong) LoginViewController *loginViewController;
+@property (nonatomic,strong) GameViewController *gameViewController;
+@property (nonatomic,strong) User  *currentUser;
+@property (nonatomic,strong) Game  *currentGame;
+@property (nonatomic,strong) UIImageView *startupImageView;
+@property (nonatomic,strong) UIImageView *btOnOfImageView;
 
 @end
 
@@ -31,34 +22,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // observe for any errors that come from our parser
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addUserError:) name:kAddNewUserOperationUserError object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addUserExistsError:) name:kAddNewUserOperationUserExistsError object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addUserSuccess:) name:kAddNewUserOperationUserAdded object:nil];
-    
-    
-    // Do any additional setup after loading the view, typically from a nib.
-    
     [self managedObjectContext];
     [self addUserLoginViewController];
-    
-    
-///_startupImageView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Default.png"]];
-//[self.view addSubview:_startupImageView];
-  //  [ NSTimer scheduledTimerWithTimeInterval:5.0
-   //                                   target:self
-   //                                 selector:@selector(removeStartupImage:)
-   //                                 userInfo:nil
-  //                                   repeats:NO];
-//added
-    
 }
+
 -(void)removeStartupImage:(NSTimer*)timer
 {
     [timer invalidate];
     timer=nil;
-    
     
     [UIView animateWithDuration:3.0 animations:^{
         _startupImageView.alpha=0.0;
@@ -66,36 +37,6 @@
         [_startupImageView removeFromSuperview];
         _startupImageView=nil;
     }];
-    
-    
-}
-
-
-//- (UIViewController *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
-    
-///    NSLog(@"tocuhed hit event");
-//    NSLog(@"%@", NSStringFromCGPoint(point));
-//    NSLog(@"%@ ", event);
-    
-   // CGRect rect = WORK_OUT_WHERE_THE_BUTTON_RECT_IS_RELATIVE_TO_THE_WINDOW;
-   // if (CGRectContainsPoint(rect, point))
-   // {
-   //     return theButtonView;
-   // }
-   // else
-   // {
-   //     return self;
-        //return true;
-  //  }
-    
-//}
-
--(void)viewWillLayoutSubviews{
-    
-    [super viewWillLayoutSubviews];
-    
-  //  [self.view setFrame:CGRectMake(600, 600, 600, 600)];
-    
 }
 
 -(void)addUserLoginViewController
@@ -107,43 +48,24 @@
     [self.view addSubview:self.loginViewController.view];
     self.loginViewController.sharedPSC=self.persistentStoreCoordinator;
     self.loginViewController.delegate=self;
-    
 }
-
-
-
 
 #pragma mark -
 #pragma mark - Add User Notifications
--(void)addUserSuccess:(NSNotification*)notification
-{
-    
-}
--(void)addUserExistsError:(NSNotification*)notification
-{
-    
-}
--(void)addUserError:(NSNotification*)notification
-{
-    
-}
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
 #pragma mark -
 #pragma mark - Core Data
-// Returns the path to the application's documents directory.
+
 - (NSString *)applicationDocumentsDirectory {
     
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
-// Returns the managed object context for the application.
-// If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
-//
 - (NSManagedObjectContext *)managedObjectContext {
     
     if (_managedObjectContext != nil) {
@@ -156,7 +78,6 @@
         [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
     
-    // observe the ParseOperation's save operation with its managed object context
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(mergeChanges:)
                                                  name:NSManagedObjectContextDidSaveNotification
@@ -165,55 +86,30 @@
     return _managedObjectContext;
 }
 
-// Returns the managed object model for the application.
-// If the model doesn't already exist, it is created by merging all of the models found in the application bundle.
-//
 - (NSManagedObjectModel *)managedObjectModel {
     
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    
-    NSString *path = [[NSBundle mainBundle] resourcePath];
-    NSFileManager *fm = [NSFileManager defaultManager];
-    NSError *error = nil;
-    NSArray *directoryAndFileNames = [fm contentsOfDirectoryAtPath:path error:&error];
-    //NSLog(@"Manged object model %@", directoryAndFileNames);
-    
+
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"mom"]; //was mom
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     
     return _managedObjectModel;
 }
 
-// Returns the persistent store coordinator for the application.
-// If the coordinator doesn't already exist, it is created and the application's store added to it
-//
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
     
     if (_persistentStoreCoordinator != nil) {
         return _persistentStoreCoordinator;
     }
     
-    // find the earthquake data in our Documents folder
     NSString *storePath = [[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"Model.sqlite"];
     NSURL *storeUrl = [NSURL fileURLWithPath:storePath];
     
     NSError *error;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:nil error:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate.
-        // You should not use this function in a shipping application, although it may be useful
-        // during development. If it is not possible to recover from the error, display an alert
-        // panel that instructs the user to quit the application by pressing the Home button.
-        //
-        
-        // Typical reasons for an error here include:
-        // The persistent store is not accessible
-        // The schema for the persistent store is incompatible with current managed object model
-        // Check the error message to determine what the actual problem was.
-        NSLog(@"ABORTING");
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
@@ -257,8 +153,6 @@
 
 -(void)LoginSucceeded:(LoginViewController*)viewController user:(User*)user
 {
-    // assert([NSThread isMainThread]);
-    
     self.currentUser=user;
     
     if (!self.gameViewController) {

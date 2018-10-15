@@ -1,15 +1,8 @@
-//
-//  CurvedScatterPlot.m
-//  Plot_Gallery_iOS
-//
-//  Created by Nino Ag on 23/10/11.
-
 #import "CurvedScatterPlot.h"
 #import "Game.h"
 NSString *const kData   = @"Score";
 NSString *const kFirst  = @"Exhale";
 NSString *const kSecond = @"Inhale";
-
 
 @interface CurvedScatterPlot()
 {
@@ -44,28 +37,19 @@ NSString *const kSecond = @"Inhale";
         
         if ( symbolTextAnnotation ) {
             [graph.plotAreaFrame.plotArea removeAnnotation:symbolTextAnnotation];
-            
-            @try {
-         ///       [symbolTextAnnotation release];
-                
-            }
-            @catch (NSException *exception) {
-                NSLog(@"cant release");
-            }
-            @finally {
-                
-            }
             symbolTextAnnotation = nil;
         }
     }
     
     [super killGraph];
 }
+
 -(void)setUser:(User*)user
 {
     self.userData=user;
     self.title=self.userData.userName;
 }
+
 -(void)setType:(NSString*)type
 {
     currentType=type;
@@ -73,17 +57,13 @@ NSString *const kSecond = @"Inhale";
 
 -(NSSet*)gamesWithoutSeconds:(NSArray*)array
 {
-    
     NSSet  *result = nil;
-    
     return result;
 }
 
-//duration == type 2
 -(NSArray*)noPowerArray
-
-{  NSArray *src=nil;
-    
+{
+    NSArray *src=nil;
     src=[self.userData.game allObjects];
     NSMutableArray  *durationOnly=[NSMutableArray new];
     
@@ -117,20 +97,11 @@ NSString *const kSecond = @"Inhale";
         NSDate *today = [cal dateFromComponents:comps];
         NSLog(@"%@",today);
     }
-    
-    
 }
+
 -(void)generateData
 {
-    
-    //[self makeDateArrayNoTimes];
-     NSArray *array = [self.userData.game allObjects];
-    //NSArray *array =  [self noPowerArray];
-    
-    // NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    // NSArray *sorted = [yourSet sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
-    // NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"game.gameDate" ascending:YES];
-    // NSArray *sortedGames = [array sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    NSArray *array = [self.userData.game allObjects];
     NSArray *sortedArray;
     sortedArray = [array sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
         NSDate *first = [(Game*)a gameDate];
@@ -228,11 +199,6 @@ NSString *const kSecond = @"Inhale";
     if ([sortedArray count]==0) {
         return;
     }
-
-    Game  *game=[sortedArray objectAtIndex:0];
-    
-    NSLog(@"SORTED -- - %@", sortedArray);
-    NSLog(@"PLOT DATA -- - %@", plotData);
     
     CGRect bounds = layerHostingView.bounds;
 
@@ -285,33 +251,21 @@ NSString *const kSecond = @"Inhale";
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"d MMM y "];
     
-    //Game  *firstgame=[sortedArray objectAtIndex:0];
     NSMutableSet *customXTickLocations=[NSMutableSet setWithCapacity:[sortedArray count] +1];
     NSMutableSet *customYTickLocations=[NSMutableSet setWithCapacity:[plotData count] +1];
     NSMutableSet *xAxisLabels=[NSMutableSet setWithCapacity:[sortedArray count] +1];
     NSMutableSet *yAxisLabels=[NSMutableSet setWithCapacity:[plotData count] + 1];
-    
-    //CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:@""  textStyle:x.labelTextStyle];
-    //[customXTickLocations addObject: [NSNumber numberWithInteger:0]];
-    //[customYTickLocations addObject: [NSNumber numberWithInteger:0]];
-    //[xAxisLabels addObject: label];
-    //[yAxisLabels addObject: label];
      
     for (int i=0; i<[sortedArray count]; i++) {
         NSLog(@"DATE PLACER i %d", i);
         NSLog(@"sortedArray %lu", (unsigned long)[sortedArray count]);
-       // NSLog(@"sortedArray %@", sortedArray);
         
         Game *game=[sortedArray objectAtIndex:i];
         NSDate *date = game.gameDate;
         NSString *stringFromDate=[formatter stringFromDate:date];
         NSLog(@"last date %@", lastDate);
         NSLog(@"current date %@", stringFromDate);
-        
-      //  if ([lastDate isEqualToString: stringFromDate]){
-       //     NSLog(@"skipping date label - same as previous");
-       // }else{
-           // NSString *dateString = [NSString stringWithFormat: @"%@ (%d)", stringFromDate2, i];
+    
         if ([lastDate isEqualToString: stringFromDate]){
             stringFromDate = @"";
             NSLog(@"skipping date label - same as previous");
@@ -334,7 +288,6 @@ NSString *const kSecond = @"Inhale";
         NSNumber *yValue = [plotPoint objectForKey:@"y"];
         NSString *myString = [yValue stringValue];
         NSNumber* myplotPoint = [NSNumber numberWithInt:b+1];
-        NSString *myString1 = [myplotPoint stringValue];
         myString = [myString substringToIndex: MIN(3, [myString length])];
         CPTAxisLabel *ylabel = [[CPTAxisLabel alloc] initWithText:myString  textStyle:y.labelTextStyle];
         ylabel.tickLocation = yValue;
@@ -454,8 +407,6 @@ NSString *const kSecond = @"Inhale";
    /// NSLog(@"newXAxisSet %@", newXAxisSet);
    /// [x setAxisLabels: myXAxisLabels];
     
-
-    
     lineCap.lineStyle = y.axisLineStyle;
     lineColor         = lineCap.lineStyle.lineColor;
     if ( lineColor ) {
@@ -467,7 +418,6 @@ NSString *const kSecond = @"Inhale";
     y.title       = @"Duration";
     y.titleOffset = 60;
 
-    
     // Set axes
     graph.axisSet.axes = @[x, y];
     graph.plotAreaFrame.paddingLeft   += 1 * CPTFloat(2.25);
@@ -578,9 +528,7 @@ NSString *const kSecond = @"Inhale";
 
 -(void)dealloc
 {
-   // [symbolTextAnnotation release];
-   // [plotData release];
-   /// [super dealloc];
+
 }
 
 #pragma mark -

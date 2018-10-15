@@ -29,9 +29,7 @@
 		7186DE131E4DBF5F00F71F0C /* GraphViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7186DE081E4DBF5F00F71F0C /* GraphViewController.xib */; };
 		7186DE141E4DBF5F00F71F0C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7186DE091E4DBF5F00F71F0C /* Images.xcassets */; };
 		7186DE2A1E4DBF7100F71F0C /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 7186DE161E4DBF7100F71F0C /* Session.m */; };
-		7186DE2B1E4DBF7100F71F0C /* CustomIOSAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7186DE191E4DBF7100F71F0C /* CustomIOSAlertView.m */; };
 		7186DE2D1E4DBF7100F71F0C /* UserListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7186DE1C1E4DBF7100F71F0C /* UserListViewController.xib */; };
-		7186DE2E1E4DBF7100F71F0C /* PiNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7186DE1F1E4DBF7100F71F0C /* PiNumberFormatter.m */; };
 		7186DE2F1E4DBF7100F71F0C /* Globals.m in Sources */ = {isa = PBXBuildFile; fileRef = 7186DE221E4DBF7100F71F0C /* Globals.m */; };
 		7186DE301E4DBF7100F71F0C /* PlotGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = 7186DE231E4DBF7100F71F0C /* PlotGallery.m */; };
 		7186DE311E4DBF7100F71F0C /* PlotItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7186DE251E4DBF7100F71F0C /* PlotItem.m */; };
@@ -55,7 +53,6 @@
 		7186DEB21E4DC59F00F71F0C /* Bluetooth-DISCONNECTED.png in Resources */ = {isa = PBXBuildFile; fileRef = 7186DEA71E4DC59F00F71F0C /* Bluetooth-DISCONNECTED.png */; };
 		7186DEB31E4DC59F00F71F0C /* BTLEManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7186DEA91E4DC59F00F71F0C /* BTLEManager.m */; };
 		7186DEB41E4DC59F00F71F0C /* libMelodySmart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7186DEAB1E4DC59F00F71F0C /* libMelodySmart.a */; };
-		7186DEB51E4DC59F00F71F0C /* NSData+NSData_Conversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 7186DEB01E4DC59F00F71F0C /* NSData+NSData_Conversion.m */; };
 		7186DEB91E4DC61D00F71F0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7186DEB81E4DC61D00F71F0C /* main.m */; };
 		7186DEDF1E51CA2300F71F0C /* DefaultPortrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 7186DEDE1E51CA2300F71F0C /* DefaultPortrait.png */; };
 		7186DEE11E51CACC00F71F0C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7186DEE01E51CACC00F71F0C /* Default.png */; };
@@ -67,8 +64,6 @@
 		71C9F9DB1E53341D0078070D /* DurationGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9F9D31E53341D0078070D /* DurationGame.m */; };
 		71C9F9DC1E53341D0078070D /* PowerGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9F9D51E53341D0078070D /* PowerGame.m */; };
 		71C9F9DD1E53341D0078070D /* SequenceGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9F9D71E53341D0078070D /* SequenceGame.m */; };
-		71C9F9E71E5334A90078070D /* CAKeyframeAnimation+AHEasing.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9F9E01E5334A90078070D /* CAKeyframeAnimation+AHEasing.m */; };
-		71C9F9E81E5334A90078070D /* easing.c in Sources */ = {isa = PBXBuildFile; fileRef = 71C9F9E11E5334A90078070D /* easing.c */; };
 		71C9F9E91E5334A90078070D /* BilliardBall.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9F9E61E5334A90078070D /* BilliardBall.m */; };
 		71C9FA011E53356C0078070D /* GCDGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9F9EC1E53356C0078070D /* GCDGroup.m */; };
 		71C9FA021E53356C0078070D /* GCDObjCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9F9EF1E53356C0078070D /* GCDObjCTests.m */; };
@@ -167,13 +162,9 @@
 		7186DE091E4DBF5F00F71F0C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7186DE151E4DBF7100F71F0C /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
 		7186DE161E4DBF7100F71F0C /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
-		7186DE171E4DBF7100F71F0C /* CustomIOSAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomIOSAlertView.h; sourceTree = "<group>"; };
 		7186DE181E4DBF7100F71F0C /* VersionNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionNumber.h; sourceTree = "<group>"; };
-		7186DE191E4DBF7100F71F0C /* CustomIOSAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomIOSAlertView.m; sourceTree = "<group>"; };
 		7186DE1C1E4DBF7100F71F0C /* UserListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserListViewController.xib; sourceTree = "<group>"; };
 		7186DE1D1E4DBF7100F71F0C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		7186DE1E1E4DBF7100F71F0C /* PiNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiNumberFormatter.h; sourceTree = "<group>"; };
-		7186DE1F1E4DBF7100F71F0C /* PiNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiNumberFormatter.m; sourceTree = "<group>"; };
 		7186DE201E4DBF7100F71F0C /* PlotGallery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlotGallery.h; sourceTree = "<group>"; };
 		7186DE211E4DBF7100F71F0C /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
 		7186DE221E4DBF7100F71F0C /* Globals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Globals.m; sourceTree = "<group>"; };
@@ -206,8 +197,6 @@
 		7186DEAC1E4DC59F00F71F0C /* MelodyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MelodyManager.h; sourceTree = "<group>"; };
 		7186DEAD1E4DC59F00F71F0C /* MelodySmart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MelodySmart.h; sourceTree = "<group>"; };
 		7186DEAE1E4DC59F00F71F0C /* OtaStructs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtaStructs.h; sourceTree = "<group>"; };
-		7186DEAF1E4DC59F00F71F0C /* NSData+NSData_Conversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+NSData_Conversion.h"; sourceTree = "<group>"; };
-		7186DEB01E4DC59F00F71F0C /* NSData+NSData_Conversion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+NSData_Conversion.m"; sourceTree = "<group>"; };
 		7186DEB81E4DC61D00F71F0C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7186DEDE1E51CA2300F71F0C /* DefaultPortrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultPortrait.png; sourceTree = "<group>"; };
 		7186DEE01E51CACC00F71F0C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -226,11 +215,6 @@
 		71C9F9D51E53341D0078070D /* PowerGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerGame.m; sourceTree = "<group>"; };
 		71C9F9D61E53341D0078070D /* SequenceGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SequenceGame.h; sourceTree = "<group>"; };
 		71C9F9D71E53341D0078070D /* SequenceGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SequenceGame.m; sourceTree = "<group>"; };
-		71C9F9DF1E5334A90078070D /* CAKeyframeAnimation+AHEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAKeyframeAnimation+AHEasing.h"; sourceTree = "<group>"; };
-		71C9F9E01E5334A90078070D /* CAKeyframeAnimation+AHEasing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAKeyframeAnimation+AHEasing.m"; sourceTree = "<group>"; };
-		71C9F9E11E5334A90078070D /* easing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = easing.c; sourceTree = "<group>"; };
-		71C9F9E21E5334A90078070D /* easing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = easing.h; sourceTree = "<group>"; };
-		71C9F9E31E5334A90078070D /* EasingDeclarations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasingDeclarations.h; sourceTree = "<group>"; };
 		71C9F9E51E5334A90078070D /* BilliardBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BilliardBall.h; sourceTree = "<group>"; };
 		71C9F9E61E5334A90078070D /* BilliardBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BilliardBall.m; sourceTree = "<group>"; };
 		71C9F9EB1E53356C0078070D /* GCDGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDGroup.h; sourceTree = "<group>"; };
@@ -296,10 +280,10 @@
 				71C9FA0B1E5335C40078070D /* AppDelegate.m */,
 				7108572F1E439A0A00479032 /* ViewController.h */,
 				710857301E439A0A00479032 /* ViewController.m */,
+				71577CF1217520D1005236BD /* Login */,
 				71AEAEF7213039900051EE01 /* Users */,
 				71C9F9CF1E53341D0078070D /* Game */,
 				71C9F9F71E53356C0078070D /* Operations */,
-				71AEAEEA2130392A0051EE01 /* Graph */,
 				7186DE091E4DBF5F00F71F0C /* Images.xcassets */,
 				7108573D1E439A0A00479032 /* Info.plist */,
 				7186DDCC1E4DBE0D00F71F0C /* Model.xcdatamodel */,
@@ -325,7 +309,6 @@
 				7186DE8A1E4DBFA400F71F0C /* BilliardBreathAppIcon50x50.png */,
 				71693B8F206937D1009F14EA /* BilliardBreath1024X1024.png */,
 				7186DE8B1E4DBFA400F71F0C /* BilliardBreathAppIcon58x58.png */,
-				7186DEB81E4DC61D00F71F0C /* main.m */,
 				718E215B1E51E43000E8357B /* icon-120.png */,
 				7186DE8C1E4DBFA400F71F0C /* BilliardBreathAppIcon72x72.png */,
 				7186DE8D1E4DBFA400F71F0C /* BilliardBreathAppIcon76x76.png */,
@@ -361,6 +344,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		71577CF02175202B005236BD /* Score */ = {
+			isa = PBXGroup;
+			children = (
+				71C9F9F81E53356C0078070D /* AddNewScoreOperation.h */,
+				71C9F9F91E53356C0078070D /* AddNewScoreOperation.m */,
+				71AEAEEA2130392A0051EE01 /* Graph */,
+				7186DE031E4DBF5F00F71F0C /* HeaderView.h */,
+				7186DE041E4DBF5F00F71F0C /* HeaderView.m */,
+				7186DDEC1E4DBF4100F71F0C /* AllGamesForDayTableVC.h */,
+				7186DDED1E4DBF4100F71F0C /* AllGamesForDayTableVC.m */,
+				7186DDF21E4DBF4100F71F0C /* AllGamesForDayTableVC.xib */,
+			);
+			path = Score;
+			sourceTree = "<group>";
+		};
+		71577CF1217520D1005236BD /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				7186DE1D1E4DBF7100F71F0C /* LoginViewController.h */,
+				7186DE261E4DBF7100F71F0C /* LoginViewController.m */,
+				7186DDEA1E4DBF2400F71F0C /* LoginViewController.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		7186DEA51E4DC59F00F71F0C /* btlemanager */ = {
 			isa = PBXGroup;
 			children = (
@@ -369,8 +377,6 @@
 				7186DEA81E4DC59F00F71F0C /* BTLEManager.h */,
 				7186DEA91E4DC59F00F71F0C /* BTLEManager.m */,
 				7186DEAA1E4DC59F00F71F0C /* libMelodySmart */,
-				7186DEAF1E4DC59F00F71F0C /* NSData+NSData_Conversion.h */,
-				7186DEB01E4DC59F00F71F0C /* NSData+NSData_Conversion.m */,
 			);
 			path = btlemanager;
 			sourceTree = "<group>";
@@ -389,17 +395,12 @@
 		71AEAEEA2130392A0051EE01 /* Graph */ = {
 			isa = PBXGroup;
 			children = (
-				7186DE031E4DBF5F00F71F0C /* HeaderView.h */,
-				7186DE041E4DBF5F00F71F0C /* HeaderView.m */,
 				7186DE011E4DBF5F00F71F0C /* CurvedScatterPlot.m */,
 				7186DE001E4DBF5F00F71F0C /* CurvedScatterPlot.h */,
 				7186DE201E4DBF7100F71F0C /* PlotGallery.h */,
 				7186DE231E4DBF7100F71F0C /* PlotGallery.m */,
 				7186DE241E4DBF7100F71F0C /* PlotItem.h */,
 				7186DE251E4DBF7100F71F0C /* PlotItem.m */,
-				7186DDEC1E4DBF4100F71F0C /* AllGamesForDayTableVC.h */,
-				7186DDED1E4DBF4100F71F0C /* AllGamesForDayTableVC.m */,
-				7186DDF21E4DBF4100F71F0C /* AllGamesForDayTableVC.xib */,
 				7186DE061E4DBF5F00F71F0C /* GraphViewController.h */,
 				7186DE071E4DBF5F00F71F0C /* GraphViewController.m */,
 				7186DE081E4DBF5F00F71F0C /* GraphViewController.xib */,
@@ -414,9 +415,6 @@
 				71C9F9CE1E53341D0078070D /* User.m */,
 				71C9F9FA1E53356C0078070D /* AddNewUserOperation.h */,
 				71C9F9FB1E53356C0078070D /* AddNewUserOperation.m */,
-				7186DE1D1E4DBF7100F71F0C /* LoginViewController.h */,
-				7186DE261E4DBF7100F71F0C /* LoginViewController.m */,
-				7186DDEA1E4DBF2400F71F0C /* LoginViewController.xib */,
 				71C9FA1E1E5344EB0078070D /* UserListViewController.h */,
 				71C9FA1F1E5344EB0078070D /* UserListViewController.m */,
 				7186DE1C1E4DBF7100F71F0C /* UserListViewController.xib */,
@@ -427,8 +425,6 @@
 		71C9F9CF1E53341D0078070D /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				71C9F9F81E53356C0078070D /* AddNewScoreOperation.h */,
-				71C9F9F91E53356C0078070D /* AddNewScoreOperation.m */,
 				7186DDFB1E4DBF5F00F71F0C /* BilliardBallViewController.h */,
 				7186DDFC1E4DBF5F00F71F0C /* BilliardBallViewController.m */,
 				71C9F9E51E5334A90078070D /* BilliardBall.h */,
@@ -446,22 +442,12 @@
 				7186DE281E4DBF7100F71F0C /* GameViewController.h */,
 				7186DE291E4DBF7100F71F0C /* GameViewController.m */,
 				7186DE051E4DBF5F00F71F0C /* GameViewController.xib */,
+				71577CF02175202B005236BD /* Score */,
 				71C9F9D61E53341D0078070D /* SequenceGame.h */,
+				7186DEB81E4DC61D00F71F0C /* main.m */,
 				71C9F9D71E53341D0078070D /* SequenceGame.m */,
 			);
 			path = Game;
-			sourceTree = "<group>";
-		};
-		71C9F9DE1E5334A90078070D /* AHEasing */ = {
-			isa = PBXGroup;
-			children = (
-				71C9F9DF1E5334A90078070D /* CAKeyframeAnimation+AHEasing.h */,
-				71C9F9E01E5334A90078070D /* CAKeyframeAnimation+AHEasing.m */,
-				71C9F9E11E5334A90078070D /* easing.c */,
-				71C9F9E21E5334A90078070D /* easing.h */,
-				71C9F9E31E5334A90078070D /* EasingDeclarations.h */,
-			);
-			path = AHEasing;
 			sourceTree = "<group>";
 		};
 		71C9F9EA1E53356C0078070D /* GCDObjC */ = {
@@ -483,14 +469,9 @@
 		71C9F9F71E53356C0078070D /* Operations */ = {
 			isa = PBXGroup;
 			children = (
-				71C9F9DE1E5334A90078070D /* AHEasing */,
 				7186DEA51E4DC59F00F71F0C /* btlemanager */,
 				71C9F9EA1E53356C0078070D /* GCDObjC */,
 				71C9F9FC1E53356C0078070D /* UIEffectDesignerView */,
-				7186DE171E4DBF7100F71F0C /* CustomIOSAlertView.h */,
-				7186DE191E4DBF7100F71F0C /* CustomIOSAlertView.m */,
-				7186DE1E1E4DBF7100F71F0C /* PiNumberFormatter.h */,
-				7186DE1F1E4DBF7100F71F0C /* PiNumberFormatter.m */,
 				7186DE211E4DBF7100F71F0C /* Globals.h */,
 				7186DE221E4DBF7100F71F0C /* Globals.m */,
 				7186DE271E4DBF7100F71F0C /* BilliardBreath-Prefix.pch */,
@@ -678,29 +659,24 @@
 				71C9F9DB1E53341D0078070D /* DurationGame.m in Sources */,
 				7186DDCF1E4DBE0D00F71F0C /* Model.xcdatamodel in Sources */,
 				71C9F9DA1E53341D0078070D /* AbstractGame.m in Sources */,
-				71C9F9E81E5334A90078070D /* easing.c in Sources */,
 				7186DEB31E4DC59F00F71F0C /* BTLEManager.m in Sources */,
 				71C9F9D81E53341D0078070D /* Game.m in Sources */,
 				7186DE2A1E4DBF7100F71F0C /* Session.m in Sources */,
 				71C9F9DC1E53341D0078070D /* PowerGame.m in Sources */,
-				7186DE2E1E4DBF7100F71F0C /* PiNumberFormatter.m in Sources */,
 				71C9FA201E5344EB0078070D /* UserListViewController.m in Sources */,
 				7186DE101E4DBF5F00F71F0C /* HeaderView.m in Sources */,
 				7186DE321E4DBF7100F71F0C /* LoginViewController.m in Sources */,
-				71C9F9E71E5334A90078070D /* CAKeyframeAnimation+AHEasing.m in Sources */,
 				7186DE331E4DBF7100F71F0C /* GameViewController.m in Sources */,
 				7186DE2F1E4DBF7100F71F0C /* Globals.m in Sources */,
 				71C9FA081E53356C0078070D /* NSData+Base64.m in Sources */,
 				7186DEB91E4DC61D00F71F0C /* main.m in Sources */,
 				71C9FA071E53356C0078070D /* AddNewUserOperation.m in Sources */,
 				71C9FA031E53356C0078070D /* GCDQueue.m in Sources */,
-				7186DEB51E4DC59F00F71F0C /* NSData+NSData_Conversion.m in Sources */,
 				7186DE0E1E4DBF5F00F71F0C /* CurvedScatterPlot.m in Sources */,
 				7186DE121E4DBF5F00F71F0C /* GraphViewController.m in Sources */,
 				7186DE301E4DBF7100F71F0C /* PlotGallery.m in Sources */,
 				71C9FA091E53356C0078070D /* UIEffectDesignerView.m in Sources */,
 				71C9FA021E53356C0078070D /* GCDObjCTests.m in Sources */,
-				7186DE2B1E4DBF7100F71F0C /* CustomIOSAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
