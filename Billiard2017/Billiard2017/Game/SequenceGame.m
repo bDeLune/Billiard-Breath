@@ -42,30 +42,21 @@
     [audioPlayer play];
     
 }
--(int)nextBall
 
+-(int)nextBall
 {
     self.halt=NO;
-  //  [self playHitTop];
     self.currentBall++;
     self.totalBallsAttempted++;
-       // [self.delegate gameEnded:self];
-       // return -1;
-        
-        if (self.totalBallsRaised>=self.totalBalls) {
-       //     [[GCDQueue mainQueue]queueBlock:^{
-                
-                if (!gamewon) {
-                    [self.delegate gameWon:self];
 
-                    gamewon=YES;
-                }
-                
+    if (self.totalBallsRaised>=self.totalBalls) {
 
-         //   } afterDelay:1.0];
-            return -1;
-        }
-    
+            if (!gamewon) {
+                [self.delegate gameWon:self];
+                gamewon=YES;
+            }
+        return -1;
+    }
     
     if (!gamewon) {
         if (self.totalBallsAttempted>=self.totalBalls) {
@@ -73,10 +64,8 @@
             return -1;
         }
     }
-   
     
     return self.currentBall;
-
 }
 
 @end

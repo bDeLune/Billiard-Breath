@@ -1,11 +1,3 @@
-//
-//  BilliardBall.m
-//  BilliardBreath
-//
-//  Created by barry on 09/12/2013.
-//  Copyright (c) 2013 rocudo. All rights reserved.
-//
-
 #import "BilliardBall.h"
 #import "GCDQueue.h"
 
@@ -18,13 +10,10 @@
         BOOL  isaccelerating;
         float force;
         float mass;
-        
         CADisplayLink *displayLink;
-        
         NSDate *start;
-    
         float currentYPosition;
-    BOOL  isstopping;
+        BOOL  isstopping;
 }
 
 @end
@@ -47,18 +36,13 @@
     force=15;
     
     [self addObserver:self forKeyPath:@"currentYPosition" options:0 context:NULL];
-
-    
 }
-#pragma mark -
-#pragma mark - KVO
-// observe the queue's operationCount, stop activity indicator if there is no operatation ongoing.
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if (object == self && [keyPath isEqualToString:@"currentYPosition"]) {
         
         if (currentYPosition<=self.bounds.size.width/2) {
-            
             [self.delegate ballReachedFinalTarget:self];
         }
     }
@@ -70,7 +54,6 @@
 -(void)setForce:(float)pforce
 {
     force=(pforce/mass);
-    //  hm++;
 }
 
 -(void)blowingBegan
@@ -82,14 +65,12 @@
 -(void)blowingEnded
 {
     isaccelerating=NO;
-   /// NSLog(@"!!blowing ended!!!");
-    
 }
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
         self.backgroundColor=[UIColor clearColor];
         [self setDefaults];
         currentYPosition=frame.origin.y;
@@ -99,17 +80,6 @@
     return self;
 }
 
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-/**- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-    
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-    CGContextAddEllipseInRect(ctx, rect);
-    CGContextSetFillColor(ctx, CGColorGetComponents([[UIColor blueColor] CGColor]));
-    CGContextFillPath(ctx);
-}**/
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
    // NSLog(@"Stop!!!");
@@ -117,45 +87,29 @@
 }
 -(void)animationDidStart:(CAAnimation *)ani
 {
-    
-  //  NSLog(@"ANIMATION!");
     self.alpha=1.0;
 }
 
 
 -(void)stop
 {
-    
     CGRect frame=self.frame;
-    
-    
     frame.origin.y=0;
     self.frame=frame;
     [self setNeedsDisplay];
-   /// [[GCDQueue mainQueue]queueBlock:^{
         if (_animationRunning) {
             [displayLink invalidate];
             _animationRunning=NO;
-            
-           
-        //added
+
         [[GCDQueue mainQueue]queueBlock:^{
                 [self.delegate ballReachedFinalTarget:self];
-
             } afterDelay:0.1];
-
         }
-        
-  ///  NSLog(@"Stopped!!");
-   /// }];
 }
 
 
 -(void)start
 {
-    //  [self stop];
-    //ADDEDD
-    
     [self setDefaults];
     if (!_animationRunning)
     {
@@ -176,10 +130,7 @@
     {
         force-=force*0.03;
         acceleration-=acceleration*0.03;
-        
-        
     }
-    
     
     if (force<1) {
         force=1;
@@ -200,28 +151,11 @@
         [self setFrame:frame];
     }else
     {
-       // distance=GUAGE_HEIGHT;
-        
-        NSLog(@"POWER %f", force);
-        
         frame.origin.y=0;
         self.frame=frame;
         [self setNeedsDisplay];
-        if (isstopping) {
-          //  return;
-        }
-
-      /// [[GCDQueue mainQueue]queueBlock:^{
-            [self stop];
-
-      ///  } afterDelay:0.01];
-       
-        //isstopping=YES;
+        [self stop];
     }
-    
-    //[self setNeedsDisplay];
-    
-    //1/2*a*t2
 }
 
 @end

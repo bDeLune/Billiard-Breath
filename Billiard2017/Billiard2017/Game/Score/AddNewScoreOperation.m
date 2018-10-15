@@ -1,11 +1,17 @@
+//
+//  AddNewScoreOperation.m
+//  BilliardBreath
+//
+//  Created by barry on 09/12/2013.
+//  Copyright (c) 2013 rocudo. All rights reserved.
+//
+
 #import "AddNewScoreOperation.h"
 @interface AddNewScoreOperation ()
 @property (strong) NSManagedObjectContext *managedObjectContext;
 @property (strong) NSPersistentStoreCoordinator *sharedPSC;
 @property(nonatomic,strong)User  *user;
 @property(nonatomic,strong)Session  *session;
-@property(nonatomic,strong)NSTimer  *timer;
-
 @end
 @implementation AddNewScoreOperation
 - (id)initWithData:(User *)auser  session:(Session*)asession sharedPSC:(NSPersistentStoreCoordinator *)psc
@@ -18,9 +24,10 @@
         self.session=asession;
     }
     return self;
+    
 }
-
 - (void)main {
+    
     // Creating context in main function here make sure the context is tied to current thread.
     // init: use thread confine model to make things simpler.
     self.managedObjectContext = [[NSManagedObjectContext alloc] init];
@@ -31,24 +38,23 @@
 
 -(void)addTheSession
 {
+    
     Game  *game=[NSEntityDescription insertNewObjectForEntityForName:@"Game" inManagedObjectContext:self.managedObjectContext];
-   // [game setUser:self.user];
+    // [game setUser:self.user];
+    
+    NSLog(@"SAVING");
+    NSLog(@"SAVING %@", self.session.sessionDuration);
     
     if ([self.session.sessionDuration floatValue]<=0.0) {
         return;
     }
-    
-    NSLog(@"setting game date as ");
-    
-    NSLog(@"%@", self.session.sessionDate);
-    
     [game setDuration:self.session.sessionDuration];
     [game setGameDate:self.session.sessionDate];
     [game setPower:self.session.sessionStrength];
     [game setGameType:self.session.sessionType];
     NSString *direction=[[NSUserDefaults standardUserDefaults]objectForKey:@"direction"];
     [game setGameDirection:direction];
-   // [game setSpeed:self.session.sessionSpeed];
+    // [game setSpeed:self.session.sessionSpeed];
     
     
     NSString   *name=[self.user valueForKey:@"userName"];
@@ -63,10 +69,14 @@
     NSArray *items = [context executeFetchRequest:fetchRequest error:&error];
     
     if ([items count]>0) {
-     
+        
         User  *auser=[items objectAtIndex:0];
         [[auser mutableSetValueForKey:@"game"]addObject:game];
     }
+    
+    
+    
+    
     
     if ([self.managedObjectContext hasChanges]) {
         
@@ -78,9 +88,13 @@
             // panel that instructs the user to quit the application by pressing the Home button.
             //
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-           // abort();
+            // abort();
         }
     }
+    
+    
+    
+    
 }
 
 @end

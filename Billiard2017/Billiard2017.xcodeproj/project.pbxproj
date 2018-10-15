@@ -347,9 +347,9 @@
 		71577CF02175202B005236BD /* Score */ = {
 			isa = PBXGroup;
 			children = (
+				71AEAEEA2130392A0051EE01 /* Graph */,
 				71C9F9F81E53356C0078070D /* AddNewScoreOperation.h */,
 				71C9F9F91E53356C0078070D /* AddNewScoreOperation.m */,
-				71AEAEEA2130392A0051EE01 /* Graph */,
 				7186DE031E4DBF5F00F71F0C /* HeaderView.h */,
 				7186DE041E4DBF5F00F71F0C /* HeaderView.m */,
 				7186DDEC1E4DBF4100F71F0C /* AllGamesForDayTableVC.h */,
@@ -439,13 +439,13 @@
 				71C9F9D31E53341D0078070D /* DurationGame.m */,
 				71C9F9D41E53341D0078070D /* PowerGame.h */,
 				71C9F9D51E53341D0078070D /* PowerGame.m */,
+				71C9F9D61E53341D0078070D /* SequenceGame.h */,
+				71C9F9D71E53341D0078070D /* SequenceGame.m */,
 				7186DE281E4DBF7100F71F0C /* GameViewController.h */,
 				7186DE291E4DBF7100F71F0C /* GameViewController.m */,
 				7186DE051E4DBF5F00F71F0C /* GameViewController.xib */,
 				71577CF02175202B005236BD /* Score */,
-				71C9F9D61E53341D0078070D /* SequenceGame.h */,
 				7186DEB81E4DC61D00F71F0C /* main.m */,
-				71C9F9D71E53341D0078070D /* SequenceGame.m */,
 			);
 			path = Game;
 			sourceTree = "<group>";
