@@ -6,7 +6,8 @@
 @property int totalBallsRaised;
 @property int totalBallsAttempted;
 @property int currentSpeed;
-@property BOOL  halt;
+@property BOOL halt;
 
 -(void)playHitTop;
+
 @end

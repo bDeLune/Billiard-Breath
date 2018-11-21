@@ -11,20 +11,20 @@
 
 @interface GameViewController : UIViewController<GameProtocol>
 
-@property(nonatomic,weak)IBOutlet  UIButton  *backToLoginButton;
-@property(nonatomic,weak)IBOutlet  UIButton *toggleDirectionButton;
-@property(nonatomic,weak)IBOutlet  UIButton *toggleGameModeButton;
-@property(nonatomic,weak)IBOutlet  UIButton *resetGameButton;
-@property(nonatomic,weak)IBOutlet  UIButton  *settingsButton;
-@property(nonatomic,weak)IBOutlet  UIButton  *testDurationButton;
-@property(nonatomic,weak)IBOutlet  UIImageView  *background;
-@property(nonatomic,weak)IBOutlet  UILabel  *targetLabel;
-@property(nonatomic,weak)IBOutlet  UILabel  *durationLabel;
-@property(nonatomic,weak)IBOutlet  UILabel  *speedLabel;
-@property(nonatomic,weak)IBOutlet  UILabel  *strenghtLabel;
-@property(nonatomic,weak)IBOutlet  UILabel *currentUsersNameLabel;
-@property(nonatomic,weak)IBOutlet  UITextView *debugtext;
-@property(nonatomic,weak)IBOutlet  UIButton  *usersButton;
+@property (nonatomic,weak) IBOutlet UIButton *backToLoginButton;
+@property (nonatomic,weak) IBOutlet UIButton *toggleDirectionButton;
+@property (nonatomic,weak) IBOutlet UIButton *toggleGameModeButton;
+@property (nonatomic,weak) IBOutlet UIButton *resetGameButton;
+@property (nonatomic,weak) IBOutlet UIButton *settingsButton;
+@property (nonatomic,weak) IBOutlet UIButton *testDurationButton;
+@property (nonatomic,weak) IBOutlet UIImageView *background;
+@property (nonatomic,weak) IBOutlet UILabel *targetLabel;
+@property (nonatomic,weak) IBOutlet UILabel *durationLabel;
+@property (nonatomic,weak) IBOutlet UILabel *speedLabel;
+@property (nonatomic,weak) IBOutlet UILabel *strenghtLabel;
+@property (nonatomic,weak) IBOutlet UILabel *currentUsersNameLabel;
+@property (nonatomic,weak) IBOutlet UITextView *debugtext;
+@property (nonatomic,weak) IBOutlet UIButton *usersButton;
 @property (strong) NSPersistentStoreCoordinator *sharedPSC;
 @property(nonatomic,strong)User  *gameUser;
 @property(nonatomic,unsafe_unretained)id<GameViewProtocol>delegate;

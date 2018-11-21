@@ -158,12 +158,9 @@ NSString *const kFinancialPlots = @"Financial Plots";
 
         CGSize boundsSize = imageView.bounds.size;
 
-        if ( UIGraphicsBeginImageContextWithOptions ) {
-            UIGraphicsBeginImageContextWithOptions(boundsSize, YES, 0.0);
-        }
-        else {
-            UIGraphicsBeginImageContext(boundsSize);
-        }
+
+        UIGraphicsBeginImageContextWithOptions(boundsSize, YES, 0.0);
+       
 
         CGContextRef context = UIGraphicsGetCurrentContext();
 

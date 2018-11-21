@@ -92,7 +92,7 @@
         return _managedObjectModel;
     }
 
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"mom"]; //was mom
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"BilliardBreath" withExtension:@"mom"]; //was mom
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     
     return _managedObjectModel;
@@ -104,13 +104,21 @@
         return _persistentStoreCoordinator;
     }
     
-    NSString *storePath = [[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"Model.sqlite"];
+    NSString *storePath = [[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"BilliardBreath.sqlite"];
     NSURL *storeUrl = [NSURL fileURLWithPath:storePath];
     
     NSError *error;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:nil error:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry!" message:@"Please remove current version of Billiard Breath and reinstall" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        [alertController addAction:ok];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        
         abort();
     }
     

@@ -1,11 +1,3 @@
-//
-//  LoginViewController.m
-//  BilliardBreath
-//
-//  Created by barry on 09/12/2013.
-//  Copyright (c) 2013 rocudo. All rights reserved.
-//
-
 #import "LoginViewController.h"
 #import "AddNewUserOperation.h"
 
@@ -23,12 +15,10 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
         self.addUserQueue = [NSOperationQueue new];
-        
-        // observe the keypath change to get notified of the end of the parser operation to hide the activity indicator
         [self.addUserQueue addObserver:self forKeyPath:@"operationCount" options:0 context:NULL];
-           }
+    }
+    
     return self;
 }
 - (NSManagedObjectContext *)managedObjectContext {
@@ -38,12 +28,9 @@
     }
 	
     if (self.sharedPSC != nil) {
-       // _managedObjectContext = [NSManagedObjectContext new];
          _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
         [_managedObjectContext setPersistentStoreCoordinator:self.sharedPSC];
     }
-    
-
     
     return _managedObjectContext;
 }
@@ -53,52 +40,25 @@
     if ([self.usernameTextField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
         UIColor *color = [UIColor lightGrayColor];
         self.usernameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Enter a username" attributes:@{NSForegroundColorAttributeName: color}];
-    } else {
-        NSLog(@"Cannot set placeholder text's color, because deployment target is earlier than iOS 6.0");
-        // TODO: Add fall-back code to set placeholder color.
     }
-    [super viewDidLoad];
     
+    [super viewDidLoad];
     
     self.userList=[[UserListViewController alloc]initWithNibName:@"UserListViewController" bundle:nil];
     self.userList.sharedPSC=self.sharedPSC;
-    
     self.navcontroller=[[UINavigationController alloc]initWithRootViewController:self.userList];
-
-    //CGRect  frame=self.view.frame;
-    
-    CGRect  frame=  [[UIScreen mainScreen] bounds];
+    CGRect frame=  [[UIScreen mainScreen] bounds];
     [self.navcontroller.view setFrame:frame];
-    // Do any additional setup after loading the view from its nib.
 }
-#pragma mark -
-#pragma mark - KVO
-// observe the queue's operationCount, stop activity indicator if there is no operatation ongoing.
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if (object == self.addUserQueue && [keyPath isEqualToString:@"operationCount"]) {
         
-        if (self.addUserQueue.operationCount == 0) {
-            // [self performSelectorOnMainThread:@selector(hideActivityIndicator) withObject:nil waitUntilDone:NO];
-            NSLog(@"Done!!!");
-            
-    ///        [[GCDQueue mainQueue]queueBlock:^{
-    ///            [self.delegate LoginSucceeded:self user:[self user:self.usernameTextField.text]];
-
-    //        }];
-        }else
-        {
-           
-        }
     }
     else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
-}
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(User*)user:(NSString*)username
@@ -122,6 +82,7 @@
     
     return nil;
 }
+
 -(void)login:(id)sender
 {
     NSString   *name=self.usernameTextField.text;
@@ -136,29 +97,17 @@
     NSArray *items = [context executeFetchRequest:fetchRequest error:&error];
     if ([items count]==0) {
         
-       // UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Error"
-       //                                              message:@"That user does not exist. Try signing up instead"
-       //                                             delegate:nil
-      //                                     cancelButtonTitle:@"OK"
-       //                                    otherButtonTitles:nil, nil];
-        
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"That user does not exist. Try signing up instead" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
         [alertController addAction:ok];
         
         [self presentViewController:alertController animated:YES completion:nil];
-        
-        
-     //   [[GCDQueue mainQueue]queueBlock:^{
-     //       [alert show];
-     //   }];
-        
+    
         return;
     }
     
     self.loggedInUser=[items objectAtIndex:0];
-    
     [self.delegate LoginSucceeded:self user:[self user:self.usernameTextField.text]];
   
 }
@@ -176,7 +125,6 @@
     NSError  *error;
     NSArray *items = [context executeFetchRequest:fetchRequest error:&error];
     
-    
     if ([name length] == 0){
     
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Field has been left blank" preferredStyle:UIAlertControllerStyleAlert];
@@ -185,34 +133,19 @@
         [alertController addAction:ok];
         
         [self presentViewController:alertController animated:YES completion:nil];
-        
     
         return;
     }
     
-    
-    
-    
-    
     if ([items count]>0) {
-       // UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Error"
-        //                                             message:@"Sorry, that user already exists"
-         //                                           delegate:nil
-        //                                   cancelButtonTitle:@"OK"
-        //                                   otherButtonTitles:nil, nil];
-        
+
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Sorry, that user already exists" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
         [alertController addAction:ok];
         
         [self presentViewController:alertController animated:YES completion:nil];
-        
-        
-   //     [[GCDQueue mainQueue]queueBlock:^{
-   //         [alert show];
-    //    }];
-        
+    
         return;
     }else
     {
@@ -231,7 +164,6 @@
 }
 
 -(IBAction)goToUsersScreen:(id)sender
-
 {
     self.userList.sharedPSC=self.sharedPSC ;
     [self.userList getListOfUsers];
@@ -239,28 +171,17 @@
 
         self.userList.sharedPSC=self.sharedPSC;
         self.userList.delegate=self;
-        
     }];
-
-
 }
 
 -(void)userListDismissRequest:(UserListViewController *)caller
 {
-    
-    //added
-   // [[GCDQueue mainQueue]queueBlock:^{
-    
-    
        [UIView transitionFromView:self.navcontroller.view toView:self.view duration:0.5 options:UIViewAnimationOptionTransitionFlipFromRight completion:^(BOOL finished){
             
             self.userList.sharedPSC=self.sharedPSC;
             self.userList.delegate=self;
             
         }];
-    
-  //  }];
-
 }
 
 @end

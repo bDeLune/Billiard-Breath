@@ -51,8 +51,6 @@
     NSArray *cleanedArray = [[NSSet setWithArray:datesstrings] allObjects];
     NSMutableArray *mutable=[[NSMutableArray alloc]initWithArray:cleanedArray];
     [mutable sortUsingSelector:@selector(compare:)];
-
-    
     return mutable;
 }
 
@@ -72,11 +70,6 @@
     [mutable sortUsingSelector:@selector(compare:)];
     
     return [mutable count];
-    return 0;
-}
-
--(void)getUniqueDates{
-    
 }
 
 - (void)viewDidLoad
@@ -100,23 +93,15 @@
     
     UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.leftBarButtonItem = backBarButtonItem;
-    
-    
 }
+
 -(void)goBack
 {
     [self.delegate userListDismissRequest:self];
-    
 }
 
 -(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
     NSLog(@"Swipe received.");
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void)getListOfUsers
@@ -153,24 +138,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    // NSLog(@"numberOfRowsInSection");
     NSInteger numberOfRows = 0;
-    
-    /** if ([[self.fetchedResultsController sections] count] > 0) {
-     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
-     numberOfRows = [sectionInfo numberOfObjects];
-     }**/
-    
     User *user=[self.userList objectAtIndex:section];
-    
-   /// NSLog(@"numberOfRowsInSection username %@",user.userName);
-    
     numberOfRows=[user.game count];
-    
-   // NSLog(@"numberOfRowsInSection %d", [self uniquedatesForUser:user]);
-    
     return  [self uniquedatesForUser:user];
-    // return numberOfRows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -225,23 +196,16 @@
     AllGamesForDayTableVC  *detailViewController=[[AllGamesForDayTableVC alloc]initWithNibName:@"AllGamesForDayTableVC" bundle:nil];
     NSArray *array = [self gamesMatchingDate:[dates objectAtIndex:indexPath.row] user:user];
     
-    //NSLog(@"ALL GAMES RECIEVED");
-    //NSLog(@"%@", array);
-    
     NSMutableArray  *durationOnly=[NSMutableArray new];
     
     for (Game *agame in array) {
         [durationOnly addObject:agame];
     }
-    
-    NSLog(@"durationOnly, %@", durationOnly);
-    
+
     [detailViewController setUSerData:durationOnly];
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
-
-// called after fetched results controller received a content change notification
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
      NSLog(@"controllerDidChangeContent");
     [self.tableView reloadData];
@@ -277,8 +241,8 @@
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 
-    HeaderView  *header=[[HeaderView alloc]initWithFrame:CGRectMake(0, 0, 550, 30)];
-    header.section=section;
+    HeaderView *header = [[HeaderView alloc]initWithFrame:CGRectMake(0, 0, 550, 30)];
+    header.section = section;
     header.user=[self.userList objectAtIndex:section];
     header.delegate=self;
     [header build];
@@ -288,7 +252,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 40;
+    return 43;
 }
 
 -(void)deleteMember:(HeaderView *)header
@@ -297,10 +261,7 @@
     
     NSString *message=[NSString stringWithFormat:@"Delete User ' %@ '", self.deleteUser.userName];
     UIAlertView  *alert=[[UIAlertView alloc]initWithTitle:@"Confirm" message:message delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:@"Cancel", nil];
-    
-    //[[GCDQueue mainQueue]queueBlock:^{
-        [alert show];
-   // }];
+    [alert show];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -311,6 +272,7 @@
         [self.managedObjectContext save:nil];
     }
 }
+
 -(void)viewHistoricalData:(HeaderView *)header
 {
     self.graph=[[GraphViewController alloc]initWithNibName:@"GraphViewController" bundle:nil];
@@ -342,7 +304,6 @@
     [self.navigationController pushViewController:self.graph animated:YES];
 }
 
-// merge changes to main context,fetchedRequestController will automatically monitor the changes and update tableview.
 - (void)updateMainContext:(NSNotification *)notification {
     
     assert([NSThread isMainThread]);
@@ -350,11 +311,8 @@
     [self getListOfUsers];
 }
 
-// this is called via observing "NSManagedObjectContextDidSaveNotification" from our APLParseOperation
 - (void)mergeChanges:(NSNotification *)notification {
-    //if (notification.object != self.managedObjectContext) {
     [self performSelectorOnMainThread:@selector(updateMainContext:) withObject:notification waitUntilDone:NO];
-    // }
 }
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -381,4 +339,5 @@
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }
+
 @end

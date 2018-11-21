@@ -1,45 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14105" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
-                <viewController wantsFullScreenLayout="YES" id="01J-lp-oVM" sceneMemberID="viewController">
+                <viewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="01J-lp-oVM" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
-                    <view key="view" opaque="NO" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                    <view key="view" opaque="NO" contentMode="scaleAspectFit" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" image="DefaultPortrait.png" translatesAutoresizingMaskIntoConstraints="NO" id="2dX-SK-Qaf">
-                                <rect key="frame" x="0.0" y="0.0" width="1000" height="375"/>
+                                <rect key="frame" x="340" y="-11" width="327" height="386"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="1000" id="KJy-DI-238"/>
+                                    <constraint firstAttribute="width" constant="296" id="FsA-ce-e1l"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="2dX-SK-Qaf" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="Xc0-Xt-ZES"/>
-                            <constraint firstItem="2dX-SK-Qaf" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="xUr-F1-uUm"/>
-                            <constraint firstItem="2dX-SK-Qaf" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="yiY-YD-eEb"/>
+                            <constraint firstItem="2dX-SK-Qaf" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" constant="-11" id="3dl-q9-va5"/>
+                            <constraint firstItem="2dX-SK-Qaf" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Ipc-or-uD5"/>
+                            <constraint firstItem="2dX-SK-Qaf" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="340" id="QaT-Ej-ILU"/>
+                            <constraint firstItem="2dX-SK-Qaf" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="RcT-hh-tJK"/>
+                            <constraint firstAttribute="trailing" secondItem="2dX-SK-Qaf" secondAttribute="trailing" id="Szh-aR-01x"/>
+                            <constraint firstItem="2dX-SK-Qaf" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="d55-1p-Yte"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="2dX-SK-Qaf" secondAttribute="bottom" id="oPp-xD-Yvu"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+            <point key="canvasLocation" x="35.532233883058474" y="330.39999999999998"/>
         </scene>
     </scenes>
     <resources>

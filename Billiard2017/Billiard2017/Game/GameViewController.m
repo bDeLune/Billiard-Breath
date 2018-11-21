@@ -46,6 +46,7 @@
 @end
 
 @implementation GameViewController
+
 -(void)userListDismissRequest:(UserListViewController *)caller
 {
     [[GCDQueue mainQueue]queueBlock:^{
@@ -61,8 +62,8 @@
     self.userList.sharedPSC=self.sharedPSC ;
     [self.userList getListOfUsers];
     [UIView transitionFromView:self.view toView:self.navcontroller.view duration:0.5 options:UIViewAnimationOptionTransitionFlipFromRight completion:^(BOOL finished){
-        self.userList.sharedPSC=self.sharedPSC;
-        self.userList.delegate=self;
+        self.userList.sharedPSC = self.sharedPSC;
+        self.userList.delegate = self;
     }];
 }
 
@@ -99,7 +100,6 @@
 {
     if ([keyPath isEqualToString:@"numberOfSources"]) {
         
-
     }
     else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
@@ -207,14 +207,11 @@
 {
     [super viewDidLoad];
     [self.view addSubview:self.billiardViewController.view];
-    
     [[NSUserDefaults standardUserDefaults]setObject:@"exhale" forKey:@"direction"];    // Do any additional setup after loading the view from its nib.
     self.userList=[[UserListViewController alloc]initWithNibName:@"UserListViewController" bundle:nil];
     self.userList.sharedPSC=self.sharedPSC;
-    
     self.navcontroller=[[UINavigationController alloc]initWithRootViewController:self.userList];
-    
-    CGRect frame = self.view.frame;
+    CGRect frame = [[UIScreen mainScreen] bounds]; //was self.view.frame;
     [self.navcontroller.view setFrame:frame];
 }
 
@@ -360,18 +357,14 @@
         case gameTypePowerMode:
             [self NoteBeganForPower];
             self.billiardViewController.currentGameType=gameTypePowerMode;
-
             break;
         case gameTypeSequence:
-            
             [self NoteBeganForSequence];
             self.billiardViewController.currentGameType=gameTypeSequence;
-
             break;
         default:
             break;
-    }
-     
+        }
      }
 }
 
@@ -598,6 +591,7 @@
         [self.debugtext setText:log];
     }];
 }
+
 -(void)setThreshold:(int)pvalue
 {
     switch (pvalue) {
@@ -709,9 +703,7 @@
 -(void)saveCurrentSession
 {
     NSLog(@"Save Current Session");
-    
     NSLog(@"%u ", self.currentGameType);
-    
     NSLog(@"%u ", self.currentGameType);
     
     self.currentSession.sessionType=[NSNumber numberWithInt:self.currentGameType];

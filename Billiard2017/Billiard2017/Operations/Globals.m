@@ -13,8 +13,7 @@ dispatch_semaphore_t sema;
     
     static dispatch_once_t pred;        // Lock
     dispatch_once(&pred, ^{             // This code is called at most once per app
-        sharedGlobal = [[Globals alloc] init];
-        
+        sharedGlobal = [[Globals alloc] init];        
     });
     
     return sharedGlobal;
@@ -48,14 +47,6 @@ dispatch_semaphore_t sema;
     
     NSError  *error;
     NSArray *items = [context executeFetchRequest:fetchRequest error:&error];
-    
-    if ([items count]>0) {
-
-        User  *found=[items objectAtIndex:0];
-    }
-    
     [self updateCoreData];
 }
-
-
 @end

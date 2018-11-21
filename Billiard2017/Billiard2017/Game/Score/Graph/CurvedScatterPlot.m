@@ -116,18 +116,10 @@ NSString *const kSecond = @"Inhale";
     }
     Game  *game=[sortedArray objectAtIndex:0];
     
-    NSDate *refDate = game.gameDate ;
-    
-    // if (plotData) {
-    // [plotData release];
-    // plotData=nil;
-    // }
-    // if ( plotData == nil ) {
     NSMutableArray *contentArray = [NSMutableArray array];
     
     for ( NSUInteger i = 0; i < [sortedArray count]; i++ ) {
-       // NSDate  *date=[[sortedArray objectAtIndex:i]valueForKey:@"gameDate"];
-        
+
         NSLog(@"Date array %lu", (unsigned long)[sortedArray count]);
         
         NSNumber  *dateNumber=[NSNumber numberWithInt:i];
@@ -283,11 +275,11 @@ NSString *const kSecond = @"Inhale";
        /// }
     }
     
-    for (int b=0; b<[plotData count]; b++) {
-        NSDictionary  *plotPoint =[plotData objectAtIndex:b];
-        NSNumber *yValue = [plotPoint objectForKey:@"y"];
+    for (int b=0; b<20; b++) {
+        //NSDictionary  *plotPoint =[plotData objectAtIndex:b];
+        //NSNumber *yValue = [plotPoint objectForKey:@"y"];
+        NSNumber *yValue = [NSNumber numberWithInt: b];
         NSString *myString = [yValue stringValue];
-        NSNumber* myplotPoint = [NSNumber numberWithInt:b+1];
         myString = [myString substringToIndex: MIN(3, [myString length])];
         CPTAxisLabel *ylabel = [[CPTAxisLabel alloc] initWithText:myString  textStyle:y.labelTextStyle];
         ylabel.tickLocation = yValue;
@@ -295,9 +287,7 @@ NSString *const kSecond = @"Inhale";
         [customYTickLocations addObject:yValue];
         [yAxisLabels addObject:ylabel];
     }
-    
-    //NSLog(@"customTickLocations %@", customXTickLocations);
-    //NSLog(@"xAxisLabels %@", xAxisLabels);
+
 
     x.axisLabels = xAxisLabels;
     x.majorTickLocations = customXTickLocations;
@@ -315,22 +305,22 @@ NSString *const kSecond = @"Inhale";
     y.axisLineCapMax.size = CGSizeMake(8, 10);
     
     y.majorTickLocations = customYTickLocations;
-    y.minorTicksPerInterval       = 4;
     y.preferredNumberOfMajorTicks = 8;
     y.majorGridLineStyle          = majorGridLineStyle;
     y.minorGridLineStyle          = minorGridLineStyle;
     y.axisConstraints             = [CPTConstraints constraintWithLowerOffset:0.0];
     y.alternatingBandFills        = @[[[CPTColor whiteColor] colorWithAlphaComponent:CPTFloat(0.1)], [NSNull null]];
     y.alternatingBandAnchor       = @0.0;
-    x.majorIntervalLength   = @0.1; //space between lines
-    x.minorTicksPerInterval = 4;
+    x.majorIntervalLength   = @0.5; //space between lines
+    x.minorTicksPerInterval = 10;
     x.majorGridLineStyle    = majorGridLineStyle;
     x.minorGridLineStyle    = minorGridLineStyle;
-    y.preferredNumberOfMajorTicks = 8;
     y.majorGridLineStyle          = majorGridLineStyle;
     y.minorGridLineStyle          = minorGridLineStyle;
     y.axisConstraints             = [CPTConstraints constraintWithLowerOffset:0.0];
     y.alternatingBandFills        = @[[[CPTColor whiteColor] colorWithAlphaComponent:CPTFloat(0.1)], [NSNull null]];
+    y.labelingPolicy = CPTAxisLabelingPolicyFixedInterval;
+    
     //x.axisConstraints       = [CPTConstraints constraintWithRelativeOffset:0.5];
    // NSMutableArray * xAxisValues = [[NSMutableArray alloc] init];
    // NSMutableArray * yAxisValues = [[NSMutableArray alloc] init];
@@ -421,10 +411,12 @@ NSString *const kSecond = @"Inhale";
     // Set axes
     graph.axisSet.axes = @[x, y];
     graph.plotAreaFrame.paddingLeft   += 1 * CPTFloat(2.25);
-    graph.plotAreaFrame.paddingTop    += 1;
-    graph.plotAreaFrame.paddingRight  += 5;
+    graph.plotAreaFrame.paddingTop    += 4;
+    graph.plotAreaFrame.paddingRight  += 1;
     graph.plotAreaFrame.paddingBottom += 5;
     graph.plotAreaFrame.masksToBorder  = NO;
+    
+    
     
     // Plot area delegate
     graph.plotAreaFrame.plotArea.delegate = self;
@@ -495,6 +487,9 @@ NSString *const kSecond = @"Inhale";
     x.visibleAxisRange = xRange;
     y.visibleAxisRange = yRange;
     
+    y.visibleRange   = [CPTPlotRange plotRangeWithLocation:[NSNumber numberWithInt:0] length:[NSNumber numberWithDouble:(20.0 - 0.00)]];
+
+    
     [xRange expandRangeByFactor:@3.0];
     [yRange expandRangeByFactor:@3.0];
     plotSpace.globalXRange = xRange;
@@ -526,10 +521,15 @@ NSString *const kSecond = @"Inhale";
     graph.legendDisplacement     = CGPointMake( 0.0, 1 * CPTFloat(2.0) );
 }
 
--(void)dealloc
-{
+-(BOOL)plotSpace:(CPTPlotSpace *)willChangePlotRangeTo:(CGFloat)forCoordinate{
+    
+    NSLog(@"willChangePlotRangeTo %@", willChangePlotRangeTo);
+    NSLog(@"forCoordinate %f", forCoordinate);
 
+    return YES;
+    
 }
+
 
 #pragma mark -
 #pragma mark Plot Data Source Methods

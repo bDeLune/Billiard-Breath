@@ -10,8 +10,10 @@
 		710857311E439A0A00479032 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 710857301E439A0A00479032 /* ViewController.m */; };
 		710857651E439B6200479032 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7108575C1E439B4200479032 /* libCorePlot-CocoaTouch.a */; };
 		710857681E439B8A00479032 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 710857671E439B8A00479032 /* Accelerate.framework */; };
+		713FC8A52177DEBC002259DF /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 713FC8A32177DEBB002259DF /* SplashViewController.xib */; };
+		713FC8A62177DEBC002259DF /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 713FC8A42177DEBC002259DF /* SplashViewController.m */; };
 		71693B90206937D3009F14EA /* BilliardBreath1024X1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 71693B8F206937D1009F14EA /* BilliardBreath1024X1024.png */; };
-		7186DDCF1E4DBE0D00F71F0C /* Model.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 7186DDCC1E4DBE0D00F71F0C /* Model.xcdatamodel */; };
+		7186DDCF1E4DBE0D00F71F0C /* BilliardBreath.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 7186DDCC1E4DBE0D00F71F0C /* BilliardBreath.xcdatamodel */; };
 		7186DDD01E4DBE0D00F71F0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7186DDCD1E4DBE0D00F71F0C /* Main.storyboard */; };
 		7186DDEB1E4DBF2400F71F0C /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7186DDEA1E4DBF2400F71F0C /* LoginViewController.xib */; };
 		7186DDF41E4DBF4100F71F0C /* AllGamesForDayTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7186DDED1E4DBF4100F71F0C /* AllGamesForDayTableVC.m */; };
@@ -136,8 +138,11 @@
 		7108573D1E439A0A00479032 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		710857431E439B4100479032 /* CorePlot.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CorePlot.xcodeproj; path = ../corePlotFramework/CorePlot.xcodeproj; sourceTree = "<group>"; };
 		710857671E439B8A00479032 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		713FC8A22177DEBA002259DF /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
+		713FC8A32177DEBB002259DF /* SplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
+		713FC8A42177DEBC002259DF /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		71693B8F206937D1009F14EA /* BilliardBreath1024X1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BilliardBreath1024X1024.png; sourceTree = "<group>"; };
-		7186DDCC1E4DBE0D00F71F0C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		7186DDCC1E4DBE0D00F71F0C /* BilliardBreath.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BilliardBreath.xcdatamodel; sourceTree = "<group>"; };
 		7186DDCD1E4DBE0D00F71F0C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		7186DDEA1E4DBF2400F71F0C /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		7186DDEC1E4DBF4100F71F0C /* AllGamesForDayTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllGamesForDayTableVC.h; sourceTree = "<group>"; };
@@ -162,7 +167,6 @@
 		7186DE091E4DBF5F00F71F0C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7186DE151E4DBF7100F71F0C /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
 		7186DE161E4DBF7100F71F0C /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
-		7186DE181E4DBF7100F71F0C /* VersionNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionNumber.h; sourceTree = "<group>"; };
 		7186DE1C1E4DBF7100F71F0C /* UserListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserListViewController.xib; sourceTree = "<group>"; };
 		7186DE1D1E4DBF7100F71F0C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		7186DE201E4DBF7100F71F0C /* PlotGallery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlotGallery.h; sourceTree = "<group>"; };
@@ -280,13 +284,16 @@
 				71C9FA0B1E5335C40078070D /* AppDelegate.m */,
 				7108572F1E439A0A00479032 /* ViewController.h */,
 				710857301E439A0A00479032 /* ViewController.m */,
+				713FC8A22177DEBA002259DF /* SplashViewController.h */,
+				713FC8A42177DEBC002259DF /* SplashViewController.m */,
+				713FC8A32177DEBB002259DF /* SplashViewController.xib */,
 				71577CF1217520D1005236BD /* Login */,
 				71AEAEF7213039900051EE01 /* Users */,
 				71C9F9CF1E53341D0078070D /* Game */,
 				71C9F9F71E53356C0078070D /* Operations */,
 				7186DE091E4DBF5F00F71F0C /* Images.xcassets */,
 				7108573D1E439A0A00479032 /* Info.plist */,
-				7186DDCC1E4DBE0D00F71F0C /* Model.xcdatamodel */,
+				7186DDCC1E4DBE0D00F71F0C /* BilliardBreath.xcdatamodel */,
 				710857291E439A0A00479032 /* Supporting Files */,
 			);
 			path = Billiard2017;
@@ -482,7 +489,6 @@
 		71C9F9FC1E53356C0078070D /* UIEffectDesignerView */ = {
 			isa = PBXGroup;
 			children = (
-				7186DE181E4DBF7100F71F0C /* VersionNumber.h */,
 				71C9F9FD1E53356C0078070D /* NSData+Base64.h */,
 				71C9F9FE1E53356C0078070D /* NSData+Base64.m */,
 				71C9F9FF1E53356C0078070D /* UIEffectDesignerView.h */,
@@ -615,6 +621,7 @@
 				71693B90206937D3009F14EA /* BilliardBreath1024X1024.png in Resources */,
 				718E215A1E51DD0300E8357B /* LaunchScreen.storyboard in Resources */,
 				7186DEA01E4DBFA400F71F0C /* BilliardBreathAppIcon120x120.png in Resources */,
+				713FC8A52177DEBC002259DF /* SplashViewController.xib in Resources */,
 				7186DDF81E4DBF4100F71F0C /* IMPACT RING METAL DESEND 01.wav in Resources */,
 				7186DE2D1E4DBF7100F71F0C /* UserListViewController.xib in Resources */,
 				7186DDD01E4DBE0D00F71F0C /* Main.storyboard in Resources */,
@@ -657,11 +664,12 @@
 				710857311E439A0A00479032 /* ViewController.m in Sources */,
 				71C9FA041E53356C0078070D /* GCDSemaphore.m in Sources */,
 				71C9F9DB1E53341D0078070D /* DurationGame.m in Sources */,
-				7186DDCF1E4DBE0D00F71F0C /* Model.xcdatamodel in Sources */,
+				7186DDCF1E4DBE0D00F71F0C /* BilliardBreath.xcdatamodel in Sources */,
 				71C9F9DA1E53341D0078070D /* AbstractGame.m in Sources */,
 				7186DEB31E4DC59F00F71F0C /* BTLEManager.m in Sources */,
 				71C9F9D81E53341D0078070D /* Game.m in Sources */,
 				7186DE2A1E4DBF7100F71F0C /* Session.m in Sources */,
+				713FC8A62177DEBC002259DF /* SplashViewController.m in Sources */,
 				71C9F9DC1E53341D0078070D /* PowerGame.m in Sources */,
 				71C9FA201E5344EB0078070D /* UserListViewController.m in Sources */,
 				7186DE101E4DBF5F00F71F0C /* HeaderView.m in Sources */,

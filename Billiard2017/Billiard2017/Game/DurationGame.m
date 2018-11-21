@@ -58,9 +58,7 @@
         [self.currentBilliardBall start];
         [self.currentBilliardBall blowingBegan];
         return self.currentBall;
-
-    }else
-    {
+    }else{
         return -1;
     }
 }
@@ -91,4 +89,5 @@
 {
     [self.currentBilliardBall stop];
 }
+
 @end
