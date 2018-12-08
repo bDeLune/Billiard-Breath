@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad12_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <viewController id="h2P-xm-rZ2" customClass="ChartsViewController">
+            <view key="view" contentMode="scaleToFill" id="s17-fh-eFZ">
+                <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Bl-dQ-WzR" customClass="LineChartView" customModule="Charts">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="EXAMPLE" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zUC-Ei-mgG">
+                                <rect key="frame" x="464" y="202" width="366" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="bottom" secondItem="4e6-97-b63" secondAttribute="bottom" id="2P7-Rh-vja"/>
+                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="top" secondItem="s17-fh-eFZ" secondAttribute="top" id="CQw-cm-7gW"/>
+                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="trailing" secondItem="4e6-97-b63" secondAttribute="trailing" id="Ug1-4s-UCg"/>
+                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="leading" secondItem="4e6-97-b63" secondAttribute="leading" id="kZ4-H8-Z9D"/>
+                </constraints>
+                <viewLayoutGuide key="safeArea" id="4e6-97-b63"/>
+            </view>
+            <connections>
+                <outlet property="userDataLineChart" destination="4Bl-dQ-WzR" id="S9u-Jd-JkO"/>
+            </connections>
+            <point key="canvasLocation" x="208.59375" y="-527.08638360175689"/>
+        </viewController>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+    </objects>
+</document>

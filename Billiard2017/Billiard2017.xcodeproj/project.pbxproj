@@ -65,6 +65,8 @@
 		71B5942A21BC2A6D0082EE00 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B5942721BC2A600082EE00 /* Charts.framework */; };
 		71B5942B21BC2A6D0082EE00 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71B5942721BC2A600082EE00 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71B5943021BC2AA40082EE00 /* test2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B5942F21BC2AA40082EE00 /* test2.swift */; };
+		71B5944F21BC2FA10082EE00 /* ChartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B5944E21BC2FA10082EE00 /* ChartsViewController.m */; };
+		71B5945221BC2FE60082EE00 /* ChartsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71B5945121BC2FE60082EE00 /* ChartsViewController.xib */; };
 		71C9F9D81E53341D0078070D /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9F9CC1E53341D0078070D /* Game.m */; };
 		71C9F9D91E53341D0078070D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9F9CE1E53341D0078070D /* User.m */; };
 		71C9F9DA1E53341D0078070D /* AbstractGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9F9D11E53341D0078070D /* AbstractGame.m */; };
@@ -173,7 +175,6 @@
 
 /* Begin PBXFileReference section */
 		7103C81021B8823200A7B122 /* Billiard2017-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Billiard2017-Bridging-Header.h"; sourceTree = "<group>"; };
-		7103C81121B882EB00A7B122 /* Billiard2017-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Billiard2017-Bridging-Header.h"; sourceTree = "<group>"; };
 		7103C81221B882EC00A7B122 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		7103C83521B8870800A7B122 /* LineChart1ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LineChart1ViewController.xib; sourceTree = "<group>"; };
 		710857261E439A0A00479032 /* Billiard2017.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Billiard2017.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -253,6 +254,9 @@
 		71AEAEF821303AA70051EE01 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		71B5942121BC2A600082EE00 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../../../../Downloads/Charts-master 3/Charts.xcodeproj"; sourceTree = "<group>"; };
 		71B5942F21BC2AA40082EE00 /* test2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test2.swift; sourceTree = "<group>"; };
+		71B5944E21BC2FA10082EE00 /* ChartsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ChartsViewController.m; path = Billiard2017/ChartsViewController.m; sourceTree = "<group>"; };
+		71B5945021BC2FC40082EE00 /* ChartsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChartsViewController.h; sourceTree = "<group>"; };
+		71B5945121BC2FE60082EE00 /* ChartsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ChartsViewController.xib; path = Billiard2017/ChartsViewController.xib; sourceTree = "<group>"; };
 		71C9F9CB1E53341D0078070D /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		71C9F9CC1E53341D0078070D /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		71C9F9CD1E53341D0078070D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -307,6 +311,9 @@
 		7108571D1E439A0A00479032 = {
 			isa = PBXGroup;
 			children = (
+				71B5945121BC2FE60082EE00 /* ChartsViewController.xib */,
+				71B5944E21BC2FA10082EE00 /* ChartsViewController.m */,
+				71B5945021BC2FC40082EE00 /* ChartsViewController.h */,
 				71B5942F21BC2AA40082EE00 /* test2.swift */,
 				7103C81221B882EC00A7B122 /* test.swift */,
 				7103C81021B8823200A7B122 /* Billiard2017-Bridging-Header.h */,
@@ -316,7 +323,6 @@
 				710857281E439A0A00479032 /* Billiard2017 */,
 				710857271E439A0A00479032 /* Products */,
 				710857661E439B8A00479032 /* Frameworks */,
-				7103C81121B882EB00A7B122 /* Billiard2017-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -713,6 +719,7 @@
 				7186DE111E4DBF5F00F71F0C /* GameViewController.xib in Resources */,
 				7186DE9D1E4DBFA400F71F0C /* BilliardBreathAppIcon80x80.png in Resources */,
 				7186DEB21E4DC59F00F71F0C /* Bluetooth-DISCONNECTED.png in Resources */,
+				71B5945221BC2FE60082EE00 /* ChartsViewController.xib in Resources */,
 				7186DE981E4DBFA400F71F0C /* BilliardBreathAppIcon40x40.png in Resources */,
 				7186DE131E4DBF5F00F71F0C /* GraphViewController.xib in Resources */,
 				7186DE991E4DBFA400F71F0C /* BilliardBreathAppIcon50x50.png in Resources */,
@@ -753,6 +760,7 @@
 				7186DDCF1E4DBE0D00F71F0C /* BilliardBreath.xcdatamodel in Sources */,
 				71C9F9DA1E53341D0078070D /* AbstractGame.m in Sources */,
 				7186DEB31E4DC59F00F71F0C /* BTLEManager.m in Sources */,
+				71B5944F21BC2FA10082EE00 /* ChartsViewController.m in Sources */,
 				71C9F9D81E53341D0078070D /* Game.m in Sources */,
 				7186DE2A1E4DBF7100F71F0C /* Session.m in Sources */,
 				713FC8A62177DEBC002259DF /* SplashViewController.m in Sources */,
