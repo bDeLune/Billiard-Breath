@@ -7,6 +7,8 @@
 #import "CurvedScatterPlot.h"
 #import "AllGamesForDayTableVC.h"
 #import "GCDQueue.h"
+#import "Billiard2017-Bridging-Header.h"
+@import Charts;
 
 @interface UserListViewController()<UIActionSheetDelegate,HeaderViewProtocl>
 
