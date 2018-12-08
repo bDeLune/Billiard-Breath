@@ -7,7 +7,10 @@
 #import "CurvedScatterPlot.h"
 #import "AllGamesForDayTableVC.h"
 #import "GCDQueue.h"
+#import "DataChart.h"
+#import "ChartsViewController.h"
 #import "Billiard2017-Bridging-Header.h"
+
 @import Charts;
 
 @interface UserListViewController()<UIActionSheetDelegate,HeaderViewProtocl>
@@ -16,7 +19,9 @@
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) UIBarButtonItem *activityIndicator;
 @property (nonatomic) NSMutableArray *userList;
-@property(nonatomic,strong)GraphViewController  *graph;
+@property(nonatomic,strong)GraphViewController *graph;
+@property(nonatomic,strong)ChartsViewController *chart;
+@property(nonatomic,strong)DataChart *dataChart;
 @property(nonatomic,assign)User  *deleteUser;
 @end
 
@@ -295,15 +300,20 @@
             [alert show];
         return;
     }
+    
+    self.chart = [[ChartsViewController alloc]initWithNibName:@"ChartsViewController" bundle:nil];
+    
+    //self.dataChart=[[DataChart alloc]initWithNibName:@"DataChart" bundle:nil];
+    //ChartsViewController  *plot=[[ChartsViewController alloc]init];
 
-    CurvedScatterPlot  *plot=[[CurvedScatterPlot alloc]init];
-    [plot setUser:user];
+    //CurvedScatterPlot  *plot=[[CurvedScatterPlot alloc]init];
+    //[plot setUser:user];
     
-    [[GCDQueue mainQueue]queueBlock:^{
-        [self.graph setDetailItem:plot];
-    }];
+    //[[GCDQueue mainQueue]queueBlock:^{
+    //    [self.graph setDetailItem:plot];
+   // }];
     
-    [self.navigationController pushViewController:self.graph animated:YES];
+    [self.navigationController pushViewController:self.chart animated:YES];
 }
 
 - (void)updateMainContext:(NSNotification *)notification {

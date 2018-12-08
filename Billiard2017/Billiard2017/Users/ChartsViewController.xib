@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="ipad12_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChartsViewController">
+            <connections>
+                <outlet property="chartsView" destination="h2P-xm-rZ2" id="bfJ-t6-abY"/>
+                <outlet property="userLineChart" destination="s17-fh-eFZ" id="iaN-kk-RFr"/>
+                <outlet property="view" destination="4Bl-dQ-WzR" id="rRd-rx-LoQ"/>
+            </connections>
+        </placeholder>
         <viewController id="h2P-xm-rZ2" customClass="ChartsViewController">
+            <layoutGuides>
+                <viewControllerLayoutGuide type="top" id="T0e-ZC-xou"/>
+                <viewControllerLayoutGuide type="bottom" id="mBs-Ou-6rK"/>
+            </layoutGuides>
             <view key="view" contentMode="scaleToFill" id="s17-fh-eFZ">
                 <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,13 +41,13 @@
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="bottom" secondItem="4e6-97-b63" secondAttribute="bottom" id="2P7-Rh-vja"/>
+                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="bottom" secondItem="mBs-Ou-6rK" secondAttribute="top" id="2P7-Rh-vja"/>
                     <constraint firstItem="4Bl-dQ-WzR" firstAttribute="top" secondItem="s17-fh-eFZ" secondAttribute="top" id="CQw-cm-7gW"/>
-                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="trailing" secondItem="4e6-97-b63" secondAttribute="trailing" id="Ug1-4s-UCg"/>
-                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="leading" secondItem="4e6-97-b63" secondAttribute="leading" id="kZ4-H8-Z9D"/>
+                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="trailing" secondItem="s17-fh-eFZ" secondAttribute="trailing" id="Ug1-4s-UCg"/>
+                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="leading" secondItem="s17-fh-eFZ" secondAttribute="leading" id="kZ4-H8-Z9D"/>
                 </constraints>
-                <viewLayoutGuide key="safeArea" id="4e6-97-b63"/>
             </view>
+            <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
             <connections>
                 <outlet property="userDataLineChart" destination="4Bl-dQ-WzR" id="S9u-Jd-JkO"/>
             </connections>

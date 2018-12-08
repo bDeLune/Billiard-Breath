@@ -1,9 +1,6 @@
 #import <UIKit/UIKit.h>
-#import "ChartsViewController.h"
+#import <Charts/Charts.h>
 
-@class ChartsViewController;
-
-@end
 @interface ChartsViewController : UIViewController
 
 @end
