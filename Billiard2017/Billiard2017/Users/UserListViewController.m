@@ -9,7 +9,9 @@
 #import "GCDQueue.h"
 #import "DataChart.h"
 #import "ChartsViewController.h"
-#import "Billiard2017-Bridging-Header.h"
+//#import "Billiard2017-Bridging-Header.h"
+#import "Billiard2017.pch"
+#import "AAChartKit.h"
 
 @import Charts;
 
@@ -301,7 +303,8 @@
         return;
     }
     
-    self.chart = [[ChartsViewController alloc]initWithNibName:@"ChartsViewController" bundle:nil];
+    //self.chart = [[ChartsViewController alloc]initWithNibName:@"ChartsViewController" bundle:nil];
+    self.chart = [[ChartsViewController alloc]init:@"ChartsViewController" bundle:nil withData:durationOnly withUser:user];
     
     //self.dataChart=[[DataChart alloc]initWithNibName:@"DataChart" bundle:nil];
     //ChartsViewController  *plot=[[ChartsViewController alloc]init];

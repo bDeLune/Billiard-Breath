@@ -1,0 +1,17 @@
+//
+//  Billiard2017.pch
+//  Billiard2017
+//
+//  Created by Brian Dillon on 08/12/2018.
+//  Copyright © 2018 ROCUDO. All rights reserved.
+//
+
+#ifndef Billiard2017_pch
+#define Billiard2017_pch
+
+#import "AAGlobalMacro.h"
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* Billiard2017_pch */

@@ -7,29 +7,85 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Billiard2017-Bridging-Header.h"
+//#import "Billiard2017-Bridging-Header.h"
+#import "AAChartKit.h"
+#import "User.h"
+#import "Game.h"
 @import Charts;
 
-@interface ChartsViewController : UIViewController <ChartViewDelegate>
+@interface ChartsViewController : UIViewController <ChartViewDelegate>{
+     NSString  *currentType;
+}
 @property (weak, nonatomic) IBOutlet UIView *userLineChart;
-@property (weak, nonatomic) IBOutlet LineChartView *userDataLineChart;
+@property (strong, nonatomic) IBOutlet AAChartView *userDataLineChart;
 @property (strong, nonatomic) IBOutlet ChartsViewController *chartsView;
+@property (nonatomic, strong) NSArray* options;
 //@property (nonatomic, strong) IBOutlet LineChartView *chartView;
-//@property (nonatomic, strong) IBOutlet UISlider *sliderX;
-//@property (nonatomic, strong) IBOutlet UISlider *sliderY;
-//@property (nonatomic, strong) IBOutlet UITextField *sliderTextX;
-//@property (nonatomic, strong) IBOutlet UITextField *sliderTextY;
+@property (nonatomic, strong) IBOutlet UISlider *sliderX;
+@property (nonatomic, strong) IBOutlet UISlider *sliderY;
+@property (nonatomic, strong) IBOutlet UITextField *sliderTextX;
+@property (nonatomic, strong) IBOutlet UITextField *sliderTextY;
+@property (nonatomic, strong) NSMutableArray* userData;
+@property (nonatomic, strong) User* user;
+@property (nonatomic, strong) NSString * userTitle;
+@property (nonatomic, strong) NSArray *plotData;
+
 @end
 
 @implementation ChartsViewController
+
+- (instancetype)init:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withData:(NSMutableArray *)data withUser:(User*)userData {
+    
+    NSLog(@"Instantiating graph");
+    
+    self.user = userData;
+    self.userData = data;
+    self.userTitle = self.user.userName;
+    currentType = @"Duration";
+    
+    return self;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     NSLog(@"THIS VIEW HAS LOADED");
-    [self.userDataLineChart setNoDataText:@"You need to provide data for the chart BLAH."];
+    //[self.userDataLineChart setNoDataText:@"You need to provide data for the chart BLAH."];
     
-    self.title = @"User Data Chart";
+    self.title = @"User Duration Chart";
+    
+    CGFloat chartViewWidth  = self.view.frame.size.width;
+    CGFloat chartViewHeight = self.view.frame.size.height-250;
+    self.userDataLineChart = [[AAChartView alloc]init];
+    self.userDataLineChart.frame = CGRectMake(0, 60, chartViewWidth, chartViewHeight);
+    self.userDataLineChart.scrollEnabled = NO;
+    //// set the content height of aaChartView
+    // _aaChartView.contentHeight = chartViewHeight;
+    [self.view addSubview:self.userDataLineChart];
+    
+    AAChartModel *aaChartModel= AAObject(AAChartModel)
+    .chartTypeSet(AAChartTypeSpline)
+    .titleSet(@"")
+    .subtitleSet(@"")
+    .categoriesSet(@[@"Java",@"Swift",@"Python",@"Ruby", @"PHP",@"Go",@"C",@"C#",@"C++"])
+    .yAxisTitleSet(@"Duration")
+    .seriesSet(@[
+                 AAObject(AASeriesElement)
+                 .nameSet(@"2017")
+                 .dataSet(@[@7.0, @6.9, @9.5, @14.5, @18.2, @21.5, @25.2, @26.5, @23.3, @18.3, @13.9, @9.6]),
+                 AAObject(AASeriesElement)
+                 .nameSet(@"2018")
+                 .dataSet(@[@0.2, @0.8, @5.7, @11.3, @17.0, @22.0, @24.8, @24.1, @20.1, @14.1, @8.6, @2.5]),
+                 AAObject(AASeriesElement)
+                 .nameSet(@"2019")
+                 .dataSet(@[@0.9, @0.6, @3.5, @8.4, @13.5, @17.0, @18.6, @17.9, @14.3, @9.0, @3.9, @1.0]),
+                 AAObject(AASeriesElement)
+                 .nameSet(@"2020")
+                 .dataSet(@[@3.9, @4.2, @5.7, @8.5, @11.9, @15.2, @17.0, @16.6, @14.2, @10.3, @6.6, @4.8]),
+                 ])
+    ;
+    
+    [self.userDataLineChart aa_drawChartWithChartModel:aaChartModel];
     
     /*self.options = @[
                      @{@"key": @"toggleValues", @"label": @"Toggle Values"},
@@ -48,7 +104,7 @@
                      @{@"key": @"toggleAutoScaleMinMax", @"label": @"Toggle auto scale min/max"},
                      @{@"key": @"toggleData", @"label": @"Toggle Data"},
                      ];
-    */
+   
     self.userDataLineChart.delegate = self;
     
     self.userDataLineChart.chartDescription.enabled = NO;
@@ -97,14 +153,81 @@
     //[_chartView.viewPortHandler setMaximumScaleY: 2.f];
     //[_chartView.viewPortHandler setMaximumScaleX: 2.f];
     
-    self.userDataLineChart.legend.form = ChartLegendFormLine;
+    self.userDataLineChart.legend.form = ChartLegendFormLine;*/
     
     //_sliderX.value = 45.0;
    // _sliderY.value = 100.0;
-    [self slidersValueChanged:nil];
+    //[self slidersValueChanged:nil];
     
-    [self.userDataLineChart animateWithXAxisDuration:2.5];
+    //[self.userDataLineChart animateWithXAxisDuration:2.5];
 }
+
+
+-(void)generateData
+{
+    NSArray *array = [self.user.game allObjects];
+    NSArray *sortedArray;
+    sortedArray = [array sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+        NSDate *first = [(Game*)a gameDate];
+        NSDate *second = [(Game*)b gameDate];
+        return [first compare:second];
+    }];
+    
+    if ([array count]==0) {
+        return;
+    }
+    
+    NSMutableArray *contentArray = [NSMutableArray array];
+    
+    for ( NSUInteger i = 0; i < [sortedArray count]; i++ ) {
+        
+        NSNumber  *dateNumber=[NSNumber numberWithInt:i];
+        NSNumber  *yvalue=0;
+        
+        if ([currentType isEqualToString:@"Power"]) {
+            yvalue=[[sortedArray objectAtIndex:i]valueForKey:@"power"];
+            [contentArray addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:dateNumber, @"x", yvalue, @"y", nil]];
+        }else if([currentType isEqualToString:@"Duration"])
+        {
+            yvalue=[[sortedArray objectAtIndex:i]valueForKey:@"duration"];
+            [contentArray addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:dateNumber, @"x", yvalue, @"y", nil]];
+        }else
+        {
+            yvalue=[[sortedArray objectAtIndex:i]valueForKey:@"power"];
+        }
+    }
+    
+    self.plotData = contentArray;
+}
+
+/*
+-(CPTPlotSymbol *)symbolForScatterPlot:(CPTScatterPlot *)plot recordIndex:(NSUInteger)idx
+{
+    NSArray *array = [self.userData.game allObjects];
+    
+    NSArray *sortedArray;
+    sortedArray = [array sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+        NSDate *first = [(Game*)a gameDate];
+        NSDate *second = [(Game*)b gameDate];
+        return [first compare:second];
+    }];
+    
+    Game  *game=[sortedArray objectAtIndex:idx];
+    CPTPlotSymbol *plotSymbol = [CPTPlotSymbol ellipsePlotSymbol];
+    
+    if ([game.gameDirection isEqualToString:@"exhale"]) {
+        plotSymbol.fill = [CPTFill fillWithColor:[[CPTColor redColor] colorWithAlphaComponent:1]];
+        
+    }else if ([game.gameDirection isEqualToString:@"inhale"])
+    {
+        plotSymbol.fill = [CPTFill fillWithColor:[[CPTColor blueColor] colorWithAlphaComponent:1]];
+    }
+    
+    plotSymbol.size  = CGSizeMake(1.0, 5.0);
+    
+    return plotSymbol;
+}
+ */
 
 - (void)didReceiveMemoryWarning
 {
@@ -133,16 +256,17 @@
         [values addObject:[[ChartDataEntry alloc] initWithX:i y:val icon: [UIImage imageNamed:@"icon"]]];
     }
     
-    LineChartDataSet *set1 = nil;
-    if (self.userDataLineChart.data.dataSetCount > 0)
-    {
+   // LineChartDataSet *set1 = nil;
+    //if (self.userDataLineChart.data.dataSetCount > 0)
+   // {
     //    set1 = (LineChartDataSet *)_chartView.data.dataSets[0];
     //    set1.values = values;
     //    [_chartView.data notifyDataChanged];//
     ///    [_chartView notifyDataSetChanged];
-    }
-    else
-    {
+   // }
+   // else
+   // {
+    /*
         set1 = [[LineChartDataSet alloc] initWithValues:values label:@"DataSet 1"];
         
         set1.drawIconsEnabled = NO;
@@ -178,6 +302,7 @@
         
         self.userDataLineChart.data = data;
     }
+     */
 }
 
 #pragma mark - Actions
@@ -204,8 +329,3 @@
 
 
 @end
-
-
-
-
-
