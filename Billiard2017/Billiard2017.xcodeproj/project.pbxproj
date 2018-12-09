@@ -666,10 +666,10 @@
 				71C9F9FB1E53356C0078070D /* AddNewUserOperation.m */,
 				71C9FA1E1E5344EB0078070D /* UserListViewController.h */,
 				71C9FA1F1E5344EB0078070D /* UserListViewController.m */,
+				7186DE1C1E4DBF7100F71F0C /* UserListViewController.xib */,
 				71B5946921BC3DB90082EE00 /* DataChart.m */,
 				71B5946B21BC3DCB0082EE00 /* DataChart.h */,
 				71B5946721BC3D2F0082EE00 /* DataChart.xib */,
-				7186DE1C1E4DBF7100F71F0C /* UserListViewController.xib */,
 			);
 			path = Users;
 			sourceTree = "<group>";

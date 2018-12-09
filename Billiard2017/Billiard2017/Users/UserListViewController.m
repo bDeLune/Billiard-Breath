@@ -284,7 +284,7 @@
 
 -(void)viewHistoricalData:(HeaderView *)header
 {
-    self.graph=[[GraphViewController alloc]initWithNibName:@"GraphViewController" bundle:nil];
+    //self.graph=[[GraphViewController alloc]initWithNibName:@"GraphViewController" bundle:nil];
     User *user=[self.userList objectAtIndex:header.section];
     NSArray * src=[user.game allObjects];
     NSMutableArray  *durationOnly=[NSMutableArray new];
@@ -304,7 +304,8 @@
     }
     
     //self.chart = [[ChartsViewController alloc]initWithNibName:@"ChartsViewController" bundle:nil];
-    self.chart = [[ChartsViewController alloc]init:@"ChartsViewController" bundle:nil withData:durationOnly withUser:user];
+    //self.chart = [[ChartsViewController alloc]init:@"ChartsViewController" bundle:nil withData:durationOnly withUser:user];
+    self.chart = [[ChartsViewController alloc]init:@"ChartsViewController" bundle:nil withData:durationOnly withUser:user withHeight:self.view.bounds.size.height withWidth:self.view.bounds.size.width];
     
     //self.dataChart=[[DataChart alloc]initWithNibName:@"DataChart" bundle:nil];
     //ChartsViewController  *plot=[[ChartsViewController alloc]init];
