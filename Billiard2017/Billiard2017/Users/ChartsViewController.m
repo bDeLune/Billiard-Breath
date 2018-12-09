@@ -15,6 +15,7 @@
 
 @interface ChartsViewController : UIViewController <ChartViewDelegate>{
      NSString  *currentType;
+     NSString *lastDate;
 }
 @property (weak, nonatomic) IBOutlet UIView *userLineChart;
 @property (strong, nonatomic) IBOutlet AAChartView *userDataLineChart;
@@ -34,12 +35,12 @@
 
 @implementation ChartsViewController
 
-- (instancetype)init:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withData:(NSMutableArray *)data withUser:(User*)userData {
+- (instancetype)init:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withData:(NSMutableArray *)userData withUser:(User*)user {
     
     NSLog(@"Instantiating graph");
     
-    self.user = userData;
-    self.userData = data;
+    self.user = user;
+    self.userData = userData;
     self.userTitle = self.user.userName;
     currentType = @"Duration";
     
@@ -52,40 +53,132 @@
     NSLog(@"THIS VIEW HAS LOADED");
     //[self.userDataLineChart setNoDataText:@"You need to provide data for the chart BLAH."];
     
-    self.title = @"User Duration Chart";
+    self.title =self.userTitle;
     
-    CGFloat chartViewWidth  = self.view.frame.size.width;
-    CGFloat chartViewHeight = self.view.frame.size.height-250;
+    CGFloat chartViewWidth  = self.view.frame.size.width/1.10;
+    CGFloat chartViewHeight = self.view.frame.size.height/1.18;
     self.userDataLineChart = [[AAChartView alloc]init];
-    self.userDataLineChart.frame = CGRectMake(0, 60, chartViewWidth, chartViewHeight);
-    self.userDataLineChart.scrollEnabled = NO;
+    self.userDataLineChart.frame = CGRectMake(-20, 0, chartViewWidth, chartViewHeight);
+    self.userDataLineChart.scrollEnabled = YES;
     //// set the content height of aaChartView
-    // _aaChartView.contentHeight = chartViewHeight;
+    //self.userDataLineChart.contentHeight = chartViewHeight;
     [self.view addSubview:self.userDataLineChart];
+    
+    NSArray *array = [self.user.game allObjects];
+    NSArray *sortedArray;
+    sortedArray = [array sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+        NSDate *first = [(Game*)a gameDate];
+        NSDate *second = [(Game*)b gameDate];
+        return [first compare:second];
+    }];
+    
+    //if ([sortedArray count]==0) {
+   //    return;
+    //}
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"d MMM y "];
+    
+    NSLog(@"SORTED -- - %@", sortedArray);
+    //NSLog(@"PLOT DATA -- - %@", plotData);
+    
+    NSMutableArray *dates = [NSMutableArray array];
+    for (int i=0; i<[sortedArray count]; i++) {
+        NSLog(@"DATE PLACER i %d", i);
+        NSLog(@"sortedArray %lu", (unsigned long)[sortedArray count]);
+        
+        Game *game=[sortedArray objectAtIndex:i];
+        NSDate *date = game.gameDate;
+        NSString *stringFromDate=[formatter stringFromDate:date];
+        NSLog(@"last date %@", lastDate);
+        NSLog(@"current date %@", stringFromDate);
+        
+        if ([lastDate isEqualToString: stringFromDate]){
+            stringFromDate = @"";
+            NSLog(@"skipping date label - same as previous");
+        }
+        
+        [dates addObject: stringFromDate];
+        lastDate = [formatter stringFromDate:date] ;
+    }
+    
+    // For the y-axis
+    NSMutableArray *durationVals = [NSMutableArray array];
+    for (int b=0; b< [sortedArray count]; b++) {
+        Game *game=[sortedArray objectAtIndex:b];
+        NSNumber * duration = game.duration;
+        [durationVals addObject: duration];
+    }
     
     AAChartModel *aaChartModel= AAObject(AAChartModel)
     .chartTypeSet(AAChartTypeSpline)
     .titleSet(@"")
-    .subtitleSet(@"")
-    .categoriesSet(@[@"Java",@"Swift",@"Python",@"Ruby", @"PHP",@"Go",@"C",@"C#",@"C++"])
+    .subtitleSet(@"f")
+    //.categoriesSet(@[@"Java",@"Swift",@"Python",@"Ruby", @"PHP",@"Go",@"C",@"C#",@"C++"])
+    .categoriesSet(dates)
     .yAxisTitleSet(@"Duration")
     .seriesSet(@[
                  AAObject(AASeriesElement)
-                 .nameSet(@"2017")
-                 .dataSet(@[@7.0, @6.9, @9.5, @14.5, @18.2, @21.5, @25.2, @26.5, @23.3, @18.3, @13.9, @9.6]),
+                 .nameSet(@"Inhale")
+                 .dataSet(durationVals ),
+                 //.dataSet(@[@7.0, @6.9, @9.5, @14.5, @18.2, @21.5, @25.2, @26.5, @23.3, @18.3, @13.9, @9.6]),
                  AAObject(AASeriesElement)
-                 .nameSet(@"2018")
-                 .dataSet(@[@0.2, @0.8, @5.7, @11.3, @17.0, @22.0, @24.8, @24.1, @20.1, @14.1, @8.6, @2.5]),
-                 AAObject(AASeriesElement)
-                 .nameSet(@"2019")
-                 .dataSet(@[@0.9, @0.6, @3.5, @8.4, @13.5, @17.0, @18.6, @17.9, @14.3, @9.0, @3.9, @1.0]),
-                 AAObject(AASeriesElement)
-                 .nameSet(@"2020")
-                 .dataSet(@[@3.9, @4.2, @5.7, @8.5, @11.9, @15.2, @17.0, @16.6, @14.2, @10.3, @6.6, @4.8]),
+                 .nameSet(@"Exhale")
+                 //.dataSet(@[@0.2, @0.8, @5.7, @11.3, @17.0, @22.0, @24.8, @24.1, @20.1, @14.1, @8.6, @2.5]),
+                 //AAObject(AASeriesElement)
+                 //.nameSet(@"2019")
+                 //.dataSet(@[@0.9, @0.6, @3.5, @8.4, @13.5, @17.0, @18.6, @17.9, @14.3, @9.0, @3.9, @1.0]),
+                 //AAObject(AASeriesElement)
+                 //.nameSet(@"2020")
+                 //.dataSet(@[@3.9, @4.2, @5.7, @8.5, @11.9, @15.2, @17.0, @16.6, @14.2, @10.3, @6.6, @4.8]),
                  ])
     ;
     
     [self.userDataLineChart aa_drawChartWithChartModel:aaChartModel];
+    
+    /*
+    for (int i=0; i<[sortedArray count]; i++) {
+        NSLog(@"DATE PLACER i %d", i);
+        NSLog(@"sortedArray %lu", (unsigned long)[sortedArray count]);
+        
+        Game *game=[sortedArray objectAtIndex:i];
+        NSDate *date = game.gameDate;
+        NSString *stringFromDate=[formatter stringFromDate:date];
+        NSLog(@"last date %@", lastDate);
+        NSLog(@"current date %@", stringFromDate);
+        
+        if ([lastDate isEqualToString: stringFromDate]){
+            stringFromDate = @"";
+            NSLog(@"skipping date label - same as previous");
+        }
+        CPTAxisLabel *xlabel = [[CPTAxisLabel alloc] initWithText:stringFromDate  textStyle:x.labelTextStyle];
+        NSNumber *myXIndex = @(i);
+        xlabel.tickLocation = myXIndex;
+        xlabel.offset = x.titleOffset + x.majorTickLength;
+        xlabel.rotation = M_PI/3;
+        xlabel.tickLocation = myXIndex;
+        [customXTickLocations addObject:myXIndex];
+        [xAxisLabels addObject:xlabel];
+        
+        lastDate = [formatter stringFromDate:date]  ;
+        /// }
+    }
+    
+    for (int b=0; b<15; b++) {
+        //NSDictionary  *plotPoint =[plotData objectAtIndex:b];
+        //NSNumber *yValue = [plotPoint objectForKey:@"y"];
+        NSNumber *yValue = [NSNumber numberWithInt: b];
+        NSString *myString = [yValue stringValue];
+        myString = [myString substringToIndex: MIN(3, [myString length])];
+        CPTAxisLabel *ylabel = [[CPTAxisLabel alloc] initWithText:myString  textStyle:y.labelTextStyle];
+        ylabel.tickLocation = yValue;
+        ylabel.offset = 4;
+        [customYTickLocations addObject:yValue];
+        [yAxisLabels addObject:ylabel];
+    }
+     */
+    
+    
     
     /*self.options = @[
                      @{@"key": @"toggleValues", @"label": @"Toggle Values"},

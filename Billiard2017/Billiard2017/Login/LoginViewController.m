@@ -45,6 +45,7 @@
     [super viewDidLoad];
     
     self.userList=[[UserListViewController alloc]initWithNibName:@"UserListViewController" bundle:nil];
+    
     self.userList.sharedPSC=self.sharedPSC;
     self.navcontroller=[[UINavigationController alloc]initWithRootViewController:self.userList];
     CGRect frame=  [[UIScreen mainScreen] bounds];

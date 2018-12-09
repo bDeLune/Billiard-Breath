@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="ipad12_9" orientation="portrait">
+    <device id="ipad12_9" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,33 +16,43 @@
                 <outlet property="view" destination="4Bl-dQ-WzR" id="rRd-rx-LoQ"/>
             </connections>
         </placeholder>
-        <viewController id="h2P-xm-rZ2" customClass="ChartsViewController">
+        <viewController autoresizesArchivedViewToFullSize="NO" id="h2P-xm-rZ2" customClass="ChartsViewController">
             <layoutGuides>
                 <viewControllerLayoutGuide type="top" id="T0e-ZC-xou"/>
                 <viewControllerLayoutGuide type="bottom" id="mBs-Ou-6rK"/>
             </layoutGuides>
-            <view key="view" contentMode="scaleToFill" id="s17-fh-eFZ" customClass="AAChartView">
-                <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+            <view key="view" contentMode="scaleAspectFit" id="s17-fh-eFZ" customClass="AAChartView">
+                <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Bl-dQ-WzR" customClass="LineChartView" customModule="Charts">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="4Bl-dQ-WzR" customClass="LineChartView" customModule="Charts">
+                        <rect key="frame" x="0.0" y="104" width="1366" height="920"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="bottom" secondItem="mBs-Ou-6rK" secondAttribute="top" id="2P7-Rh-vja"/>
-                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="top" secondItem="s17-fh-eFZ" secondAttribute="top" id="CQw-cm-7gW"/>
+                    <constraint firstAttribute="trailing" secondItem="4Bl-dQ-WzR" secondAttribute="trailing" id="AP3-MG-HeH"/>
+                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="top" secondItem="s17-fh-eFZ" secondAttribute="top" constant="104" id="CQw-cm-7gW"/>
+                    <constraint firstAttribute="trailing" secondItem="4Bl-dQ-WzR" secondAttribute="trailing" id="FC3-nf-Oox"/>
+                    <constraint firstAttribute="trailing" secondItem="4Bl-dQ-WzR" secondAttribute="trailing" id="Ier-Z5-SIK"/>
+                    <constraint firstItem="mBs-Ou-6rK" firstAttribute="top" secondItem="4Bl-dQ-WzR" secondAttribute="bottom" id="NFh-3S-6e1"/>
                     <constraint firstItem="4Bl-dQ-WzR" firstAttribute="trailing" secondItem="s17-fh-eFZ" secondAttribute="trailing" id="Ug1-4s-UCg"/>
+                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="leading" secondItem="s17-fh-eFZ" secondAttribute="leading" id="Ury-9x-vdE"/>
+                    <constraint firstItem="mBs-Ou-6rK" firstAttribute="top" secondItem="4Bl-dQ-WzR" secondAttribute="bottom" id="ddy-Kk-ZB9"/>
+                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="leading" secondItem="s17-fh-eFZ" secondAttribute="leading" id="heu-GT-ofE"/>
+                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="leading" secondItem="s17-fh-eFZ" secondAttribute="leading" id="jJW-KN-RbV"/>
                     <constraint firstItem="4Bl-dQ-WzR" firstAttribute="leading" secondItem="s17-fh-eFZ" secondAttribute="leading" id="kZ4-H8-Z9D"/>
+                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="bottom" secondItem="mBs-Ou-6rK" secondAttribute="top" id="lyJ-2F-hLT"/>
+                    <constraint firstItem="mBs-Ou-6rK" firstAttribute="top" secondItem="4Bl-dQ-WzR" secondAttribute="bottom" id="sMW-VJ-XQa"/>
+                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="top" secondItem="T0e-ZC-xou" secondAttribute="bottom" constant="84" id="yC2-WW-GUH"/>
                 </constraints>
             </view>
-            <extendedEdge key="edgesForExtendedLayout"/>
+            <extendedEdge key="edgesForExtendedLayout" top="YES"/>
             <connections>
                 <outlet property="userDataLineChart" destination="4Bl-dQ-WzR" id="S9u-Jd-JkO"/>
             </connections>
-            <point key="canvasLocation" x="208.59375" y="-527.08638360175689"/>
+            <point key="canvasLocation" x="208.19912152269399" y="-527.34375"/>
         </viewController>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
     </objects>
