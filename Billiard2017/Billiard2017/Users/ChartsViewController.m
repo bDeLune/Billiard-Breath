@@ -47,30 +47,33 @@
     self.userTitle = self.user.userName;
     currentType = @"Duration";
     
+    //CGFloat topBar = self.navigationController.navigationBar.frame.size.height;
+    
     chartViewWidth  = width;
     chartViewHeight = height;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     
     return self;
 }
 
 - (void) viewWillLayoutSubviews{
 
-    if (chartAdded == FALSE){
-    
+    //if (chartAdded == FALSE){
     
     chartAdded = TRUE;
+        
+    CGFloat navheight = self.navigationController.view.frame.size.height;
+    //CGFloat height = chartViewHeight - navheight;
+
     
     self.userDataLineChart = [[AAChartView alloc]init];
-    self.userDataLineChart.frame = CGRectMake(0, 0, chartViewWidth, chartViewHeight + 40);
+    self.userDataLineChart.frame = CGRectMake(0, 0, chartViewWidth, chartViewHeight - 60);
     self.userDataLineChart.scrollEnabled = YES;
     
-    
+   // self.userDataLineChart.contentHeight =chartViewHeight - 50;
+        
     [self.view addSubview:self.userDataLineChart];
-    
     self.title =self.userTitle;
-    
-    
-    
     
     NSArray *array = [self.user.game allObjects];
     NSArray *sortedArray;
@@ -91,6 +94,7 @@
     //NSLog(@"PLOT DATA -- - %@", plotData);
     
     NSMutableArray *dates = [NSMutableArray array];
+    NSMutableArray *markerColours = [NSMutableArray array];
     for (int i=0; i<[sortedArray count]; i++) {
         NSLog(@"DATE PLACER i %d", i);
         NSLog(@"sortedArray %lu", (unsigned long)[sortedArray count]);
@@ -108,6 +112,14 @@
         
         [dates addObject: stringFromDate];
         lastDate = [formatter stringFromDate:date] ;
+        
+        if ([game.gameDirection isEqualToString:@"exhale"]) {
+           [markerColours addObject: @"#35b31c"];
+            
+        }else if ([game.gameDirection isEqualToString:@"inhale"])
+        {
+            [markerColours addObject: @"#ef3118"];
+        }
     }
     
     // For the y-axis
@@ -117,36 +129,68 @@
         NSNumber * duration = game.duration;
         [durationVals addObject: duration];
     }
-    
+
     AAChartModel *aaChartModel= AAObject(AAChartModel)
     .chartTypeSet(AAChartTypeSpline)
     .titleSet(@"")
-    .subtitleSet(@"f")
+    .subtitleSet(@"")
     //.categoriesSet(@[@"Java",@"Swift",@"Python",@"Ruby", @"PHP",@"Go",@"C",@"C#",@"C++"])
     .categoriesSet(dates)
     .yAxisTitleSet(@"Duration")
     .seriesSet(@[
                  AAObject(AASeriesElement)
-                 .nameSet(@"Inhale")
-                 .dataSet(durationVals ),
-                 //.dataSet(@[@7.0, @6.9, @9.5, @14.5, @18.2, @21.5, @25.2, @26.5, @23.3, @18.3, @13.9, @9.6]),
+                 .nameSet(@"Exhale"),
                  AAObject(AASeriesElement)
-                 .nameSet(@"Exhale")
-                 //.dataSet(@[@0.2, @0.8, @5.7, @11.3, @17.0, @22.0, @24.8, @24.1, @20.1, @14.1, @8.6, @2.5]),
-                 //AAObject(AASeriesElement)
-                 //.nameSet(@"2019")
-                 //.dataSet(@[@0.9, @0.6, @3.5, @8.4, @13.5, @17.0, @18.6, @17.9, @14.3, @9.0, @3.9, @1.0]),
-                 //AAObject(AASeriesElement)
-                 //.nameSet(@"2020")
-                 //.dataSet(@[@3.9, @4.2, @5.7, @8.5, @11.9, @15.2, @17.0, @16.6, @14.2, @10.3, @6.6, @4.8]),
-                 ])
-    ;
+                 .dataSet(durationVals )
+                 .markerSet(AAMarker.new
+                            .fillColorSet(@"#ffffff")
+                            .lineWidthSet(@2)
+                            ),
+                 @{@"name" : @"Inhale",
+                     @"data" : durationVals,
+                     @"colorByPoint" : @true,
+                     @"markerRadius" : @15,
+                     @"markerSymbol" : @"circle"
+                   }
+                 
+    /*
+     
+     .nameSet(@"Inhale")
+     .dataSet(durationVals ),
+     AAObject(AASeriesElement)
+     .nameSet(@"Inhale")
+     .dataSet(durationVals ),
+     AAObject(AASeriesElement)
+     .nameSet(@"Exhale")
+                 .lineWidthSet(@8)
+                 .lineWidthSet(@3)
+
+                 .zoneAxisSet(@"x")
+                 .zonesSet(@[@{@"value": @4,
+                               @"color":@"rgba(220,20,60,1)",//猩红色
+                               @"fillColor": gradientColorDic1  // 1,
+                               },@{
+                                 @"color":@"rgba(30,144,255,1)",//道奇蓝
+                                 @"fillColor": gradientColorDic2 // 2
+                                 }, ])
+                 
+                  */
+                ]);
+    
+    
+    //aaChartModel.colorsThemeSet(@[@"#35b31c",@"#35b31c",@"#35b31c",@"#35b31c",@"#35b31c",@"#35b31c",@"#35b31c",@"#ef3118",@"#35b31c",@"#ef3118",@"#ef3118", @"#35b31c",@"#ef3118"]);
+    aaChartModel.colorsThemeSet(markerColours);
+    aaChartModel.categoriesSet(dates);
+    
+    
+    //aaChartModel.seriesSet();
+    
     
     [self.userDataLineChart aa_drawChartWithChartModel:aaChartModel];
     
     //// set the content height of aaChartView
       //self.userDataLineChart.contentHeight = chartViewHeight;
-    }
+   // }
 
 }
 

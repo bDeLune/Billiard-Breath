@@ -317,6 +317,7 @@
     //    [self.graph setDetailItem:plot];
    // }];
     
+    
     [self.navigationController pushViewController:self.chart animated:YES];
 }
 

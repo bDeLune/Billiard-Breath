@@ -21,7 +21,7 @@
                 <viewControllerLayoutGuide type="top" id="T0e-ZC-xou"/>
                 <viewControllerLayoutGuide type="bottom" id="mBs-Ou-6rK"/>
             </layoutGuides>
-            <view key="view" contentMode="scaleAspectFit" id="s17-fh-eFZ" customClass="AAChartView">
+            <view key="view" autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleAspectFit" id="s17-fh-eFZ" customClass="AAChartView">
                 <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
@@ -32,17 +32,10 @@
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="4Bl-dQ-WzR" secondAttribute="trailing" id="AP3-MG-HeH"/>
-                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="top" secondItem="s17-fh-eFZ" secondAttribute="top" constant="104" id="CQw-cm-7gW"/>
-                    <constraint firstAttribute="trailing" secondItem="4Bl-dQ-WzR" secondAttribute="trailing" id="FC3-nf-Oox"/>
-                    <constraint firstAttribute="trailing" secondItem="4Bl-dQ-WzR" secondAttribute="trailing" id="Ier-Z5-SIK"/>
+                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="leading" secondItem="s17-fh-eFZ" secondAttribute="leading" id="8p2-fF-aqa"/>
                     <constraint firstItem="mBs-Ou-6rK" firstAttribute="top" secondItem="4Bl-dQ-WzR" secondAttribute="bottom" id="NFh-3S-6e1"/>
-                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="trailing" secondItem="s17-fh-eFZ" secondAttribute="trailing" id="Ug1-4s-UCg"/>
-                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="leading" secondItem="s17-fh-eFZ" secondAttribute="leading" id="Ury-9x-vdE"/>
                     <constraint firstItem="mBs-Ou-6rK" firstAttribute="top" secondItem="4Bl-dQ-WzR" secondAttribute="bottom" id="ddy-Kk-ZB9"/>
-                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="leading" secondItem="s17-fh-eFZ" secondAttribute="leading" id="heu-GT-ofE"/>
-                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="leading" secondItem="s17-fh-eFZ" secondAttribute="leading" id="jJW-KN-RbV"/>
-                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="leading" secondItem="s17-fh-eFZ" secondAttribute="leading" id="kZ4-H8-Z9D"/>
+                    <constraint firstAttribute="trailing" secondItem="4Bl-dQ-WzR" secondAttribute="trailing" id="iSh-ee-rVE"/>
                     <constraint firstItem="4Bl-dQ-WzR" firstAttribute="bottom" secondItem="mBs-Ou-6rK" secondAttribute="top" id="lyJ-2F-hLT"/>
                     <constraint firstItem="mBs-Ou-6rK" firstAttribute="top" secondItem="4Bl-dQ-WzR" secondAttribute="bottom" id="sMW-VJ-XQa"/>
                     <constraint firstItem="4Bl-dQ-WzR" firstAttribute="top" secondItem="T0e-ZC-xou" secondAttribute="bottom" constant="84" id="yC2-WW-GUH"/>
