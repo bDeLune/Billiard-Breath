@@ -21,7 +21,7 @@
                 <viewControllerLayoutGuide type="top" id="T0e-ZC-xou"/>
                 <viewControllerLayoutGuide type="bottom" id="mBs-Ou-6rK"/>
             </layoutGuides>
-            <view key="view" autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleAspectFit" id="s17-fh-eFZ" customClass="AAChartView">
+            <view key="view" autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="s17-fh-eFZ" customClass="AAChartView">
                 <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>

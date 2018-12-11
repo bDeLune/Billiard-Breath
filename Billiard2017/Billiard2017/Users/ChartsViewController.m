@@ -51,7 +51,9 @@
     
     chartViewWidth  = width;
     chartViewHeight = height;
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+   
+    
+
     
     return self;
 }
@@ -61,18 +63,12 @@
     //if (chartAdded == FALSE){
     
     chartAdded = TRUE;
-        
+    
     CGFloat navheight = self.navigationController.view.frame.size.height;
     //CGFloat height = chartViewHeight - navheight;
 
-    
-    self.userDataLineChart = [[AAChartView alloc]init];
-    self.userDataLineChart.frame = CGRectMake(0, 0, chartViewWidth, chartViewHeight - 60);
-    self.userDataLineChart.scrollEnabled = YES;
-    
-   // self.userDataLineChart.contentHeight =chartViewHeight - 50;
         
-    [self.view addSubview:self.userDataLineChart];
+
     self.title =self.userTitle;
     
     NSArray *array = [self.user.game allObjects];
@@ -199,53 +195,19 @@
     [super viewWillAppear: YES];
     NSLog(@"THIS VIEW HAS LOADED");
     //[self.userDataLineChart setNoDataText:@"You need to provide data for the chart BLAH."];
-    
-
-  
 }
 
-
--(void)generateData
-{
-    NSArray *array = [self.user.game allObjects];
-    NSArray *sortedArray;
-    sortedArray = [array sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-        NSDate *first = [(Game*)a gameDate];
-        NSDate *second = [(Game*)b gameDate];
-        return [first compare:second];
-    }];
+-(void) viewDidLoad{
     
-    if ([array count]==0) {
-        return;
-    }
     
-    NSMutableArray *contentArray = [NSMutableArray array];
+    CGFloat thisview = self.view.frame.size.height;
+    self.userDataLineChart = [[AAChartView alloc]init];
+    self.userDataLineChart.frame = CGRectMake(250, 0, chartViewWidth, chartViewHeight);
+    //self.userDataLineChart.scrollEnabled = YES;
+    self.userDataLineChart.contentHeight =chartViewHeight;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    for ( NSUInteger i = 0; i < [sortedArray count]; i++ ) {
-        
-        NSNumber  *dateNumber=[NSNumber numberWithInt:i];
-        NSNumber  *yvalue=0;
-        
-        if ([currentType isEqualToString:@"Power"]) {
-            yvalue=[[sortedArray objectAtIndex:i]valueForKey:@"power"];
-            [contentArray addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:dateNumber, @"x", yvalue, @"y", nil]];
-        }else if([currentType isEqualToString:@"Duration"])
-        {
-            yvalue=[[sortedArray objectAtIndex:i]valueForKey:@"duration"];
-            [contentArray addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:dateNumber, @"x", yvalue, @"y", nil]];
-        }else
-        {
-            yvalue=[[sortedArray objectAtIndex:i]valueForKey:@"power"];
-        }
-    }
-    
-    self.plotData = contentArray;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self.view addSubview:self.userDataLineChart];
 }
 
 

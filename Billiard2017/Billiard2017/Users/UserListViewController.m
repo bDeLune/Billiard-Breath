@@ -106,7 +106,12 @@
 
 -(void)goBack
 {
-    [self.delegate userListDismissRequest:self];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.delegate userListDismissRequest:self];
+    });
+    
+
 }
 
 -(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
