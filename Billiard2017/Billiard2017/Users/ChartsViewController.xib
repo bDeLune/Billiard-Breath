@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="ipad12_9" orientation="landscape">
+    <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -21,24 +21,21 @@
                 <viewControllerLayoutGuide type="top" id="T0e-ZC-xou"/>
                 <viewControllerLayoutGuide type="bottom" id="mBs-Ou-6rK"/>
             </layoutGuides>
-            <view key="view" autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="s17-fh-eFZ" customClass="AAChartView">
-                <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+            <view key="view" autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" id="s17-fh-eFZ" customClass="AAChartView">
+                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="4Bl-dQ-WzR" customClass="LineChartView" customModule="Charts">
-                        <rect key="frame" x="0.0" y="104" width="1366" height="920"/>
+                    <view autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Bl-dQ-WzR" customClass="LineChartView" customModule="Charts">
+                        <rect key="frame" x="0.0" y="104" width="1024" height="664"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="leading" secondItem="s17-fh-eFZ" secondAttribute="leading" id="8p2-fF-aqa"/>
-                    <constraint firstItem="mBs-Ou-6rK" firstAttribute="top" secondItem="4Bl-dQ-WzR" secondAttribute="bottom" id="NFh-3S-6e1"/>
-                    <constraint firstItem="mBs-Ou-6rK" firstAttribute="top" secondItem="4Bl-dQ-WzR" secondAttribute="bottom" id="ddy-Kk-ZB9"/>
-                    <constraint firstAttribute="trailing" secondItem="4Bl-dQ-WzR" secondAttribute="trailing" id="iSh-ee-rVE"/>
-                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="bottom" secondItem="mBs-Ou-6rK" secondAttribute="top" id="lyJ-2F-hLT"/>
-                    <constraint firstItem="mBs-Ou-6rK" firstAttribute="top" secondItem="4Bl-dQ-WzR" secondAttribute="bottom" id="sMW-VJ-XQa"/>
-                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="top" secondItem="T0e-ZC-xou" secondAttribute="bottom" constant="84" id="yC2-WW-GUH"/>
+                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="bottom" secondItem="mBs-Ou-6rK" secondAttribute="top" id="JGl-KN-sRc"/>
+                    <constraint firstAttribute="trailing" secondItem="4Bl-dQ-WzR" secondAttribute="trailing" id="N5a-Aw-O1a"/>
+                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="top" secondItem="T0e-ZC-xou" secondAttribute="bottom" constant="84" id="keJ-4e-0Bh"/>
+                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="leading" secondItem="s17-fh-eFZ" secondAttribute="leading" id="mAk-O2-kJN"/>
                 </constraints>
             </view>
             <extendedEdge key="edgesForExtendedLayout" top="YES"/>

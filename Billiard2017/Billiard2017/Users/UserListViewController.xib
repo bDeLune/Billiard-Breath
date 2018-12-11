@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
-    <device id="ipad9_7" orientation="portrait">
+    <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,8 +15,8 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableView opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" indicatorStyle="black" bouncesZoom="NO" style="grouped" allowsSelectionDuringEditing="YES" rowHeight="50" sectionHeaderHeight="30" estimatedSectionHeaderHeight="10" sectionFooterHeight="1" id="8">
-            <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+        <tableView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" indicatorStyle="black" bouncesZoom="NO" style="grouped" allowsSelectionDuringEditing="YES" rowHeight="50" sectionHeaderHeight="30" estimatedSectionHeaderHeight="10" sectionFooterHeight="1" contentViewInsetsToSafeArea="NO" id="8">
+            <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black"/>

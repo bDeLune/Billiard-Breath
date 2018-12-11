@@ -13,9 +13,9 @@
 #import "Game.h"
 
 @interface ChartsViewController : UIViewController {
-     NSString  *currentType;
-     NSString *lastDate;
-     BOOL chartAdded;
+    NSString  *currentType;
+    NSString *lastDate;
+    BOOL chartAdded;
     CGFloat chartViewWidth;
     CGFloat chartViewHeight;
 }
@@ -48,9 +48,8 @@
     
     //CGFloat topBar = self.navigationController.navigationBar.frame.size.height;
     
-    chartViewWidth  = width;
-    chartViewHeight = height;
-   
+    //chartViewWidth  = width;
+    //chartViewHeight = height;
     
 
     
@@ -197,14 +196,11 @@
 }
 
 -(void) viewDidLoad{
-    
-    
-    CGFloat thisview = self.view.frame.size.height;
+
     self.userDataLineChart = [[AAChartView alloc]init];
-    self.userDataLineChart.frame = CGRectMake(250, 0, chartViewWidth, chartViewHeight);
-    //self.userDataLineChart.scrollEnabled = YES;
-    self.userDataLineChart.contentHeight =chartViewHeight;
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.userDataLineChart.frame = CGRectMake(100, 0, self.view.bounds.size.width,  self.view.bounds.size.height);
+    //self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     
     [self.view addSubview:self.userDataLineChart];
 }
