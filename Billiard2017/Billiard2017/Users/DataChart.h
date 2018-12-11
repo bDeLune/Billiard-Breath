@@ -6,7 +6,6 @@
 //  Copyright © 2018 ROCUDO. All rights reserved.
 //
 #import <UIKit/UIKit.h>
-#import <Charts/Charts.h>
 
 @interface DataChart : UIView
 

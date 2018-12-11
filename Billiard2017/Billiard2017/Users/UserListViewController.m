@@ -13,8 +13,6 @@
 #import "Billiard2017.pch"
 #import "AAChartKit.h"
 
-@import Charts;
-
 @interface UserListViewController()<UIActionSheetDelegate,HeaderViewProtocl>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
@@ -22,8 +20,7 @@
 @property (nonatomic, strong) UIBarButtonItem *activityIndicator;
 @property (nonatomic) NSMutableArray *userList;
 @property(nonatomic,strong)GraphViewController *graph;
-@property(nonatomic,strong)ChartsViewController *chart;
-@property(nonatomic,strong)DataChart *dataChart;
+@property(nonatomic,strong)ChartsViewController *chart; 
 @property(nonatomic,assign)User  *deleteUser;
 @end
 

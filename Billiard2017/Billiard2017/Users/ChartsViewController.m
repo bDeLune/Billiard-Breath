@@ -11,9 +11,8 @@
 #import "AAChartKit.h"
 #import "User.h"
 #import "Game.h"
-@import Charts;
 
-@interface ChartsViewController : UIViewController <ChartViewDelegate>{
+@interface ChartsViewController : UIViewController {
      NSString  *currentType;
      NSString *lastDate;
      BOOL chartAdded;

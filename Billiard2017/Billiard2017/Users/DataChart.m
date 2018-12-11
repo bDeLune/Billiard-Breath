@@ -7,11 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@import Charts;
 //#import "Billiard2017-Bridging-Header.h"
-#import "DataChart.h"
 
-@interface DataChart () <ChartViewDelegate>
+@interface DataChart ()
 @property (strong, nonatomic) IBOutlet LineChartView *userDataLineChart;
 //@property (nonatomic, strong) IBOutlet LineChartView *chartView;
 //@property (nonatomic, strong) IBOutlet UISlider *sliderX;
@@ -190,21 +188,4 @@
 }
 
 #pragma mark - ChartViewDelegate
-
-- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
-{
-    NSLog(@"chartValueSelected");
-}
-
-- (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
-{
-    NSLog(@"chartValueNothingSelected");
-}
-
-
 @end
-
-
-
-
-

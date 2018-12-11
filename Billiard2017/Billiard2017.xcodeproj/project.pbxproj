@@ -90,12 +90,8 @@
 		7186DEE11E51CACC00F71F0C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7186DEE01E51CACC00F71F0C /* Default.png */; };
 		718E215A1E51DD0300E8357B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 718E21591E51DD0300E8357B /* LaunchScreen.storyboard */; };
 		718E215C1E51E43000E8357B /* icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 718E215B1E51E43000E8357B /* icon-120.png */; };
-		71B5942A21BC2A6D0082EE00 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B5942721BC2A600082EE00 /* Charts.framework */; };
-		71B5942B21BC2A6D0082EE00 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71B5942721BC2A600082EE00 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71B5944F21BC2FA10082EE00 /* ChartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B5944E21BC2FA10082EE00 /* ChartsViewController.m */; };
 		71B5945221BC2FE60082EE00 /* ChartsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71B5945121BC2FE60082EE00 /* ChartsViewController.xib */; };
-		71B5946821BC3D2F0082EE00 /* DataChart.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71B5946721BC3D2F0082EE00 /* DataChart.xib */; };
-		71B5946A21BC3DB90082EE00 /* DataChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B5946921BC3DB90082EE00 /* DataChart.m */; };
 		71C9F9D81E53341D0078070D /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9F9CC1E53341D0078070D /* Game.m */; };
 		71C9F9D91E53341D0078070D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9F9CE1E53341D0078070D /* User.m */; };
 		71C9F9DA1E53341D0078070D /* AbstractGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9F9D11E53341D0078070D /* AbstractGame.m */; };
@@ -165,27 +161,6 @@
 			remoteGlobalIDString = C38A09B91A4619A900D45436;
 			remoteInfo = "CorePlot-CocoaTouch";
 		};
-		71B5942621BC2A600082EE00 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 71B5942121BC2A600082EE00 /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
-			remoteInfo = Charts;
-		};
-		71B5942821BC2A600082EE00 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 71B5942121BC2A600082EE00 /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
-			remoteInfo = ChartsTests;
-		};
-		71B5942C21BC2A6D0082EE00 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 71B5942121BC2A600082EE00 /* Charts.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = A58A4ED274A941CA248EA921;
-			remoteInfo = Charts;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -205,7 +180,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				71B5942B21BC2A6D0082EE00 /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,13 +324,9 @@
 		718E21591E51DD0300E8357B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		718E215B1E51E43000E8357B /* icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-120.png"; sourceTree = "<group>"; };
 		71AEAEF821303AA70051EE01 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		71B5942121BC2A600082EE00 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../../../../Downloads/Charts-master 3/Charts.xcodeproj"; sourceTree = "<group>"; };
 		71B5944E21BC2FA10082EE00 /* ChartsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChartsViewController.m; sourceTree = "<group>"; };
 		71B5945021BC2FC40082EE00 /* ChartsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChartsViewController.h; sourceTree = "<group>"; };
 		71B5945121BC2FE60082EE00 /* ChartsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartsViewController.xib; sourceTree = "<group>"; };
-		71B5946721BC3D2F0082EE00 /* DataChart.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DataChart.xib; sourceTree = "<group>"; };
-		71B5946921BC3DB90082EE00 /* DataChart.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataChart.m; sourceTree = "<group>"; };
-		71B5946B21BC3DCB0082EE00 /* DataChart.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataChart.h; sourceTree = "<group>"; };
 		71C9F9CB1E53341D0078070D /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		71C9F9CC1E53341D0078070D /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		71C9F9CD1E53341D0078070D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -399,7 +369,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				710857681E439B8A00479032 /* Accelerate.framework in Frameworks */,
-				71B5942A21BC2A6D0082EE00 /* Charts.framework in Frameworks */,
 				710857651E439B6200479032 /* libCorePlot-CocoaTouch.a in Frameworks */,
 				7186DEB41E4DC59F00F71F0C /* libMelodySmart.a in Frameworks */,
 			);
@@ -413,7 +382,6 @@
 			children = (
 				712F3EAA21BC57920015822F /* AAChartKitLib */,
 				718E21591E51DD0300E8357B /* LaunchScreen.storyboard */,
-				71B5942121BC2A600082EE00 /* Charts.xcodeproj */,
 				710857431E439B4100479032 /* CorePlot.xcodeproj */,
 				710857281E439A0A00479032 /* Billiard2017 */,
 				710857271E439A0A00479032 /* Products */,
@@ -667,20 +635,8 @@
 				71C9FA1E1E5344EB0078070D /* UserListViewController.h */,
 				71C9FA1F1E5344EB0078070D /* UserListViewController.m */,
 				7186DE1C1E4DBF7100F71F0C /* UserListViewController.xib */,
-				71B5946921BC3DB90082EE00 /* DataChart.m */,
-				71B5946B21BC3DCB0082EE00 /* DataChart.h */,
-				71B5946721BC3D2F0082EE00 /* DataChart.xib */,
 			);
 			path = Users;
-			sourceTree = "<group>";
-		};
-		71B5942221BC2A600082EE00 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				71B5942721BC2A600082EE00 /* Charts.framework */,
-				71B5942921BC2A600082EE00 /* ChartsTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		71C9F9CF1E53341D0078070D /* Game */ = {
@@ -768,7 +724,6 @@
 			);
 			dependencies = (
 				710857641E439B5D00479032 /* PBXTargetDependency */,
-				71B5942D21BC2A6D0082EE00 /* PBXTargetDependency */,
 			);
 			name = Billiard2017;
 			productName = Billiard2017;
@@ -804,10 +759,6 @@
 			productRefGroup = 710857271E439A0A00479032 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
-				{
-					ProductGroup = 71B5942221BC2A600082EE00 /* Products */;
-					ProjectRef = 71B5942121BC2A600082EE00 /* Charts.xcodeproj */;
-				},
 				{
 					ProductGroup = 710857441E439B4100479032 /* Products */;
 					ProjectRef = 710857431E439B4100479032 /* CorePlot.xcodeproj */;
@@ -863,20 +814,6 @@
 			remoteRef = 710857611E439B4200479032 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		71B5942721BC2A600082EE00 /* Charts.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Charts.framework;
-			remoteRef = 71B5942621BC2A600082EE00 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		71B5942921BC2A600082EE00 /* ChartsTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ChartsTests.xctest;
-			remoteRef = 71B5942821BC2A600082EE00 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -897,7 +834,6 @@
 				7186DE971E4DBFA400F71F0C /* BilliardBreathAppIcon29x29.png in Resources */,
 				71693B90206937D3009F14EA /* BilliardBreath1024X1024.png in Resources */,
 				718E215A1E51DD0300E8357B /* LaunchScreen.storyboard in Resources */,
-				71B5946821BC3D2F0082EE00 /* DataChart.xib in Resources */,
 				7186DEA01E4DBFA400F71F0C /* BilliardBreathAppIcon120x120.png in Resources */,
 				713FC8A52177DEBC002259DF /* SplashViewController.xib in Resources */,
 				7186DDF81E4DBF4100F71F0C /* IMPACT RING METAL DESEND 01.wav in Resources */,
@@ -939,7 +875,6 @@
 				712F3EF121BC57930015822F /* AAChart.m in Sources */,
 				7186DE0A1E4DBF5F00F71F0C /* BilliardBallViewController.m in Sources */,
 				7186DE311E4DBF7100F71F0C /* PlotItem.m in Sources */,
-				71B5946A21BC3DB90082EE00 /* DataChart.m in Sources */,
 				71C9FA061E53356C0078070D /* AddNewScoreOperation.m in Sources */,
 				712F3EFF21BC57930015822F /* AAStyle.m in Sources */,
 				712F3F0021BC57930015822F /* AASubtitle.m in Sources */,
@@ -1005,11 +940,6 @@
 			isa = PBXTargetDependency;
 			name = "CorePlot-CocoaTouch";
 			targetProxy = 710857631E439B5D00479032 /* PBXContainerItemProxy */;
-		};
-		71B5942D21BC2A6D0082EE00 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Charts;
-			targetProxy = 71B5942C21BC2A6D0082EE00 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
