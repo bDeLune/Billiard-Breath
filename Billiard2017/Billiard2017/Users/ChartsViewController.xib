@@ -21,28 +21,23 @@
                 <viewControllerLayoutGuide type="top" id="T0e-ZC-xou"/>
                 <viewControllerLayoutGuide type="bottom" id="mBs-Ou-6rK"/>
             </layoutGuides>
-            <view key="view" autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" id="s17-fh-eFZ" customClass="AAChartView">
+            <view key="view" autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" id="s17-fh-eFZ" customClass="AAChartView">
                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <view autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Bl-dQ-WzR" customClass="LineChartView" customModule="Charts">
-                        <rect key="frame" x="0.0" y="104" width="1024" height="664"/>
+                    <view autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Bl-dQ-WzR" customClass="LineChartView" customModule="Charts">
+                        <rect key="frame" x="0.0" y="125" width="1024" height="715"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                <constraints>
-                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="bottom" secondItem="mBs-Ou-6rK" secondAttribute="top" id="JGl-KN-sRc"/>
-                    <constraint firstAttribute="trailing" secondItem="4Bl-dQ-WzR" secondAttribute="trailing" id="N5a-Aw-O1a"/>
-                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="top" secondItem="T0e-ZC-xou" secondAttribute="bottom" constant="84" id="keJ-4e-0Bh"/>
-                    <constraint firstItem="4Bl-dQ-WzR" firstAttribute="leading" secondItem="s17-fh-eFZ" secondAttribute="leading" id="mAk-O2-kJN"/>
-                </constraints>
             </view>
             <extendedEdge key="edgesForExtendedLayout" top="YES"/>
             <connections>
                 <outlet property="userDataLineChart" destination="4Bl-dQ-WzR" id="S9u-Jd-JkO"/>
             </connections>
-            <point key="canvasLocation" x="208.19912152269399" y="-527.34375"/>
+            <point key="canvasLocation" x="208.0078125" y="-527.34375"/>
         </viewController>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
     </objects>

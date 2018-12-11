@@ -198,7 +198,7 @@
 -(void) viewDidLoad{
 
     self.userDataLineChart = [[AAChartView alloc]init];
-    self.userDataLineChart.frame = CGRectMake(100, 0, self.view.bounds.size.width,  self.view.bounds.size.height);
+    self.userDataLineChart.frame = CGRectMake(0, 0, self.view.bounds.size.width,  self.view.bounds.size.height);
     //self.edgesForExtendedLayout = UIRectEdgeNone;
     
     
