@@ -8,7 +8,6 @@
 #import "AllGamesForDayTableVC.h"
 #import "GCDQueue.h"
 #import "DataChart.h"
-#import "ChartsViewController.h"
 //#import "Billiard2017-Bridging-Header.h"
 #import "Billiard2017.pch"
 #import "AAChartKit.h"
@@ -99,6 +98,26 @@
     
     UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.leftBarButtonItem = backBarButtonItem;
+    
+    UISwipeGestureRecognizer *recognizer1;
+    recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [recognizer setDirection:(  UISwipeGestureRecognizerDirectionLeft)];
+    UIButton *backButton1 = [UIButton buttonWithType:UIButtonTypeSystem];
+    [backButton1 setTitle:@"Back" forState:UIControlStateNormal];
+    backButton.frame = CGRectMake(0, 0, 150, 40);
+    
+    [backButton1 addTarget:self
+                   action:@selector(goBack)
+         forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:backButton1];
+
+}
+
+
+
+-(void)remove{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)goBack
@@ -318,6 +337,10 @@
     //[[GCDQueue mainQueue]queueBlock:^{
     //    [self.graph setDetailItem:plot];
    // }];
+    
+   // [[NSNotificationCenter defaultCenter] postNotificationName:Remove_CurrentView object:nil];
+    
+  //  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(remove) name:Remove_CurrentView object:nil];
     
 
     [self.navigationController pushViewController:self.chart animated:YES];

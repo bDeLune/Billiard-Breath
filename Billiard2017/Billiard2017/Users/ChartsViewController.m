@@ -13,7 +13,6 @@
 #import "Game.h"
 #import "HeaderView.h"
 
-
 @interface ChartsViewController : UIViewController <HeaderViewProtocl>{
     NSString  *currentType;
     NSString *lastDate;
@@ -49,6 +48,7 @@
     self.userData = userData;
     self.userTitle = self.user.userName;
     self.graphTitle.text = self.user.userName;
+   // self.graphTitle. = self.user.userName;
     currentType = @"Duration";
     
     //CGFloat topBar = self.navigationController.navigationBar.frame.size.height;
@@ -59,12 +59,8 @@
 }
 - (IBAction)backButtonPressed:(id)sender {
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.navigationController.navigationBar.delegate=self;
-        [self.delegate chartsDismissRequest:self];
-        
-   });
-
+    NSLog(@"back please");
+[self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void) viewWillLayoutSubviews{
@@ -186,10 +182,7 @@
     //aaChartModel.colorsThemeSet(@[@"#35b31c",@"#35b31c",@"#35b31c",@"#35b31c",@"#35b31c",@"#35b31c",@"#35b31c",@"#ef3118",@"#35b31c",@"#ef3118",@"#ef3118", @"#35b31c",@"#ef3118"]);
     aaChartModel.colorsThemeSet(markerColours);
     //aaChartModel.categoriesSet(dates);
-    
-    
     //aaChartModel.seriesSet();
-    
     
     [self.userDataLineChart aa_drawChartWithChartModel:aaChartModel];
     
@@ -213,6 +206,8 @@
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
     [self.navigationController.navigationBar setAlpha:0];
+    
+    self.graphTitle.text = self.user.userName;
 
 }
 

@@ -1,4 +1,5 @@
 #import <UIKit/UIKit.h>
+#import "ChartsViewController.h"
 
 @class UserListViewController;
 
@@ -8,7 +9,8 @@
 
 @end
 
-@interface UserListViewController : UITableViewController<UIAlertViewDelegate, ChartsViewProtocol>
+
+@interface UserListViewController : UITableViewController<UIAlertViewDelegate, ChartRemoveProtocol>
 @property (strong) NSPersistentStoreCoordinator *sharedPSC;
 @property(nonatomic,unsafe_unretained)id<UserListProtoCol>delegate;
 - (void) getListOfUsers;
