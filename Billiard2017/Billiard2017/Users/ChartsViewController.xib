@@ -11,7 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChartsViewController">
             <connections>
+                <outlet property="backButton" destination="zfe-pM-1fe" id="g1k-i6-dBf"/>
                 <outlet property="chartsView" destination="h2P-xm-rZ2" id="bfJ-t6-abY"/>
+                <outlet property="graphTitle" destination="CA2-Dx-LXx" id="h38-In-9zr"/>
                 <outlet property="userLineChart" destination="s17-fh-eFZ" id="iaN-kk-RFr"/>
                 <outlet property="view" destination="4Bl-dQ-WzR" id="rRd-rx-LoQ"/>
             </connections>
@@ -26,8 +28,29 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <view autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Bl-dQ-WzR" customClass="LineChartView" customModule="Charts">
-                        <rect key="frame" x="0.0" y="125" width="1024" height="715"/>
+                        <rect key="frame" x="20" y="420" width="1004" height="635"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zfe-pM-1fe">
+                                <rect key="frame" x="0.0" y="0.0" width="84" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="ISp-HT-vps"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="PLACEHOLDER" textAlignment="center" minimumFontSize="26" translatesAutoresizingMaskIntoConstraints="NO" id="CA2-Dx-LXx">
+                                <rect key="frame" x="319" y="8" width="420" height="78"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </subviews>

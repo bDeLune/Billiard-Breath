@@ -11,14 +11,18 @@
 #import "AAChartKit.h"
 #import "User.h"
 #import "Game.h"
+#import "HeaderView.h"
 
-@interface ChartsViewController : UIViewController {
+
+@interface ChartsViewController : UIViewController <HeaderViewProtocl>{
     NSString  *currentType;
     NSString *lastDate;
     BOOL chartAdded;
     CGFloat chartViewWidth;
     CGFloat chartViewHeight;
 }
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet UITextField *graphTitle;
 @property (weak, nonatomic) IBOutlet UIView *userLineChart;
 @property (strong, nonatomic) IBOutlet AAChartView *userDataLineChart;
 @property (strong, nonatomic) IBOutlet ChartsViewController *chartsView;
@@ -44,16 +48,23 @@
     self.user = user;
     self.userData = userData;
     self.userTitle = self.user.userName;
+    self.graphTitle.text = self.user.userName;
     currentType = @"Duration";
     
     //CGFloat topBar = self.navigationController.navigationBar.frame.size.height;
-    
     //chartViewWidth  = width;
     //chartViewHeight = height;
-    
 
-    
     return self;
+}
+- (IBAction)backButtonPressed:(id)sender {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.navigationController.navigationBar.delegate=self;
+        [self.delegate chartsDismissRequest:self];
+        
+   });
+
 }
 
 - (void) viewWillLayoutSubviews{
@@ -64,8 +75,6 @@
     
     CGFloat navheight = self.navigationController.view.frame.size.height;
     //CGFloat height = chartViewHeight - navheight;
-
-        
 
     self.title =self.userTitle;
     
@@ -135,15 +144,17 @@
                  AAObject(AASeriesElement)
                  .nameSet(@"Exhale"),
                  AAObject(AASeriesElement)
+                 .nameSet(@"Inhale")
                  .dataSet(durationVals )
                  .markerSet(AAMarker.new
                             .fillColorSet(@"#ffffff")
-                            .lineWidthSet(@2)
+                            .lineWidthSet(@5)
                             ),
-                 @{@"name" : @"Inhale",
+                 @{
                      @"data" : durationVals,
+                     @"namesSet" : @"Inhale",
                      @"colorByPoint" : @true,
-                     @"markerRadius" : @15,
+                     @"markerRadius" : @25,
                      @"markerSymbol" : @"circle"
                    }
                  
@@ -174,7 +185,7 @@
     
     //aaChartModel.colorsThemeSet(@[@"#35b31c",@"#35b31c",@"#35b31c",@"#35b31c",@"#35b31c",@"#35b31c",@"#35b31c",@"#ef3118",@"#35b31c",@"#ef3118",@"#ef3118", @"#35b31c",@"#ef3118"]);
     aaChartModel.colorsThemeSet(markerColours);
-    aaChartModel.categoriesSet(dates);
+    //aaChartModel.categoriesSet(dates);
     
     
     //aaChartModel.seriesSet();
@@ -183,7 +194,7 @@
     [self.userDataLineChart aa_drawChartWithChartModel:aaChartModel];
     
     //// set the content height of aaChartView
-      //self.userDataLineChart.contentHeight = chartViewHeight;
+   // self.userDataLineChart.contentHeight = chartViewHeight;
    // }
 
 }
@@ -192,17 +203,17 @@
 {
     [super viewWillAppear: YES];
     NSLog(@"THIS VIEW HAS LOADED");
-    //[self.userDataLineChart setNoDataText:@"You need to provide data for the chart BLAH."];
-}
-
--(void) viewDidLoad{
-
     self.userDataLineChart = [[AAChartView alloc]init];
-    self.userDataLineChart.frame = CGRectMake(0, 0, self.view.bounds.size.width,  self.view.bounds.size.height);
-    //self.edgesForExtendedLayout = UIRectEdgeNone;
-    
+    self.userDataLineChart.frame = CGRectMake(0, 70, self.view.bounds.size.width,  700);
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     
     [self.view addSubview:self.userDataLineChart];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+    [self.navigationController.navigationBar setAlpha:0];
+
 }
 
 

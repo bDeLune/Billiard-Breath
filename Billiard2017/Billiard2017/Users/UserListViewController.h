@@ -4,11 +4,12 @@
 
 @protocol UserListProtoCol <NSObject>
 
--(void)userListDismissRequest:(UserListViewController*)caller;
+-(void) userListDismissRequest:(UserListViewController*)caller;
 
 @end
-@interface UserListViewController : UITableViewController<UIAlertViewDelegate>
+
+@interface UserListViewController : UITableViewController<UIAlertViewDelegate, ChartsViewProtocol>
 @property (strong) NSPersistentStoreCoordinator *sharedPSC;
 @property(nonatomic,unsafe_unretained)id<UserListProtoCol>delegate;
--(void)getListOfUsers;
+- (void) getListOfUsers;
 @end

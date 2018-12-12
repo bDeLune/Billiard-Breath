@@ -13,8 +13,7 @@
 @implementation DurationGame
 -(id)init
 {
-    if (self==[super init]) {
-        
+    if (self==[super init]) {        
         self.currentBall=0;
         self.totalBalls=8;
         self.secondsPerballEasy=30;
