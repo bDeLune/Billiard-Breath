@@ -136,11 +136,24 @@
     //.categoriesSet(@[@"Java",@"Swift",@"Python",@"Ruby", @"PHP",@"Go",@"C",@"C#",@"C++"])
     .categoriesSet(dates)
     .yAxisTitleSet(@"Duration")
+    
     .seriesSet(@[
-                 AAObject(AASeriesElement)
-                 .nameSet(@"Exhale"),
+                // AAObject(AASeriesElement)
+                // .nameSet(@"Exhale"),
                  AAObject(AASeriesElement)
                  .nameSet(@"Inhale")
+                 .dataSet(durationVals)
+                 .colorSet((id)markerColours)
+                 .allowPointSelectSet(YES)
+                 .showInLegendSet(false)
+                 .markerSet(AAMarker.new
+                            .fillColorSet(@"#ffffff")
+                            .lineWidthSet(@5)
+                            ),
+                 
+
+                 AAObject(AASeriesElement)
+                 .nameSet(@"Exhale")
                  .dataSet(durationVals )
                  .markerSet(AAMarker.new
                             .fillColorSet(@"#ffffff")
@@ -148,10 +161,13 @@
                             ),
                  @{
                      @"data" : durationVals,
+                     @"name" : @"Inhale",
                      @"namesSet" : @"Inhale",
                      @"colorByPoint" : @true,
                      @"markerRadius" : @25,
-                     @"markerSymbol" : @"circle"
+                     @"markerSymbol" : @"circle",
+                     //@"showInLegendSet" : true
+                     //.showInLegendSet(false)
                    }
                  
     /*
@@ -181,7 +197,7 @@
     
     //aaChartModel.colorsThemeSet(@[@"#35b31c",@"#35b31c",@"#35b31c",@"#35b31c",@"#35b31c",@"#35b31c",@"#35b31c",@"#ef3118",@"#35b31c",@"#ef3118",@"#ef3118", @"#35b31c",@"#ef3118"]);
     aaChartModel.colorsThemeSet(markerColours);
-    //aaChartModel.categoriesSet(dates);
+    aaChartModel.categoriesSet(dates);
     //aaChartModel.seriesSet();
     
     [self.userDataLineChart aa_drawChartWithChartModel:aaChartModel];
