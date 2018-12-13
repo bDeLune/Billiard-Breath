@@ -77,6 +77,35 @@
     return [mutable count];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    
+    
+    UISwipeGestureRecognizer *recognizer;
+    recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [recognizer setDirection:(  UISwipeGestureRecognizerDirectionLeft)];
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [backButton setTitle:@"Back" forState:UIControlStateNormal];
+   // [backButton setBackgroundColor: [UIColor colo]];
+    backButton.frame = CGRectMake(0, 0, 100, 160);
+    //backButton.bounds = CGRectOffset(backButton.bounds, -144, -33);
+    
+    UIView *backButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 63, 33)];
+    backButtonView.bounds = CGRectOffset(backButtonView.bounds, -24, -27);
+    [backButtonView addSubview:backButton];
+     
+    
+    [backButton addTarget:self
+                   action:@selector(goBack)
+         forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButtonView];
+    self.navigationItem.leftBarButtonItem = backBarButtonItem;
+
+    self.navigationController.navigationBar.translucent = YES;
+    [self.navigationController.navigationBar setAlpha:10];
+}
+    
 - (void)viewDidLoad
 {
     self.userList=[NSMutableArray new];
@@ -85,33 +114,7 @@
     
     [self getListOfUsers];
     
-    UISwipeGestureRecognizer *recognizer;
-    recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-    [recognizer setDirection:(  UISwipeGestureRecognizerDirectionLeft)];
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [backButton setTitle:@"Back" forState:UIControlStateNormal];
-    backButton.frame = CGRectMake(0, 0, 50, 40);
-    
-    [backButton addTarget:self
-                   action:@selector(goBack)
-         forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    self.navigationItem.leftBarButtonItem = backBarButtonItem;
-    
-    UISwipeGestureRecognizer *recognizer1;
-    recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-    [recognizer setDirection:(  UISwipeGestureRecognizerDirectionLeft)];
-    UIButton *backButton1 = [UIButton buttonWithType:UIButtonTypeSystem];
-    [backButton1 setTitle:@"Back" forState:UIControlStateNormal];
-    backButton.frame = CGRectMake(0, 0, 150, 40);
-    
-    [backButton1 addTarget:self
-                   action:@selector(goBack)
-         forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.view addSubview:backButton1];
-
+   // [self.view addSubview:backButton];
 }
 
 
