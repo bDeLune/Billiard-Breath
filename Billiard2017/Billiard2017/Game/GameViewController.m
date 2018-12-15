@@ -49,12 +49,12 @@
 
 -(void)userListDismissRequest:(UserListViewController *)caller
 {
-    //[[GCDQueue mainQueue]queueBlock:^{
-        [UIView transitionFromView:self.navcontroller.view toView:self.view duration:0.1 options:UIViewAnimationOptionTransitionFlipFromLeft completion:^(BOOL finished){
+    [[GCDQueue mainQueue]queueBlock:^{
+        [UIView transitionFromView:self.navcontroller.view toView:self.view duration:0.5 options:UIViewAnimationOptionTransitionFlipFromLeft completion:^(BOOL finished){
             self.userList.sharedPSC=self.sharedPSC;
             self.userList.delegate=self;
         }];
-    //}];
+    }];
 }
 
 -(IBAction)goToUsersScreen:(id)sender

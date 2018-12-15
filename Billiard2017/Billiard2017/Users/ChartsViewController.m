@@ -48,6 +48,8 @@
     self.userData = userData;
     self.userTitle = self.user.userName;
     self.graphTitle.text = self.user.userName;
+    UIFont* boldFont = [UIFont boldSystemFontOfSize:[UIFont systemFontSize]];
+    [self.graphTitle setFont:boldFont];
    // self.graphTitle. = self.user.userName;
     currentType = @"Duration";
     
@@ -126,7 +128,23 @@
     for (int b=0; b< [sortedArray count]; b++) {
         Game *game=[sortedArray objectAtIndex:b];
         NSNumber * duration = game.duration;
-        [durationVals addObject: duration];
+        
+        NSLog(@"Should be %@", duration);
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        
+        [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        [formatter setMaximumFractionDigits:3];
+        [formatter setRoundingMode: NSNumberFormatterRoundUp];
+        
+        NSString *numberString = [formatter stringFromNumber:duration];
+        
+        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+        f.numberStyle = NSNumberFormatterDecimalStyle;
+        NSNumber *myNumber = [f numberFromString:numberString];
+        
+        NSLog(@"Actually Is %@", myNumber);
+        
+        [durationVals addObject: myNumber];
     }
     
     
@@ -146,15 +164,18 @@
     .markerSymbolSet(@"circle")
     .markerSymbolStyleSet(AAChartSymbolStyleTypeInnerBlank)
     .seriesSet(@[
+                 //MAIN
                  AAObject(AASeriesElement)
                  .nameSet(@"Exhale")
                  .dataSet(durationVals)
                  .showInLegendSet(true)
                  .markerSet(AAMarker.new
                             .fillColorSet(@"#35b31c")
-                            .lineWidthSet(@3)
+                            .lineWidthSet(@2)
                             .symbolSet(@"circle")
                             ),
+                 
+                 //RED MARKERS
                  AAObject(AASeriesElement)
                  .nameSet(@"Inhale")
                  .dataSet(durationVals )
@@ -164,7 +185,7 @@
                                 .enabledSet(YES)
                                 .styleSet(AAStyle.new
                                           .colorSet(@"#000000")
-                                          .fontSizeSet(@"10px")
+                                          .fontSizeSet(@"12px")
                                           )
                                 )
                  .markerSet(AAMarker.new
@@ -178,12 +199,13 @@
                  //           .lineWidthSet(@6)
                  //           ),
 
+                //SECOND MARKER
                  @{
                      @"data" : @"",
                      @"name" : @"Inhale",
                      @"namesSet" : @"Inhale",
-                     //@"colorByPoint" : @true,
-                     @"markerRadius" : @25,
+                     @"colorByPoint" : @true,
+                     @"markerRadius" : @15,
                      @"markerSymbol" : @"circle",
                      @"showInLegendSet" : @true,
                      @"showInLegend" : @true,
@@ -192,7 +214,7 @@
                      @"marker": @{
                              @"fillColor": @"#ef3118",
                              @"symbol": @"circle",
-                             @"lineWidth": @4,
+                             @"lineWidth": @2,
                              @"lineColor": @"#ef3118"
                              }
                    }
@@ -250,8 +272,8 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self.view addSubview:self.userDataLineChart];
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    //[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    //self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
     [self.navigationController.navigationBar setAlpha:0];
     

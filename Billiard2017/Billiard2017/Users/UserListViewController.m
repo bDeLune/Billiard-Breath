@@ -77,6 +77,11 @@
     return [mutable count];
 }
 
+-(void) viewWillAppear:(BOOL)animated{
+    
+     [self.navigationController.navigationBar setAlpha:10];
+}
+
 - (void)viewDidLoad
 {
     self.userList=[NSMutableArray new];
@@ -99,18 +104,7 @@
     UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.leftBarButtonItem = backBarButtonItem;
     
-    UISwipeGestureRecognizer *recognizer1;
-    recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-    [recognizer setDirection:(  UISwipeGestureRecognizerDirectionLeft)];
-    UIButton *backButton1 = [UIButton buttonWithType:UIButtonTypeSystem];
-    [backButton1 setTitle:@"Back" forState:UIControlStateNormal];
-    backButton.frame = CGRectMake(0, 0, 150, 40);
-    
-    [backButton1 addTarget:self
-                   action:@selector(goBack)
-         forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.view addSubview:backButton1];
+   // [self.view addSubview:backButton1];
 
 }
 
