@@ -139,6 +139,7 @@
     .categoriesSet(dates)
     .colorsThemeSet(markerColours)
     .yAxisTitleSet(@"Duration")
+    .tooltipEnabledSet(FALSE)
     .categoriesSet(durationVals)
     .colorsThemeSet(markerColours)
     .dataLabelEnabledSet(FALSE)
@@ -150,8 +151,8 @@
                  .dataSet(durationVals)
                  .showInLegendSet(true)
                  .markerSet(AAMarker.new
-                            //.fillColorSet(@"#FF0000")
-                            .lineWidthSet(@6)
+                            .fillColorSet(@"#35b31c")
+                            .lineWidthSet(@3)
                             .symbolSet(@"circle")
                             ),
                  AAObject(AASeriesElement)
@@ -167,10 +168,10 @@
                                           )
                                 )
                  .markerSet(AAMarker.new
-                            //.fillColorSet(@"#FF0000")
+                            .fillColorSet(@"#35b31c")
                             .lineWidthSet(@6)
                             .symbolSet(@"circle")
-                            .radiusSet(@6)
+                            .radiusSet(@3)
                             ),
                  //.markerSet(AAMarker.new
                  //           .fillColorSet(@"#FF0000")
@@ -189,10 +190,10 @@
                 //     @"legendSymbol" : @"circle",
                 //     @"symbolStyle" : @"circle",
                      @"marker": @{
-                            @"fillColor": @"white",
+                             @"fillColor": @"#ef3118",
                              @"symbol": @"circle",
-                             @"lineWidth": @6,
-                             @"lineColor": @"#FF0000"
+                             @"lineWidth": @4,
+                             @"lineColor": @"#ef3118"
                              }
                    }
                  
