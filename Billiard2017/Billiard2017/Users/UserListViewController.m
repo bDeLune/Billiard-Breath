@@ -77,33 +77,43 @@
     return [mutable count];
 }
 
+- (void) viewWillLayoutSubviews {
+    
+    
+  
+    
+
+    
+    
+    //UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButtonView];
+    //self.navigationItem.leftBarButtonItem = backBarButtonItem;
+    //[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    ///self.navigationController.navigationBar.shadowImage = [UIImage new];
+    //self.navigationController.navigationBar.translucent = YES;
+    //[self.navigationController.navigationBar setAlpha:0];
+    
+    //self.navigationController.navigationBar.translucent = NO;
+    //[self.navigationController.navigationBar setAlpha:10];
+    
+    //[self.view addSubview:backButtonView];
+    
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
-    
-    
-    UISwipeGestureRecognizer *recognizer;
-    recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-    [recognizer setDirection:(  UISwipeGestureRecognizerDirectionLeft)];
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [backButton setTitle:@"Back" forState:UIControlStateNormal];
-   // [backButton setBackgroundColor: [UIColor colo]];
-    backButton.frame = CGRectMake(0, 0, 100, 160);
-    //backButton.bounds = CGRectOffset(backButton.bounds, -144, -33);
-    
-    UIView *backButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 63, 33)];
-    backButtonView.bounds = CGRectOffset(backButtonView.bounds, -24, -27);
-    [backButtonView addSubview:backButton];
-     
-    
-    [backButton addTarget:self
-                   action:@selector(goBack)
-         forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButtonView];
-    self.navigationItem.leftBarButtonItem = backBarButtonItem;
+   // [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+   // self.navigationController.navigationBar.shadowImage = [UIImage new];
+   // self.navigationController.navigationBar.translucent = YES;
+   // [self.navigationController.navigationBar setAlpha:0];
+    //[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    //[self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:nil];
 
-    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.navigationBar.translucent = NO;
     [self.navigationController.navigationBar setAlpha:10];
+    
+  
 }
     
 - (void)viewDidLoad
@@ -115,6 +125,34 @@
     [self getListOfUsers];
     
    // [self.view addSubview:backButton];
+    UISwipeGestureRecognizer *recognizer;
+    recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [recognizer setDirection:(  UISwipeGestureRecognizerDirectionLeft)];
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [backButton setTitle:@"Back" forState:UIControlStateNormal];
+    // [backButton setBackgroundColor: [UIColor colo]];
+    backButton.frame = CGRectMake(0, 0, 150, 160);
+    backButton.bounds = CGRectOffset(backButton.bounds, -174, -20);
+    
+    UIView *backButtonView = [[UIView alloc] initWithFrame:CGRectMake(-20, 10, 3, 3)];
+    backButtonView.bounds = CGRectOffset(backButtonView.bounds, 24, 97);
+    [backButtonView addSubview:backButton];
+    
+    
+    [backButton addTarget:self
+                   action:@selector(goBack)
+         forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    self.navigationItem.leftBarButtonItem = closeButton;
+    
+    
+    
+    //UIBarButtonItem *btnReload = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(goBack:)];
+    //self.navigationController.topViewController.navigationItem.leftBarButtonItem = backButton;
+    //btnReload.enabled=TRUE;
+    //btnReload.style=UIBarButtonSystemItemRefresh;
+    
+    //[self.navigationController.navigationBar addSubview:backButton];
 }
 
 
@@ -274,7 +312,7 @@
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 
-    HeaderView *header = [[HeaderView alloc]initWithFrame:CGRectMake(0, 0, 550, 30)];
+    HeaderView *header = [[HeaderView alloc]initWithFrame:CGRectMake(30, 0, 550, 30)];
     header.section = section;
     header.user=[self.userList objectAtIndex:section];
     header.delegate=self;

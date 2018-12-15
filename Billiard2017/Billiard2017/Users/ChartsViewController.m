@@ -60,7 +60,7 @@
 - (IBAction)backButtonPressed:(id)sender {
     
     NSLog(@"back please");
-[self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void) viewWillLayoutSubviews{
@@ -95,18 +95,18 @@
     NSMutableArray *dates = [NSMutableArray array];
     NSMutableArray *markerColours = [NSMutableArray array];
     for (int i=0; i<[sortedArray count]; i++) {
-        NSLog(@"DATE PLACER i %d", i);
-        NSLog(@"sortedArray %lu", (unsigned long)[sortedArray count]);
+        //NSLog(@"DATE PLACER i %d", i);
+        //NSLog(@"sortedArray %lu", (unsigned long)[sortedArray count]);
         
         Game *game=[sortedArray objectAtIndex:i];
         NSDate *date = game.gameDate;
         NSString *stringFromDate=[formatter stringFromDate:date];
-        NSLog(@"last date %@", lastDate);
-        NSLog(@"current date %@", stringFromDate);
+        //NSLog(@"last date %@", lastDate);
+        //NSLog(@"current date %@", stringFromDate);
         
         if ([lastDate isEqualToString: stringFromDate]){
             stringFromDate = @"";
-            NSLog(@"skipping date label - same as previous");
+          //  NSLog(@"skipping date label - same as previous");
         }
         
         [dates addObject: stringFromDate];
@@ -140,6 +140,7 @@
     .seriesSet(@[
                 // AAObject(AASeriesElement)
                 // .nameSet(@"Exhale"),
+                 
                  AAObject(AASeriesElement)
                  .nameSet(@"Inhale")
                  .dataSet(durationVals)
@@ -166,6 +167,7 @@
                      @"colorByPoint" : @true,
                      @"markerRadius" : @25,
                      @"markerSymbol" : @"circle",
+                     @"lineWidth" : @10
                      //@"showInLegendSet" : true
                      //.showInLegendSet(false)
                    }
@@ -205,6 +207,12 @@
     //// set the content height of aaChartView
    // self.userDataLineChart.contentHeight = chartViewHeight;
    // }
+
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:nil];
 
 }
 
