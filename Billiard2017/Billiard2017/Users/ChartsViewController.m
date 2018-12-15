@@ -69,7 +69,7 @@
     
     chartAdded = TRUE;
     
-    CGFloat navheight = self.navigationController.view.frame.size.height;
+    //CGFloat navheight = self.navigationController.view.frame.size.height;
     //CGFloat height = chartViewHeight - navheight;
 
     self.title =self.userTitle;
@@ -128,6 +128,8 @@
         NSNumber * duration = game.duration;
         [durationVals addObject: duration];
     }
+    
+    
 
     AAChartModel *aaChartModel= AAObject(AAChartModel)
     .chartTypeSet(AAChartTypeSpline)
@@ -135,42 +137,72 @@
     .subtitleSet(@"")
     //.categoriesSet(@[@"Java",@"Swift",@"Python",@"Ruby", @"PHP",@"Go",@"C",@"C#",@"C++"])
     .categoriesSet(dates)
+    .colorsThemeSet(markerColours)
     .yAxisTitleSet(@"Duration")
-    
+    .categoriesSet(durationVals)
+    .colorsThemeSet(markerColours)
+    .dataLabelEnabledSet(FALSE)
+    .markerSymbolSet(@"circle")
+    .markerSymbolStyleSet(AAChartSymbolStyleTypeInnerBlank)
     .seriesSet(@[
-                // AAObject(AASeriesElement)
-                // .nameSet(@"Exhale"),
-                 AAObject(AASeriesElement)
-                 .nameSet(@"Inhale")
-                 .dataSet(durationVals)
-                 .colorSet((id)markerColours)
-                 .allowPointSelectSet(YES)
-                 .showInLegendSet(false)
-                 .markerSet(AAMarker.new
-                            .fillColorSet(@"#ffffff")
-                            .lineWidthSet(@5)
-                            ),
-                 
-
                  AAObject(AASeriesElement)
                  .nameSet(@"Exhale")
-                 .dataSet(durationVals )
+                 .dataSet(durationVals)
+                 .showInLegendSet(true)
                  .markerSet(AAMarker.new
-                            .fillColorSet(@"#ffffff")
-                            .lineWidthSet(@5)
+                            //.fillColorSet(@"#FF0000")
+                            .lineWidthSet(@6)
+                            .symbolSet(@"circle")
                             ),
+                 AAObject(AASeriesElement)
+                 .nameSet(@"Inhale")
+                 .dataSet(durationVals )
+                 .showInLegendSet(false)
+                 .colorByPointSet(markerColours)
+                 .dataLabelsSet(AADataLabels.new
+                                .enabledSet(YES)
+                                .styleSet(AAStyle.new
+                                          .colorSet(@"#000000")
+                                          .fontSizeSet(@"10px")
+                                          )
+                                )
+                 .markerSet(AAMarker.new
+                            //.fillColorSet(@"#FF0000")
+                            .lineWidthSet(@6)
+                            .symbolSet(@"circle")
+                            .radiusSet(@6)
+                            ),
+                 //.markerSet(AAMarker.new
+                 //           .fillColorSet(@"#FF0000")
+                 //           .lineWidthSet(@6)
+                 //           ),
+
                  @{
-                     @"data" : durationVals,
+                     @"data" : @"",
                      @"name" : @"Inhale",
                      @"namesSet" : @"Inhale",
-                     @"colorByPoint" : @true,
+                     //@"colorByPoint" : @true,
                      @"markerRadius" : @25,
                      @"markerSymbol" : @"circle",
-                     //@"showInLegendSet" : true
-                     //.showInLegendSet(false)
+                     @"showInLegendSet" : @true,
+                     @"showInLegend" : @true,
+                //     @"legendSymbol" : @"circle",
+                //     @"symbolStyle" : @"circle",
+                     @"marker": @{
+                            @"fillColor": @"white",
+                             @"symbol": @"circle",
+                             @"lineWidth": @6,
+                             @"lineColor": @"#FF0000"
+                             }
                    }
                  
     /*
+     @"marker": @{
+     @"fillColor": @"white",
+     @"symbol": @"circle",
+     @"lineWidth": @3,
+     @"lineColor": @"#FF0000"
+     }
      
      .nameSet(@"Inhale")
      .dataSet(durationVals ),
@@ -215,7 +247,6 @@
     self.userDataLineChart = [[AAChartView alloc]init];
     self.userDataLineChart.frame = CGRectMake(0, 70, self.view.bounds.size.width,  700);
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    
     [self.view addSubview:self.userDataLineChart];
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
