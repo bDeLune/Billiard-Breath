@@ -252,7 +252,7 @@
 
 -(void)endDurationPowerGame
 {
-    NSLog(@"END DURATION GAME");
+    NSLog(@"END ");
     
     for (int i=0; i<[self.balls count]; i++) {
         BilliardBall  *ball=[self.balls objectAtIndex:i];

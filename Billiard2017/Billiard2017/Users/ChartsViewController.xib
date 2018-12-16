@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChartsViewController">
             <connections>
                 <outlet property="backButton" destination="zfe-pM-1fe" id="g1k-i6-dBf"/>
+                <outlet property="backFromChart" destination="zfe-pM-1fe" id="fNi-fi-IiY"/>
                 <outlet property="chartsView" destination="h2P-xm-rZ2" id="bfJ-t6-abY"/>
                 <outlet property="graphTitle" destination="CA2-Dx-LXx" id="h38-In-9zr"/>
                 <outlet property="userLineChart" destination="s17-fh-eFZ" id="iaN-kk-RFr"/>
@@ -51,6 +52,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v2J-0d-dpj">
+                        <rect key="frame" x="838" y="34" width="166" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             </view>

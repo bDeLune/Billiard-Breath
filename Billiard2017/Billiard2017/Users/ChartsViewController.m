@@ -19,7 +19,10 @@
     BOOL chartAdded;
     CGFloat chartViewWidth;
     CGFloat chartViewHeight;
+    int totalGames;
+    NSArray *sortedArray;
 }
+@property (weak, nonatomic) IBOutlet UIButton *backFromChart;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UITextField *graphTitle;
 @property (weak, nonatomic) IBOutlet UIView *userLineChart;
@@ -76,13 +79,6 @@
 
     self.title =self.userTitle;
     
-    NSArray *array = [self.user.game allObjects];
-    NSArray *sortedArray;
-    sortedArray = [array sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-        NSDate *first = [(Game*)a gameDate];
-        NSDate *second = [(Game*)b gameDate];
-        return [first compare:second];
-    }];
     
     //if ([sortedArray count]==0) {
     //    return;
@@ -91,24 +87,24 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"d MMM y "];
     
-    NSLog(@"SORTED -- - %@", sortedArray);
+    //NSLog(@"SORTED -- - %@", sortedArray);
     //NSLog(@"PLOT DATA -- - %@", plotData);
     
     NSMutableArray *dates = [NSMutableArray array];
     NSMutableArray *markerColours = [NSMutableArray array];
     for (int i=0; i<[sortedArray count]; i++) {
-        NSLog(@"DATE PLACER i %d", i);
-        NSLog(@"sortedArray %lu", (unsigned long)[sortedArray count]);
+        //NSLog(@"DATE PLACER i %d", i);
+        //NSLog(@"sortedArray %lu", (unsigned long)[sortedArray count]);
         
         Game *game=[sortedArray objectAtIndex:i];
         NSDate *date = game.gameDate;
         NSString *stringFromDate=[formatter stringFromDate:date];
-        NSLog(@"last date %@", lastDate);
-        NSLog(@"current date %@", stringFromDate);
+        //NSLog(@"last date %@", lastDate);
+        //NSLog(@"current date %@", stringFromDate);
         
         if ([lastDate isEqualToString: stringFromDate]){
             stringFromDate = @"";
-            NSLog(@"skipping date label - same as previous");
+        //    NSLog(@"skipping date label - same as previous");
         }
         
         [dates addObject: stringFromDate];
@@ -123,13 +119,16 @@
         }
     }
     
+    totalGames =  [sortedArray count];
+    NSLog(@"total games: %d", totalGames);
+    
     // For the y-axis
     NSMutableArray *durationVals = [NSMutableArray array];
     for (int b=0; b< [sortedArray count]; b++) {
         Game *game=[sortedArray objectAtIndex:b];
         NSNumber * duration = game.duration;
         
-        NSLog(@"Should be %@", duration);
+        //NSLog(@"Should be %@", duration);
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         
         [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -142,13 +141,14 @@
         f.numberStyle = NSNumberFormatterDecimalStyle;
         NSNumber *myNumber = [f numberFromString:numberString];
         
-        NSLog(@"Actually Is %@", myNumber);
+        //NSLog(@"Actually Is %@", myNumber);
         
         [durationVals addObject: myNumber];
     }
     
     
-
+    AAChartZoomType AAChartZoomTypeX;
+    
     AAChartModel *aaChartModel= AAObject(AAChartModel)
     .chartTypeSet(AAChartTypeSpline)
     .titleSet(@"")
@@ -162,6 +162,10 @@
     .colorsThemeSet(markerColours)
     .dataLabelEnabledSet(FALSE)
     .markerSymbolSet(@"circle")
+    //.zoomTypeSet(AAChartZoomTypeX)
+    //.yAxisMaxSet(@10)
+    .zoomTypeSet(AAChartZoomTypeX)
+    //.xAxisVisibleSet(TRUE)
     .markerSymbolStyleSet(AAChartSymbolStyleTypeInnerBlank)
     .seriesSet(@[
                  //MAIN
@@ -194,11 +198,6 @@
                             .symbolSet(@"circle")
                             .radiusSet(@3)
                             ),
-                 //.markerSet(AAMarker.new
-                 //           .fillColorSet(@"#FF0000")
-                 //           .lineWidthSet(@6)
-                 //           ),
-
                 //SECOND MARKER
                  @{
                      @"data" : @"",
@@ -218,49 +217,14 @@
                              @"lineColor": @"#ef3118"
                              }
                    }
-                 
-    /*
-     @"marker": @{
-     @"fillColor": @"white",
-     @"symbol": @"circle",
-     @"lineWidth": @3,
-     @"lineColor": @"#FF0000"
-     }
-     
-     .nameSet(@"Inhale")
-     .dataSet(durationVals ),
-     AAObject(AASeriesElement)
-     .nameSet(@"Inhale")
-     .dataSet(durationVals ),
-     AAObject(AASeriesElement)
-     .nameSet(@"Exhale")
-                 .lineWidthSet(@8)
-                 .lineWidthSet(@3)
-
-                 .zoneAxisSet(@"x")
-                 .zonesSet(@[@{@"value": @4,
-                               @"color":@"rgba(220,20,60,1)",//猩红色
-                               @"fillColor": gradientColorDic1  // 1,
-                               },@{
-                                 @"color":@"rgba(30,144,255,1)",//道奇蓝
-                                 @"fillColor": gradientColorDic2 // 2
-                                 }, ])
-                 
-                  */
+        
                 ]);
-    
-    
-    //aaChartModel.colorsThemeSet(@[@"#35b31c",@"#35b31c",@"#35b31c",@"#35b31c",@"#35b31c",@"#35b31c",@"#35b31c",@"#ef3118",@"#35b31c",@"#ef3118",@"#ef3118", @"#35b31c",@"#ef3118"]);
+
     aaChartModel.colorsThemeSet(markerColours);
     aaChartModel.categoriesSet(dates);
-    //aaChartModel.seriesSet();
     
     [self.userDataLineChart aa_drawChartWithChartModel:aaChartModel];
-    
-    //// set the content height of aaChartView
-   // self.userDataLineChart.contentHeight = chartViewHeight;
-   // }
-
+    self.userDataLineChart.scrollEnabled = true;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -269,6 +233,31 @@
     NSLog(@"THIS VIEW HAS LOADED");
     self.userDataLineChart = [[AAChartView alloc]init];
     self.userDataLineChart.frame = CGRectMake(0, 70, self.view.bounds.size.width,  700);
+    self.userDataLineChart.scrollEnabled = YES;
+    //self.userDataLineChart.contentHeight = self.view.frame.size.height;
+    
+    NSArray *array = [self.user.game allObjects];
+    sortedArray = [array sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+        NSDate *first = [(Game*)a gameDate];
+        NSDate *second = [(Game*)b gameDate];
+        return [first compare:second];
+    }];
+    
+    totalGames = [sortedArray count];
+    
+    if (totalGames > 20){
+        
+        int add_pixels_above_limit = totalGames * 10;
+        NSLog(@"totalGames %d", totalGames);
+        NSLog(@"totalGames %d", totalGames / 2);
+        
+        NSLog(@"totalGames %f", self.view.frame.size.width);
+        NSLog(@"totalGames %f", self.view.frame.size.width + add_pixels_above_limit);
+        self.userDataLineChart.contentWidth = self.view.frame.size.width + add_pixels_above_limit;
+    }else{
+        self.userDataLineChart.contentWidth = self.view.frame.size.width;
+    }
+    
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self.view addSubview:self.userDataLineChart];
     
@@ -276,6 +265,9 @@
     //self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
     [self.navigationController.navigationBar setAlpha:0];
+    
+    
+    [self.backFromChart setFont:[UIFont fontWithName:@"Arial-BoldMT" size:15]];
     
     self.graphTitle.text = self.user.userName;
 

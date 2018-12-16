@@ -12,7 +12,10 @@
 #import "Billiard2017.pch"
 #import "AAChartKit.h"
 
-@interface UserListViewController()<UIActionSheetDelegate,HeaderViewProtocl>
+@interface UserListViewController()<UIActionSheetDelegate,HeaderViewProtocl>{
+    
+    NSIndexPath* currently_selected_path;
+}
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
@@ -79,6 +82,7 @@
 
 -(void) viewWillAppear:(BOOL)animated{
     
+     [self.tableView deselectRowAtIndexPath:currently_selected_path animated:YES];
      [self.navigationController.navigationBar setAlpha:10];
 }
 
@@ -94,6 +98,8 @@
     recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
     [recognizer setDirection:(  UISwipeGestureRecognizerDirectionLeft)];
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [backButton setTitle:@"Data" forState:UIControlStateNormal];
+    [backButton setFont:[UIFont fontWithName:@"Arial-BoldMT" size:15]];
     [backButton setTitle:@"Back" forState:UIControlStateNormal];
     backButton.frame = CGRectMake(0, 0, 50, 40);
     
@@ -218,6 +224,7 @@
 
     dates=[[dates reverseObjectEnumerator]allObjects];
     AllGamesForDayTableVC  *detailViewController=[[AllGamesForDayTableVC alloc]initWithNibName:@"AllGamesForDayTableVC" bundle:nil];
+    //AllGamesForDayTableVC  *detailViewController=[[AllGamesForDayTableVC alloc]initWithNibName:@"AllGamesForDayTableVC" withUser:user bundle:nil];
     NSArray *array = [self gamesMatchingDate:[dates objectAtIndex:indexPath.row] user:user];
     
     NSMutableArray  *durationOnly=[NSMutableArray new];
@@ -225,8 +232,11 @@
     for (Game *agame in array) {
         [durationOnly addObject:agame];
     }
+    
+    currently_selected_path = indexPath;
 
     [detailViewController setUSerData:durationOnly];
+    [detailViewController setUSerInfo:user];
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
@@ -265,7 +275,8 @@
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 
-    HeaderView *header = [[HeaderView alloc]initWithFrame:CGRectMake(0, 0, 550, 30)];
+    //HeaderView *header = [[HeaderView alloc]initWithFrame:CGRectMake(0, 0, 850, 30)];
+    HeaderView *header = [[HeaderView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width-90, 30)];
     header.section = section;
     header.user=[self.userList objectAtIndex:section];
     header.delegate=self;

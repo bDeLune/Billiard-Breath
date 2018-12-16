@@ -26,14 +26,17 @@
     [self addSubview:self.label];
     
     self.deleteButton=[UIButton buttonWithType:UIButtonTypeSystem];
-    self.deleteButton.frame=CGRectMake(self.bounds.size.width-100, 11, 100, self.bounds.size.height);
+    //self.deleteButton.frame=CGRectMake(self.window.bounds.size.width-100, 11, 20, self.bounds.size.height);
+
+    self.deleteButton.frame=CGRectMake(self.bounds.size.width-120, 11, 80, self.bounds.size.height);
     [self.deleteButton setTitle:@"Delete" forState:UIControlStateNormal];
     [self.deleteButton addTarget:self action:@selector(deleteAction) forControlEvents:UIControlEventTouchUpInside];
     [self.deleteButton setFont:[UIFont fontWithName:@"Arial-BoldMT" size:15]];
     [self addSubview:self.deleteButton];
 
     self.dataButton=[UIButton buttonWithType:UIButtonTypeSystem];
-    self.dataButton.frame=CGRectMake(self.deleteButton.frame.origin.x+110, 11, 100, self.bounds.size.height);
+    self.dataButton.frame=CGRectMake(self.deleteButton.frame.origin.x+90, 11, 100, self.bounds.size.height);
+    //self.dataButton.frame=CGRectMake(self.window.bounds.size.width-5, 11, 20, self.bounds.size.height);
     [self.dataButton setTitle:@"Data" forState:UIControlStateNormal];
     [self.dataButton setFont:[UIFont fontWithName:@"Arial-BoldMT" size:15]];
     [self.dataButton addTarget:self action:@selector(viewHistoricalData) forControlEvents:UIControlEventTouchUpInside];

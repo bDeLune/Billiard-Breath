@@ -4,6 +4,7 @@
 @interface AllGamesForDayTableVC ()
 {
     NSArray  *data;
+    User *currentUser;
 }
 
 @end
@@ -13,7 +14,13 @@
 -(void)setUSerData:(NSArray*)games
 {
     data=games;
+    
     [self.tableView reloadData];
+}
+
+-(void)setUSerInfo:(User*)user{
+    
+    currentUser = user;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -47,9 +54,15 @@
     
     Game *game=[data objectAtIndex:indexPath.row];
     NSDate  *date=game.gameDate;
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"d MMM y H:mm:ss"];
-    NSString *attemptDateString = [dateFormat stringFromDate:date];
+    NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc] init];
+    [dateFormat1 setDateFormat:@"d MMM y"];
+    
+    NSDateFormatter *dateFormat2 = [[NSDateFormatter alloc] init];
+    [dateFormat2 setDateFormat:@"H:mm:ss"];
+    
+    NSString *attemptDateString1 = [dateFormat1 stringFromDate:date];
+    NSString *attemptDateString2 = [dateFormat2 stringFromDate:date];
+    
     int gameType=[game.gameType intValue];
     
     NSString  *typeString;
@@ -71,10 +84,13 @@
     }else if ([game.gameDirection  isEqual: @"inhale"]){
         directionstring = @"Inhale";
     }
+    
+     //viewTitle = currentUser.userName;
 
      NSString  *duration=[NSString stringWithFormat:@"%f",[game.duration floatValue]];
      NSLog(@"plotting %@ ", duration);
-     cell.textLabel.text=[NSString stringWithFormat:@"%@ - %@ (%@)", typeString, attemptDateString , directionstring];
+     //cell.textLabel.text=[NSString stringWithFormat:@"%@ - %@ (%@)", typeString, attemptDateString , directionstring];
+     cell.textLabel.text=[NSString stringWithFormat:@"%@, %@ (%@)", attemptDateString1 ,attemptDateString2, directionstring];
      cell.detailTextLabel.text=[NSString stringWithFormat:@"Duration: %@",duration];
     
     return cell;
