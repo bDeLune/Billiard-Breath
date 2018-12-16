@@ -132,7 +132,7 @@
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         
         [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-        [formatter setMaximumFractionDigits:3];
+        [formatter setMaximumFractionDigits:2];
         [formatter setRoundingMode: NSNumberFormatterRoundUp];
         
         NSString *numberString = [formatter stringFromNumber:duration];

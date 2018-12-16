@@ -227,9 +227,16 @@
     //AllGamesForDayTableVC  *detailViewController=[[AllGamesForDayTableVC alloc]initWithNibName:@"AllGamesForDayTableVC" withUser:user bundle:nil];
     NSArray *array = [self gamesMatchingDate:[dates objectAtIndex:indexPath.row] user:user];
     
+    //NSArray *array = [self.user.game allObjects];
+    NSArray  *sortedArray = [array sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+        NSDate *first = [(Game*)b gameDate];
+        NSDate *second = [(Game*)a gameDate];
+        return [first compare:second];
+    }];
+    
     NSMutableArray  *durationOnly=[NSMutableArray new];
     
-    for (Game *agame in array) {
+    for (Game *agame in sortedArray) {
         [durationOnly addObject:agame];
     }
     
