@@ -92,6 +92,7 @@
     
     NSMutableArray *dates = [NSMutableArray array];
     NSMutableArray *markerColours = [NSMutableArray array];
+    NSMutableArray *legendColours = [NSMutableArray array];
     for (int i=0; i<[sortedArray count]; i++) {
         //NSLog(@"DATE PLACER i %d", i);
         //NSLog(@"sortedArray %lu", (unsigned long)[sortedArray count]);
@@ -113,11 +114,17 @@
         if ([game.gameDirection isEqualToString:@"exhale"]) {
            [markerColours addObject: @"#35b31c"];
             
+           [legendColours addObject: @"#35b31c"];
+            
         }else if ([game.gameDirection isEqualToString:@"inhale"])
         {
             [markerColours addObject: @"#ef3118"];
+            
+            [legendColours addObject: @"#ef3118"];
         }
     }
+    
+    [legendColours setObject:@"#35b31c" atIndexedSubscript:0];
     
     totalGames =  [sortedArray count];
     NSLog(@"total games: %d", totalGames);
@@ -159,7 +166,6 @@
     .yAxisTitleSet(@"Duration")
     .tooltipEnabledSet(FALSE)
     .categoriesSet(durationVals)
-    .colorsThemeSet(markerColours)
     .dataLabelEnabledSet(FALSE)
     .markerSymbolSet(@"circle")
     //.zoomTypeSet(AAChartZoomTypeX)
@@ -168,18 +174,19 @@
     //.xAxisVisibleSet(TRUE)
     .markerSymbolStyleSet(AAChartSymbolStyleTypeInnerBlank)
     .seriesSet(@[
-                 //MAIN
+                 //MAIN, first marker
                  AAObject(AASeriesElement)
                  .nameSet(@"Exhale")
                  .dataSet(durationVals)
-                 .showInLegendSet(true)
+                 .showInLegendSet(false)
+                 
                  .markerSet(AAMarker.new
                             .fillColorSet(@"#35b31c")
                             .lineWidthSet(@2)
                             .symbolSet(@"circle")
                             ),
                  
-                 //RED MARKERS
+                 //RED MARKERS, not in legend
                  AAObject(AASeriesElement)
                  .nameSet(@"Inhale")
                  .dataSet(durationVals )
@@ -198,10 +205,10 @@
                             .symbolSet(@"circle")
                             .radiusSet(@3)
                             ),
-                //SECOND MARKER
+                //SECOND MARKER, in legend not marked
                  @{
                      @"data" : @"",
-                     @"name" : @"Inhale",
+                     @"name" : @"Exhale",
                      @"namesSet" : @"Inhale",
                      @"colorByPoint" : @true,
                      @"markerRadius" : @15,
@@ -211,14 +218,34 @@
                 //     @"legendSymbol" : @"circle",
                 //     @"symbolStyle" : @"circle",
                      @"marker": @{
+                             @"fillColor": @"#35b31c",
+                             @"symbol": @"circle",
+                             @"lineWidth": @2,
+                             @"lineColor": @"#35b31c"
+                             }
+                   },
+                 @{
+                     @"data" : @"",
+                     @"name" : @"Inhale",
+                     @"namesSet" : @"Inhale",
+                     @"colorByPoint" : @true,
+                     @"markerRadius" : @15,
+                     @"markerSymbol" : @"circle",
+                     @"showInLegendSet" : @true,
+                     @"showInLegend" : @true,
+                     //     @"legendSymbol" : @"circle",
+                     //     @"symbolStyle" : @"circle",
+                     @"marker": @{
                              @"fillColor": @"#ef3118",
                              @"symbol": @"circle",
                              @"lineWidth": @2,
                              @"lineColor": @"#ef3118"
                              }
-                   }
+                     }
         
-                ]);
+                ]
+               
+               );
 
     aaChartModel.colorsThemeSet(markerColours);
     aaChartModel.categoriesSet(dates);
