@@ -237,7 +237,18 @@
     //self.userDataLineChart.contentHeight = self.view.frame.size.height;
     
     NSArray *array = [self.user.game allObjects];
-    sortedArray = [array sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+    
+    NSMutableArray *durationArr = [NSMutableArray new];
+    
+    for (int b=0; b< [array count]; b++) {
+        Game *game=[array objectAtIndex:b];
+        
+       if ([game.gameType intValue]==2) {
+            [durationArr addObject:game];
+        }
+    }
+    
+    sortedArray = [durationArr sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
         NSDate *first = [(Game*)a gameDate];
         NSDate *second = [(Game*)b gameDate];
         return [first compare:second];

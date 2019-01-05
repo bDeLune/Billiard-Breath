@@ -328,7 +328,7 @@
         }
     }
 
-    NSUInteger count=[[user.game allObjects]count];
+    NSUInteger count= [durationOnly count];
     
     if (count==0) {
         UIAlertView  *alert=[[UIAlertView alloc]initWithTitle:@"No Data" message:@"No data for this user yet" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
