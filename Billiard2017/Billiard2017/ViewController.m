@@ -14,7 +14,6 @@
 @property (nonatomic,strong) Game  *currentGame;
 @property (nonatomic,strong) UIImageView *startupImageView;
 @property (nonatomic,strong) UIImageView *btOnOfImageView;
-
 @end
 
 @implementation ViewController

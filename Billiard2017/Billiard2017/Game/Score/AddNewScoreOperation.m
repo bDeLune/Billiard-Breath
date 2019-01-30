@@ -1,12 +1,5 @@
-//
-//  AddNewScoreOperation.m
-//  BilliardBreath
-//
-//  Created by barry on 09/12/2013.
-//  Copyright (c) 2013 rocudo. All rights reserved.
-//
-
 #import "AddNewScoreOperation.h"
+
 @interface AddNewScoreOperation ()
 @property (strong) NSManagedObjectContext *managedObjectContext;
 @property (strong) NSPersistentStoreCoordinator *sharedPSC;
@@ -14,6 +7,7 @@
 @property(nonatomic,strong)Session  *session;
 @end
 @implementation AddNewScoreOperation
+
 - (id)initWithData:(User *)auser  session:(Session*)asession sharedPSC:(NSPersistentStoreCoordinator *)psc
 {
     self = [super init];
@@ -54,8 +48,6 @@
     [game setGameType:self.session.sessionType];
     NSString *direction=[[NSUserDefaults standardUserDefaults]objectForKey:@"direction"];
     [game setGameDirection:direction];
-    // [game setSpeed:self.session.sessionSpeed];
-    
     
     NSString   *name=[self.user valueForKey:@"userName"];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -74,10 +66,6 @@
         [[auser mutableSetValueForKey:@"game"]addObject:game];
     }
     
-    
-    
-    
-    
     if ([self.managedObjectContext hasChanges]) {
         
         if (![self.managedObjectContext save:&error]) {
@@ -91,10 +79,6 @@
             // abort();
         }
     }
-    
-    
-    
-    
 }
 
 @end

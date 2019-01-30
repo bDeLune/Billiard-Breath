@@ -525,23 +525,6 @@
     [self saveCurrentSession];
     
     MyTimer = 0;
-    //timer = [NSTimer scheduledTimerWithTimeInterval:2
-    //                                              target:self
-    ///                                            selector:@selector(testAddSession:)////
-    ////                                            userInfo:nil
-    ///                                             repeats:YES];
-}
-
--(void)testAddSession: (NSTimer*)mytimer{
-   // NSLog(@"test add session");
-   // [self saveCurrentSession];
-   // MyTimer++;
-   /// if(MyTimer == 500)
-   /// {
-   ///     NSLog(@"stopped timer");
-  //      [timer invalidate];
-  ///      return;
-  ///  }
 }
 
 -(void)NoteContinuingForDuration

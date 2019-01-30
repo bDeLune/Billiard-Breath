@@ -6,7 +6,7 @@
 -(void)ballReachedFinalTarget:(BilliardBall*)ball;
 
 @end
-@interface BilliardBall : UIView <NSObject, CAAnimationDelegate>//ADDED
+@interface BilliardBall : UIView <NSObject, CAAnimationDelegate>
 @property (nonatomic,strong)NSNumber  *weight;
 @property(nonatomic,strong)UIDynamicAnimator *animator;
 @property(nonatomic,strong)CAAnimation *animation;

@@ -6,7 +6,7 @@
         float velocity;
         float distance;
         float time;
-        float acceleration;// force/ mass
+        float acceleration;
         BOOL  isaccelerating;
         float force;
         float mass;
@@ -107,7 +107,6 @@
         }
 }
 
-
 -(void)start
 {
     [self setDefaults];
@@ -120,12 +119,10 @@
     }
 }
 
-
 -(void)animateForPower
 {
     if (isaccelerating) {
         // force+=500;
-        
     }else
     {
         force-=force*0.03;

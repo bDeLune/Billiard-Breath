@@ -1,11 +1,3 @@
-//
-//  PlotItem.m
-//  CorePlotGallery
-//
-//  Created by Jeff Buck on 9/4/10.
-//  Copyright 2010 Jeff Buck. All rights reserved.
-//
-
 #import "PlotGallery.h"
 
 #import <tgmath.h>
@@ -40,7 +32,6 @@ NSString *const kFinancialPlots = @"Financial Plots";
         PlotItem *plotItem = [[itemClass alloc] init];
         if ( plotItem ) {
             [[PlotGallery sharedPlotGallery] addPlotItem:plotItem];
-       ///     [plotItem release];
         }
     }
 }

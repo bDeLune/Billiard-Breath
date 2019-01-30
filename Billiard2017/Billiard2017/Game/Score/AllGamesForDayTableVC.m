@@ -84,12 +84,8 @@
     }else if ([game.gameDirection  isEqual: @"inhale"]){
         directionstring = @"Inhale";
     }
-    
-     //viewTitle = currentUser.userName;
 
      NSString  *duration=[NSString stringWithFormat:@"%f",[game.duration floatValue]];
-     NSLog(@"plotting %@ ", duration);
-     //cell.textLabel.text=[NSString stringWithFormat:@"%@ - %@ (%@)", typeString, attemptDateString , directionstring];
      cell.textLabel.text=[NSString stringWithFormat:@"%@, %@ (%@)", attemptDateString1 ,attemptDateString2, directionstring];
      cell.detailTextLabel.text=[NSString stringWithFormat:@"Duration: %@",duration];
     

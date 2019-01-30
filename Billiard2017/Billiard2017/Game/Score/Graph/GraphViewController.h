@@ -1,11 +1,3 @@
-//
-//  GraphViewController.h
-//  BilliardBreath
-//
-//  Created by barry on 13/12/2013.
-//  Copyright (c) 2013 rocudo. All rights reserved.
-//
-
 #import "CorePlot-CocoaTouch.h"
 #import "PlotItem.h"
 #import <UIKit/UIKit.h>

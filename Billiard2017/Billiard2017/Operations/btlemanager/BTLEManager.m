@@ -95,16 +95,7 @@
     
     __unsafe_unretained BTLEManager *weakSelf = self;
     
-    //ios12
-    //dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), _queue, ^{
-     //   if (weakSelf) {
-            [weakSelf startScanning];
-            
-    //   }
-        
-    //});
-    
-    //self.pollTimer=[NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(requestBTData:) userInfo:nil repeats:YES];
+    [weakSelf startScanning];
     [self startTimerWithInterval:interval];
 }
 
@@ -120,22 +111,18 @@
                 [weakSelf requestBTData:nil];
                 
             }
-            
         });
         dispatch_resume(__timer);
     }
-    
 }
 
 -(void)stopTimer
 {
-    //[self.pollTimer invalidate];
-    // self.pollTimer=nil;
-    
+
 }
+
 -(void)requestData
 {
-    
     NSLog(@"rssi %i",[[self.melody RSSI]intValue]);
     
     NSData* data = [@"?b" dataUsingEncoding:NSUTF8StringEncoding];
@@ -146,31 +133,27 @@
         [self.melody connect];
         return;
     }
-    //  [self.melody setDataNotification:YES];
+
     self.melody.delegate=self;
     [self.melody sendData:data];
-    
-    
-    
 }
+
 -(void)requestBTData:(NSTimer*)timer
 {
-    //assert([NSThread isMainThread]);
-    //NSLog(@"rssi %i",[[self.melody RSSI]intValue]);
     
     NSData* data = [@"?b" dataUsingEncoding:NSUTF8StringEncoding];
     
-    //  NSLog(@"melody connected %i",[self.melody isConnected]);
     if ([self.melody isConnected]==NO) {
         
         [self.melody connect];
         return;
     }
-    // [self.melody setDataNotification:YES];
+
     self.melody.delegate=self;
     [self.melody sendData:data];
     
 }
+
 -(void)startScanning
 {
     self.manager.delegate=self;
@@ -189,9 +172,7 @@
 {
     [self.pollTimer invalidate];
     self.pollTimer=nil;
-    //[self.manager stopScanning];
 }
-
 
 -(void)connect
 {
@@ -199,57 +180,33 @@
     self.melody = [MelodyManager foundDeviceAtIndex:0];
     self.melody.delegate = self;
     
-    //ios12
-    //dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), _queue, ^{
-        
-        [self.melody connect];
-    //});
-    
-    
-    
+    [self.melody connect];
 }
+
 #pragma mark -
 #pragma mark - LED ON OFF
 
 -(void)ledLeftOn
 {
     NSData* data = [@"l1" dataUsingEncoding:NSUTF8StringEncoding];
-    //NSLog(@"%s",__func__);
-    
-    //[self.melody setDataNotification:YES];
-    
     [self.melody sendData:data];
-    
 }
 
 -(void)ledLeftOff
 {
-    
-   // NSLog(@"%s",__func__);
     NSData* data = [@"l0" dataUsingEncoding:NSUTF8StringEncoding];
-    
-    // [self.melody setDataNotification:YES];
-    
     [self.melody sendData:data];
 }
+
 -(void)ledRightOn
 {
-    
     NSData* data = [@"r1" dataUsingEncoding:NSUTF8StringEncoding];
-    
-    // [self.melody setDataNotification:YES];
-    
-    
     [self.melody sendData:data];
-    
 }
+
 -(void)ledRightOff
 {
-    
     NSData* data = [@"r0" dataUsingEncoding:NSUTF8StringEncoding];
-    
-    // [self.melody setDataNotification:YES];
-    
     [self.melody sendData:data];
 }
 
@@ -258,26 +215,16 @@
 
 - (void) melodyManagerDiscoveryDidRefresh:(MelodyManager*)manager
 {
-  //  NSLog(@"%s",__func__);
-    
-    //[foundDevices reloadData];
-   // NSLog(@"!!!!!!!!");
     if ([MelodyManager numberOfFoundDevices]>0) {
-        
-        
         [self connect];
-        
     }
-  //  NSLog(@"%@",[MelodyManager foundDeviceAtIndex:0]);
 }
 
 - (void) melodyManagerDiscoveryStatePoweredOff:(MelodyManager*)manager
 {
-    
-   // NSLog(@"%s",__func__);
-    
     NSLog(@"BT IS OFF");
 }
+
 - (void)cancelTimer
 {
     if (__timer) {
@@ -288,8 +235,6 @@
 }
 
 - (void) melodySmart:(MelodySmart*)m didConnectToMelody:(BOOL) result {
-    
-    //[self ledLeftOn];
     
     if (!_queue) {
         _queue= dispatch_queue_create("serialQ", DISPATCH_QUEUE_SERIAL);
@@ -315,24 +260,16 @@
 }
 
 -(void) melodySmartDidPopulateMelodyService:(MelodySmart*)m {
-    /*if (m == melody) {
-     UIAppDelegate.melody = melody;
-     [[NSNotificationCenter defaultCenter] postNotificationName:@"MelodyDeviceUpdateNotification" object: nil];
-     MMDrawerController * drawerController = (MMDrawerController *)UIAppDelegate.window.rootViewController;
-     [drawerController closeDrawerAnimated:YES completion:nil];
-     }*/
-  //  NSLog(@"%s",__func__);
-    
+
 }
 
 - (void) melodySmartDidDisconnectFromMelody:(MelodySmart*) melody {
     
     NSLog(@"disconnected %@",melody);
-   // NSLog(@"%s",__func__);
     _isConnected=NO;
     [self.delegate btleManagerDisconnected:self];
-    
 }
+
 -(void)setTreshold:(int)threshold
 {
     if (_neutralValueAverage_==0) {
@@ -341,26 +278,21 @@
     _deadZone_=threshold;
     _zeroTop_=_neutralValueAverage_+_deadZone_;
     _zeroBottom_=_neutralValueAverage_-_deadZone_;
-    //[_neutralArray_ removeAllObjects];
-    //_isNeuteralising=YES;
-    
 }
+
 -(void)setRangeReduction:(float)range
 {
     _rangeReduction_=range;
-    
 }
+
 - (void) melodySmart:(MelodySmart*)m didReceiveData:(NSData*)data
 {
     NSString *content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
     content =[NSString stringWithFormat:@"0x%@",content];
-    // NSLog(@"blah %@",content);
     unsigned int outVal;
     NSScanner* scanner = [NSScanner scannerWithString:content];
     [scanner scanHexInt:&outVal];
-    
-    // NSLog(@"outval %i",outVal);
     
     if (_isNeuteralising) {
         NSNumber  *num=[NSNumber numberWithInt:outVal];
@@ -374,8 +306,6 @@
         return;
     }
     
-    
-    //fff == 4095
     float fullmax= 4096-_zeroTop_;
     float fullmin= _zeroBottom_; //- MAX_INHALE;
     
@@ -389,16 +319,12 @@
         if (percent>1.0) {
             percent=1.0;
         }
-        //  NSLog(@"pct == %f\n",percent);
-        // NSLog(@"value == %f\n",value);
-        // // NSLog(@"zero bottom %d\n",_zeroBottom_);
-        //  NSLog(@"full min == %f\n",fullmin);
+
         if (self.btleState==BTLEState_Stopped) {
             //
             
             self.btleState=BTLEState_Began;
             dispatch_async(dispatch_get_main_queue(), ^{
-                //       [self ledRightOn];
                 [self.delegate btleManagerBreathBegan:self];
                 if ([self.delegate respondsToSelector:@selector(btleManagerBreathBeganWithInhale:)]) {
                     [self.delegate btleManagerBreathBeganWithInhale:self];
@@ -421,11 +347,6 @@
         
         float percent=(value-_zeroTop_)/fullmax;
         
-        //sometimes it goes to 1.3
-     //   NSLog(@"pct == %f\n",percent);
-      //  NSLog(@"value == %f\n",value);
-     //   NSLog(@"zero top %d\n",_zeroTop_);
-     //   NSLog(@"full max == %f\n",fullmax);
         if (percent>1.0) {
             percent=1.0;
         }
@@ -434,12 +355,10 @@
             
             self.btleState=BTLEState_Began;
             dispatch_async(dispatch_get_main_queue(), ^{
-                //  [self ledLeftOn];
                 [self.delegate btleManagerBreathBegan:self];
                 if ([self.delegate respondsToSelector:@selector(btleManagerBreathBeganWithExhale:)]) {
                     [self.delegate btleManagerBreathBeganWithExhale:self];
                 }
-                
             });
             
         }else
@@ -450,24 +369,15 @@
             });
             
         }
-        
-        
     }else
     {
         if (self.btleState!=BTLEState_Stopped) {
-            
-            
+        
             dispatch_async(dispatch_get_main_queue(), ^{
-                // [self ledLeftOff];
-                // [self ledRightOff];
                 [self.delegate btleManagerBreathStopped:self];
             });
-            
-            
             self.btleState=BTLEState_Stopped;
-            
         }
-        
     }
     
     switch (self.btleState) {
@@ -475,21 +385,17 @@
             
             break;
         case BTLEState_Beginnging:
-            
             break;
             
         case BTLEState_Stopped:
-            
             break;
             
         case BTLEState_Stopping:
-            
             break;
             
         default:
             break;
     }
-    
 }
 
 -(void)handleBegan
@@ -498,13 +404,12 @@
     self.stoppingCount=0;
 }
 
-
-
 -(void)handleStopped;
 {
     self.startingCount=0;
     self.stoppingCount=0;
 }
+
 -(void)handlebeginning
 {
     
@@ -512,8 +417,8 @@
 -(void)handleStopping
 {
     
-    
 }
+
 -(NSString*) charToHex:(unsigned char*)data dataLen:(int)dlen
 {
     NSMutableString* hexStr = [NSMutableString stringWithCapacity:dlen * 2];
@@ -526,6 +431,7 @@
     
     return [NSString stringWithString: hexStr];
 }
+
 - (void) melodySmart:(MelodySmart*)m didReceivePioChange:(unsigned char)state WithLocation:(BcSmartPioLocation)location
 {
     // NSLog(@"%s",__func__);
@@ -533,12 +439,11 @@
 
 - (void) melodySmart:(MelodySmart*)m didReceivePioSettingChange:(unsigned char)state WithLocation:(BcSmartPioLocation)location {
     // NSLog(@"%s",__func__);
-    
 }
+
 - (void) melodySmart:(MelodySmart*)melody didSendData:(NSError*)error
 {
     // NSLog(@"%s",__func__);
-    
 }
 
 - (void)melodySmart:(MelodySmart *)melody didReceiveI2cReplyWithSuccess:(BOOL)success data:(NSData *)data {

@@ -8,7 +8,6 @@
 #import "AllGamesForDayTableVC.h"
 #import "GCDQueue.h"
 #import "DataChart.h"
-//#import "Billiard2017-Bridging-Header.h"
 #import "Billiard2017.pch"
 #import "AAChartKit.h"
 
@@ -109,12 +108,7 @@
     
     UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.leftBarButtonItem = backBarButtonItem;
-    
-   // [self.view addSubview:backButton1];
-
 }
-
-
 
 -(void)remove{
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -122,12 +116,9 @@
 
 -(void)goBack
 {
-    
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.delegate userListDismissRequest:self];
     });
-    
-
 }
 
 -(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
@@ -224,10 +215,8 @@
 
     dates=[[dates reverseObjectEnumerator]allObjects];
     AllGamesForDayTableVC  *detailViewController=[[AllGamesForDayTableVC alloc]initWithNibName:@"AllGamesForDayTableVC" bundle:nil];
-    //AllGamesForDayTableVC  *detailViewController=[[AllGamesForDayTableVC alloc]initWithNibName:@"AllGamesForDayTableVC" withUser:user bundle:nil];
     NSArray *array = [self gamesMatchingDate:[dates objectAtIndex:indexPath.row] user:user];
     
-    //NSArray *array = [self.user.game allObjects];
     NSArray  *sortedArray = [array sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
         NSDate *first = [(Game*)b gameDate];
         NSDate *second = [(Game*)a gameDate];
@@ -282,7 +271,6 @@
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 
-    //HeaderView *header = [[HeaderView alloc]initWithFrame:CGRectMake(0, 0, 850, 30)];
     HeaderView *header = [[HeaderView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width-90, 30)];
     header.section = section;
     header.user=[self.userList objectAtIndex:section];
@@ -317,7 +305,6 @@
 
 -(void)viewHistoricalData:(HeaderView *)header
 {
-    //self.graph=[[GraphViewController alloc]initWithNibName:@"GraphViewController" bundle:nil];
     User *user=[self.userList objectAtIndex:header.section];
     NSArray * src=[user.game allObjects];
     NSMutableArray  *durationOnly=[NSMutableArray new];
@@ -336,24 +323,7 @@
         return;
     }
     
-    //self.chart = [[ChartsViewController alloc]initWithNibName:@"ChartsViewController" bundle:nil];
-    //self.chart = [[ChartsViewController alloc]init:@"ChartsViewController" bundle:nil withData:durationOnly withUser:user];
     self.chart = [[ChartsViewController alloc]init:@"ChartsViewController" bundle:nil withData:durationOnly withUser:user withHeight:self.view.bounds.size.height withWidth:self.view.bounds.size.width];
-    
-    //self.dataChart=[[DataChart alloc]initWithNibName:@"DataChart" bundle:nil];
-    //ChartsViewController  *plot=[[ChartsViewController alloc]init];
-
-    //CurvedScatterPlot  *plot=[[CurvedScatterPlot alloc]init];
-    //[plot setUser:user];
-    
-    //[[GCDQueue mainQueue]queueBlock:^{
-    //    [self.graph setDetailItem:plot];
-   // }];
-    
-   // [[NSNotificationCenter defaultCenter] postNotificationName:Remove_CurrentView object:nil];
-    
-  //  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(remove) name:Remove_CurrentView object:nil];
-    
 
     [self.navigationController pushViewController:self.chart animated:YES];
 }

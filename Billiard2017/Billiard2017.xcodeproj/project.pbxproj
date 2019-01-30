@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7103C83821B8870900A7B122 /* LineChart1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7103C83521B8870800A7B122 /* LineChart1ViewController.xib */; };
 		710857311E439A0A00479032 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 710857301E439A0A00479032 /* ViewController.m */; };
 		710857651E439B6200479032 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7108575C1E439B4200479032 /* libCorePlot-CocoaTouch.a */; };
 		710857681E439B8A00479032 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 710857671E439B8A00479032 /* Accelerate.framework */; };
@@ -187,7 +186,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7103C83521B8870800A7B122 /* LineChart1ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LineChart1ViewController.xib; sourceTree = "<group>"; };
 		710857261E439A0A00479032 /* Billiard2017.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Billiard2017.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7108572F1E439A0A00479032 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		710857301E439A0A00479032 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; tabWidth = 6; };
@@ -403,7 +401,6 @@
 				7186DDCD1E4DBE0D00F71F0C /* Main.storyboard */,
 				712F3F0621BC587B0015822F /* Billiard2017.pch */,
 				71AEAEF821303AA70051EE01 /* AppDelegate.h */,
-				7103C83521B8870800A7B122 /* LineChart1ViewController.xib */,
 				71C9FA0B1E5335C40078070D /* AppDelegate.m */,
 				7108572F1E439A0A00479032 /* ViewController.h */,
 				710857301E439A0A00479032 /* ViewController.m */,
@@ -414,9 +411,6 @@
 				71AEAEF7213039900051EE01 /* Users */,
 				71C9F9CF1E53341D0078070D /* Game */,
 				71C9F9F71E53356C0078070D /* Operations */,
-				7186DE091E4DBF5F00F71F0C /* Images.xcassets */,
-				7108573D1E439A0A00479032 /* Info.plist */,
-				7186DDCC1E4DBE0D00F71F0C /* BilliardBreath.xcdatamodel */,
 				710857291E439A0A00479032 /* Supporting Files */,
 			);
 			path = Billiard2017;
@@ -425,6 +419,9 @@
 		710857291E439A0A00479032 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7186DE091E4DBF5F00F71F0C /* Images.xcassets */,
+				7108573D1E439A0A00479032 /* Info.plist */,
+				7186DDCC1E4DBE0D00F71F0C /* BilliardBreath.xcdatamodel */,
 				7186DEE01E51CACC00F71F0C /* Default.png */,
 				7186DDFE1E4DBF5F00F71F0C /* billiardwin.ped */,
 				7186DDFF1E4DBF5F00F71F0C /* Crowd_cheer6.wav */,
@@ -828,7 +825,6 @@
 				7186DEE11E51CACC00F71F0C /* Default.png in Resources */,
 				7186DE0C1E4DBF5F00F71F0C /* billiardwin.ped in Resources */,
 				7186DDEB1E4DBF2400F71F0C /* LoginViewController.xib in Resources */,
-				7103C83821B8870900A7B122 /* LineChart1ViewController.xib in Resources */,
 				7186DDF51E4DBF4100F71F0C /* Croquet ball drop bounce cement_BLASTWAVEFX_29317.mp3 in Resources */,
 				718E215C1E51E43000E8357B /* icon-120.png in Resources */,
 				7186DE971E4DBFA400F71F0C /* BilliardBreathAppIcon29x29.png in Resources */,
