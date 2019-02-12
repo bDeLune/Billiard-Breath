@@ -2,8 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "BreathDirectionINHALE.png"
+      "filename" : "BreathDirectionINHALE.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",

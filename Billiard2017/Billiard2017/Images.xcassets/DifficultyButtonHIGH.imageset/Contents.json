@@ -2,8 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "DifficultyButtonHIGH.png"
+      "filename" : "DifficultyButtonHIGH.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
