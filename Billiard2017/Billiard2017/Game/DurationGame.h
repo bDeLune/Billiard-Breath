@@ -5,6 +5,7 @@
 @property float secondsPerballEasy;
 @property float secondsPerballMedium;
 @property float secondsPerballHard;
+@property float secondsPerballVeryHard;
 @property BOOL isRunning;
 @property(nonatomic,strong) NSMutableArray  *ballsCopy;
 

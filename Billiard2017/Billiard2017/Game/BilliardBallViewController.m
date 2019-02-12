@@ -193,6 +193,10 @@
             maxVelocity=65;
             NSLog(@"POWER hard");
           break;
+        case 3:
+            maxVelocity=75;
+            NSLog(@"POWER very hard");
+            break;
             
         default:
             break;

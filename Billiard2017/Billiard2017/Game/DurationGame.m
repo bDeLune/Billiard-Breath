@@ -16,9 +16,10 @@
     if (self==[super init]) {        
         self.currentBall=0;
         self.totalBalls=8;
-        self.secondsPerballEasy=30; //74
-        self.secondsPerballMedium=20;
-        self.secondsPerballHard=8;
+        self.secondsPerballEasy=74; //74
+        self.secondsPerballMedium=50; //20
+        self.secondsPerballHard=30; //8
+        self.secondsPerballVeryHard=4; //NON
         self.isRunning=NO;
     }
     
@@ -77,6 +78,9 @@
             break;
         case gameDifficultyHard:
             amount=self.secondsPerballHard;
+            break;
+        case gameDifficultyVeryHard:
+            amount=self.secondsPerballVeryHard;
             break;
         default:
             break;

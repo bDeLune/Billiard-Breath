@@ -11,7 +11,8 @@ typedef enum
 {
     gameDifficultyEasy,
     gameDifficultMedium,
-    gameDifficultyHard
+    gameDifficultyHard,
+    gameDifficultyVeryHard
 }gameDifficulty;
 
 @class AbstractGame;

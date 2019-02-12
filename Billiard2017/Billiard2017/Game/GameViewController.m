@@ -298,14 +298,14 @@
     
     mode++;
     
-    if (mode>2) {
+    if (mode > 3) {
         mode=gameDifficultyEasy;
     }
     
     currentDifficulty=mode;
     int setDifficulty = [[[NSUserDefaults standardUserDefaults] objectForKey:@"difficulty"] intValue];
 
-    if (setDifficulty == 2 || setDifficulty > 2){
+    if (setDifficulty == 3 || setDifficulty > 3){
         setDifficulty = 0;
     }else{
         setDifficulty++;
@@ -326,6 +326,12 @@
           [self setThreshold:2];
              NSLog(@"set LARGE");
             break;
+        
+        case 3:
+            [self setThreshold:3];
+            NSLog(@"set VERRY LARGE");
+            break;
+        
         default:
             break;
     }
@@ -479,6 +485,13 @@
                     [self.sequenceGameController setAllowNextBall:NO];
                 }
                 break;
+            case 3:
+                if (self.sequenceGameController.currentSpeed>60) {
+                    [self.sequenceGameController setAllowNextBall:YES];
+                }else{
+                    [self.sequenceGameController setAllowNextBall:NO];
+                }
+                break;
             
             default:
                 break;
@@ -595,6 +608,12 @@
              NSLog(@"SETTING DIFFICULTY THRESHOLD TO 2 or %d", threshold);
              [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:2] forKey:@"difficulty"];
             [self.settingsButton setBackgroundImage:[UIImage imageNamed:@"DifficultyButtonHIGH"] forState:UIControlStateNormal];
+            break;
+        case 3:
+            threshold=60;   //was 50
+            NSLog(@"SETTING DIFFICULTY THRESHOLD TO 3 or %d", threshold);
+            [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:3] forKey:@"difficulty"];
+            [self.settingsButton setBackgroundImage:[UIImage imageNamed:@"DifficultyButtonVERYHIGH"] forState:UIControlStateNormal];
             break;
         default:
             break;

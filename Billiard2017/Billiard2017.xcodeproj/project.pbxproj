@@ -108,6 +108,21 @@
 		71C9FA091E53356C0078070D /* UIEffectDesignerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9FA001E53356C0078070D /* UIEffectDesignerView.m */; };
 		71C9FA0E1E5335C40078070D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9FA0B1E5335C40078070D /* AppDelegate.m */; };
 		71C9FA201E5344EB0078070D /* UserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9FA1F1E5344EB0078070D /* UserListViewController.m */; };
+		D3C9E07022136881000586FF /* LoginButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D3C9E0572213687A000586FF /* LoginButton.png */; };
+		D3C9E07122136881000586FF /* ModeButtonSEQUENCE.png in Resources */ = {isa = PBXBuildFile; fileRef = D3C9E0622213687B000586FF /* ModeButtonSEQUENCE.png */; };
+		D3C9E07222136881000586FF /* DifficultyButtonLOW.png in Resources */ = {isa = PBXBuildFile; fileRef = D3C9E0632213687B000586FF /* DifficultyButtonLOW.png */; };
+		D3C9E07322136881000586FF /* DifficultyButtonHIGH.png in Resources */ = {isa = PBXBuildFile; fileRef = D3C9E0642213687C000586FF /* DifficultyButtonHIGH.png */; };
+		D3C9E07422136881000586FF /* DifficultyButtonVERYHIGH.png in Resources */ = {isa = PBXBuildFile; fileRef = D3C9E0652213687C000586FF /* DifficultyButtonVERYHIGH.png */; };
+		D3C9E07522136881000586FF /* UsersButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D3C9E0662213687D000586FF /* UsersButton.png */; };
+		D3C9E07622136881000586FF /* ModeButtonDURATION.png in Resources */ = {isa = PBXBuildFile; fileRef = D3C9E0672213687D000586FF /* ModeButtonDURATION.png */; };
+		D3C9E07722136881000586FF /* UserLoginBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D3C9E0682213687E000586FF /* UserLoginBackground.png */; };
+		D3C9E07822136881000586FF /* BreathDirectionEXHALE.png in Resources */ = {isa = PBXBuildFile; fileRef = D3C9E0692213687E000586FF /* BreathDirectionEXHALE.png */; };
+		D3C9E07922136881000586FF /* ModeButtonPOWER.png in Resources */ = {isa = PBXBuildFile; fileRef = D3C9E06A2213687F000586FF /* ModeButtonPOWER.png */; };
+		D3C9E07A22136881000586FF /* ResetButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D3C9E06B2213687F000586FF /* ResetButton.png */; };
+		D3C9E07B22136881000586FF /* BreathDirectionINHALE.png in Resources */ = {isa = PBXBuildFile; fileRef = D3C9E06C22136880000586FF /* BreathDirectionINHALE.png */; };
+		D3C9E07C22136881000586FF /* DifficultyButtonMEDIUM.png in Resources */ = {isa = PBXBuildFile; fileRef = D3C9E06D22136880000586FF /* DifficultyButtonMEDIUM.png */; };
+		D3C9E07D22136881000586FF /* MainBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D3C9E06E22136881000586FF /* MainBackground.png */; };
+		D3C9E07E22136881000586FF /* SignupButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D3C9E06F22136881000586FF /* SignupButton.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -359,6 +374,21 @@
 		71C9FA0B1E5335C40078070D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		71C9FA1E1E5344EB0078070D /* UserListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserListViewController.h; sourceTree = "<group>"; };
 		71C9FA1F1E5344EB0078070D /* UserListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserListViewController.m; sourceTree = "<group>"; };
+		D3C9E0572213687A000586FF /* LoginButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginButton.png; sourceTree = "<group>"; };
+		D3C9E0622213687B000586FF /* ModeButtonSEQUENCE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ModeButtonSEQUENCE.png; sourceTree = "<group>"; };
+		D3C9E0632213687B000586FF /* DifficultyButtonLOW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DifficultyButtonLOW.png; sourceTree = "<group>"; };
+		D3C9E0642213687C000586FF /* DifficultyButtonHIGH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DifficultyButtonHIGH.png; sourceTree = "<group>"; };
+		D3C9E0652213687C000586FF /* DifficultyButtonVERYHIGH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DifficultyButtonVERYHIGH.png; sourceTree = "<group>"; };
+		D3C9E0662213687D000586FF /* UsersButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UsersButton.png; sourceTree = "<group>"; };
+		D3C9E0672213687D000586FF /* ModeButtonDURATION.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ModeButtonDURATION.png; sourceTree = "<group>"; };
+		D3C9E0682213687E000586FF /* UserLoginBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UserLoginBackground.png; sourceTree = "<group>"; };
+		D3C9E0692213687E000586FF /* BreathDirectionEXHALE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BreathDirectionEXHALE.png; sourceTree = "<group>"; };
+		D3C9E06A2213687F000586FF /* ModeButtonPOWER.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ModeButtonPOWER.png; sourceTree = "<group>"; };
+		D3C9E06B2213687F000586FF /* ResetButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ResetButton.png; sourceTree = "<group>"; };
+		D3C9E06C22136880000586FF /* BreathDirectionINHALE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BreathDirectionINHALE.png; sourceTree = "<group>"; };
+		D3C9E06D22136880000586FF /* DifficultyButtonMEDIUM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DifficultyButtonMEDIUM.png; sourceTree = "<group>"; };
+		D3C9E06E22136881000586FF /* MainBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainBackground.png; sourceTree = "<group>"; };
+		D3C9E06F22136881000586FF /* SignupButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SignupButton.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -446,6 +476,21 @@
 				7186DE921E4DBFA400F71F0C /* BilliardBreathAppIcon144x144.png */,
 				7186DE931E4DBFA400F71F0C /* BilliardBreathAppIcon152x152.png */,
 				7186DE941E4DBFA400F71F0C /* BilliardBreathAppIcon167x167.png */,
+				D3C9E0692213687E000586FF /* BreathDirectionEXHALE.png */,
+				D3C9E06C22136880000586FF /* BreathDirectionINHALE.png */,
+				D3C9E0642213687C000586FF /* DifficultyButtonHIGH.png */,
+				D3C9E0632213687B000586FF /* DifficultyButtonLOW.png */,
+				D3C9E06D22136880000586FF /* DifficultyButtonMEDIUM.png */,
+				D3C9E0652213687C000586FF /* DifficultyButtonVERYHIGH.png */,
+				D3C9E0572213687A000586FF /* LoginButton.png */,
+				D3C9E06E22136881000586FF /* MainBackground.png */,
+				D3C9E0672213687D000586FF /* ModeButtonDURATION.png */,
+				D3C9E06A2213687F000586FF /* ModeButtonPOWER.png */,
+				D3C9E0622213687B000586FF /* ModeButtonSEQUENCE.png */,
+				D3C9E06B2213687F000586FF /* ResetButton.png */,
+				D3C9E06F22136881000586FF /* SignupButton.png */,
+				D3C9E0682213687E000586FF /* UserLoginBackground.png */,
+				D3C9E0662213687D000586FF /* UsersButton.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -820,9 +865,13 @@
 			files = (
 				7186DE9A1E4DBFA400F71F0C /* BilliardBreathAppIcon58x58.png in Resources */,
 				7186DDF91E4DBF4100F71F0C /* AllGamesForDayTableVC.xib in Resources */,
+				D3C9E07722136881000586FF /* UserLoginBackground.png in Resources */,
+				D3C9E07322136881000586FF /* DifficultyButtonHIGH.png in Resources */,
+				D3C9E07B22136881000586FF /* BreathDirectionINHALE.png in Resources */,
 				7186DEA21E4DBFA400F71F0C /* BilliardBreathAppIcon152x152.png in Resources */,
 				7186DE9E1E4DBFA400F71F0C /* BilliardBreathAppIcon100x100.png in Resources */,
 				7186DEE11E51CACC00F71F0C /* Default.png in Resources */,
+				D3C9E07D22136881000586FF /* MainBackground.png in Resources */,
 				7186DE0C1E4DBF5F00F71F0C /* billiardwin.ped in Resources */,
 				7186DDEB1E4DBF2400F71F0C /* LoginViewController.xib in Resources */,
 				7186DDF51E4DBF4100F71F0C /* Croquet ball drop bounce cement_BLASTWAVEFX_29317.mp3 in Resources */,
@@ -830,6 +879,7 @@
 				7186DE971E4DBFA400F71F0C /* BilliardBreathAppIcon29x29.png in Resources */,
 				71693B90206937D3009F14EA /* BilliardBreath1024X1024.png in Resources */,
 				718E215A1E51DD0300E8357B /* LaunchScreen.storyboard in Resources */,
+				D3C9E07622136881000586FF /* ModeButtonDURATION.png in Resources */,
 				7186DEA01E4DBFA400F71F0C /* BilliardBreathAppIcon120x120.png in Resources */,
 				713FC8A52177DEBC002259DF /* SplashViewController.xib in Resources */,
 				7186DDF81E4DBF4100F71F0C /* IMPACT RING METAL DESEND 01.wav in Resources */,
@@ -839,19 +889,29 @@
 				7186DE141E4DBF5F00F71F0C /* Images.xcassets in Resources */,
 				7186DE111E4DBF5F00F71F0C /* GameViewController.xib in Resources */,
 				7186DE9D1E4DBFA400F71F0C /* BilliardBreathAppIcon80x80.png in Resources */,
+				D3C9E07222136881000586FF /* DifficultyButtonLOW.png in Resources */,
 				7186DEB21E4DC59F00F71F0C /* Bluetooth-DISCONNECTED.png in Resources */,
 				71B5945221BC2FE60082EE00 /* ChartsViewController.xib in Resources */,
+				D3C9E07422136881000586FF /* DifficultyButtonVERYHIGH.png in Resources */,
 				7186DE981E4DBFA400F71F0C /* BilliardBreathAppIcon40x40.png in Resources */,
 				7186DE131E4DBF5F00F71F0C /* GraphViewController.xib in Resources */,
+				D3C9E07A22136881000586FF /* ResetButton.png in Resources */,
+				D3C9E07E22136881000586FF /* SignupButton.png in Resources */,
+				D3C9E07522136881000586FF /* UsersButton.png in Resources */,
 				7186DE991E4DBFA400F71F0C /* BilliardBreathAppIcon50x50.png in Resources */,
 				7186DEB11E4DC59F00F71F0C /* Bluetooth-CONNECTED.png in Resources */,
+				D3C9E07122136881000586FF /* ModeButtonSEQUENCE.png in Resources */,
+				D3C9E07922136881000586FF /* ModeButtonPOWER.png in Resources */,
 				7186DE9C1E4DBFA400F71F0C /* BilliardBreathAppIcon76x76.png in Resources */,
 				7186DE0D1E4DBF5F00F71F0C /* Crowd_cheer6.wav in Resources */,
 				7186DEA31E4DBFA400F71F0C /* BilliardBreathAppIcon167x167.png in Resources */,
+				D3C9E07C22136881000586FF /* DifficultyButtonMEDIUM.png in Resources */,
 				7186DE9F1E4DBFA400F71F0C /* BilliardBreathAppIcon114x114.png in Resources */,
+				D3C9E07822136881000586FF /* BreathDirectionEXHALE.png in Resources */,
 				7186DE9B1E4DBFA400F71F0C /* BilliardBreathAppIcon72x72.png in Resources */,
 				7186DEDF1E51CA2300F71F0C /* DefaultPortrait.png in Resources */,
 				7186DDF71E4DBF4100F71F0C /* IMPACT RING METAL DESEND 01.mp3 in Resources */,
+				D3C9E07022136881000586FF /* LoginButton.png in Resources */,
 				7186DEA11E4DBFA400F71F0C /* BilliardBreathAppIcon144x144.png in Resources */,
 				7186DE961E4DBFA400F71F0C /* BilliardBreath1024X1024.jpg in Resources */,
 			);
