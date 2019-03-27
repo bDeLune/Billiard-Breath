@@ -16,10 +16,10 @@
     if (self==[super init]) {        
         self.currentBall=0;
         self.totalBalls=8;
-        self.secondsPerballEasy=74; //74
-        self.secondsPerballMedium=50; //20
-        self.secondsPerballHard=30; //8
-        self.secondsPerballVeryHard=4; //NON
+        self.secondsPerballEasy=76; //74 3
+        self.secondsPerballMedium=30; //20 3.5
+        self.secondsPerballHard=20; //8 4.5
+        self.secondsPerballVeryHard=10; //NON 8
         self.isRunning=NO;
     }
     

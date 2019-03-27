@@ -186,38 +186,48 @@
             NSLog(@"POWER small");
            break;
         case 1:
-            maxVelocity=50;
+            maxVelocity=60;
             NSLog(@"POWER medium");
            break;
         case 2:
-            maxVelocity=65;
+            maxVelocity=70;
             NSLog(@"POWER hard");
           break;
         case 3:
-            maxVelocity=75;
+            maxVelocity=90;
             NSLog(@"POWER very hard");
             break;
             
         default:
             break;
     }
+
+    NSLog(@"maxVelocity %f", maxVelocity);
+    NSLog(@"velocity %f", velocity);
+    
     
     if (velocity>maxVelocity) {
         velocity=maxVelocity;
     }
     
+    NSLog(@"velocity %f", velocity);
+    
     int  perBall=maxVelocity/8;
 
     float perBallCount=0;
+
     
     int numberOfBallsToMove=(velocity/maxVelocity)*8;
     
+    NSLog(@"numberOfBallsToMove %d", numberOfBallsToMove);
+    
     for (int i=0; i<numberOfBallsToMove; i++) {
+
         
         if (perBallCount<=maxVelocity) {
             BilliardBall  *ball=[self.balls objectAtIndex:i];
             [ball blowingBegan];
-            [ball setForce:velocity*80];
+            [ball setForce:velocity*90];
             perBallCount+=perBall;
         }
     }

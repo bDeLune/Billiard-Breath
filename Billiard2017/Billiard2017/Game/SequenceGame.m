@@ -48,6 +48,9 @@
     self.halt=NO;
     self.currentBall++;
     self.totalBallsAttempted++;
+    
+    NSLog(@"total balls attempted %d", self.totalBallsAttempted);
+    NSLog(@"total balls attempted %d", self.currentBall);
 
     if (self.totalBallsRaised>=self.totalBalls) {
 

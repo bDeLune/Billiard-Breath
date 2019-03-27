@@ -7,7 +7,7 @@ typedef enum
     gameDifficultyEasy=1,
     gameDifficultMedium=2,
     gameDifficultyHard=3,
-    gameDifficultyVeryHard
+    gameDifficultyVeryHard=4
 }gameDifficulty;
 
 extern NSString * const gameUserType_toString[];
