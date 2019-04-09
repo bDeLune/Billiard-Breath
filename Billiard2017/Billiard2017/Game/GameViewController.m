@@ -265,6 +265,12 @@
     self.currentGameType=mode;
     self.billiardViewController.currentGameType=  self.currentGameType;
     [self.toggleGameModeButton setBackgroundImage:[UIImage imageNamed:[self stringForMode:self.currentGameType]] forState:UIControlStateNormal];
+    
+    
+    NSLog(@"changing modesetting difficulty or %d", threshold);
+    int setDifficulty = [[[NSUserDefaults standardUserDefaults] objectForKey:@"difficulty"] intValue];
+    [self setThreshold:setDifficulty];
+    
     [self resetGame:nil];
 }
 
@@ -441,7 +447,8 @@
             case gameTypePowerMode:
                 [self NoteContinuingForPower];
                 [self.durationLabel setText:durationtext];
-                [self.strenghtLabel setText:[NSString stringWithFormat:@"%i",self.powerGameController.power]];
+                //ß[self.strenghtLabel setText:[NSString stringWithFormat:@"%i",self.powerGameController.power]];
+                [self.strenghtLabel setText:[NSString stringWithFormat:@"%0.0f",velocity]];
                 break;
             case gameTypeSequence:
                 [self.strenghtLabel setText:[NSString stringWithFormat:@"%0.0f",velocity]];
@@ -594,27 +601,53 @@
 
 -(void)setThreshold:(int)pvalue
 {
+    
+    NSLog(@"Threshold set!");
     switch (pvalue) {
         case 0:
-            threshold=2; //was 10
+            
+            if (self.currentGameType==gameTypePowerMode) {
+                NSLog(@"Power mode %d", threshold);
+                threshold=2;  //was 18
+            }else{
+                threshold=2;  //was 18
+            }
+            
             NSLog(@"SETTING DIFFICULTY THRESHOLD TO 0 or %d", threshold);
             [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:0] forKey:@"difficulty"];
             [self.settingsButton setBackgroundImage:[UIImage imageNamed:@"DifficultyButtonLOW"] forState:UIControlStateNormal];
             break;
         case 1:
-            threshold=18;  //was 25
+            
+            if (self.currentGameType==gameTypePowerMode) {
+                NSLog(@"Power mode %d", threshold);
+                threshold=2;  //was 18
+            }else{
+                threshold=18;  //was 18
+            }
+            
              NSLog(@"SETTING DIFFICULTY THRESHOLD TO 1 or %d", threshold);
             [self.settingsButton setBackgroundImage:[UIImage imageNamed:@"DifficultyButtonMEDIUM"] forState:UIControlStateNormal];
             [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:1] forKey:@"difficulty"];
             break;
         case 2:
-            threshold=25;   //was 50
+            if (self.currentGameType==gameTypePowerMode) {
+                threshold=2;  //was 18
+                NSLog(@"Power mode %d", threshold);
+            }else{
+                threshold=25;  //was 18
+            }
              NSLog(@"SETTING DIFFICULTY THRESHOLD TO 2 or %d", threshold);
              [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:2] forKey:@"difficulty"];
             [self.settingsButton setBackgroundImage:[UIImage imageNamed:@"DifficultyButtonHIGH"] forState:UIControlStateNormal];
             break;
         case 3:
-            threshold=50;   //was 50
+            if (self.currentGameType==gameTypePowerMode) {
+                threshold=2;  //was 18
+                NSLog(@"Power mode %d", threshold);
+            }else{
+                threshold=25;  //was 18
+            }
             NSLog(@"SETTING DIFFICULTY THRESHOLD TO 3 or %d", threshold);
             [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:3] forKey:@"difficulty"];
             [self.settingsButton setBackgroundImage:[UIImage imageNamed:@"DifficultyButtonVERYHIGH"] forState:UIControlStateNormal];

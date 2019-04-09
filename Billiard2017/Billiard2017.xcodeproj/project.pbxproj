@@ -83,7 +83,6 @@
 		7186DEB11E4DC59F00F71F0C /* Bluetooth-CONNECTED.png in Resources */ = {isa = PBXBuildFile; fileRef = 7186DEA61E4DC59F00F71F0C /* Bluetooth-CONNECTED.png */; };
 		7186DEB21E4DC59F00F71F0C /* Bluetooth-DISCONNECTED.png in Resources */ = {isa = PBXBuildFile; fileRef = 7186DEA71E4DC59F00F71F0C /* Bluetooth-DISCONNECTED.png */; };
 		7186DEB31E4DC59F00F71F0C /* BTLEManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7186DEA91E4DC59F00F71F0C /* BTLEManager.m */; };
-		7186DEB41E4DC59F00F71F0C /* libMelodySmart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7186DEAB1E4DC59F00F71F0C /* libMelodySmart.a */; };
 		7186DEB91E4DC61D00F71F0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7186DEB81E4DC61D00F71F0C /* main.m */; };
 		7186DEDF1E51CA2300F71F0C /* DefaultPortrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 7186DEDE1E51CA2300F71F0C /* DefaultPortrait.png */; };
 		7186DEE11E51CACC00F71F0C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7186DEE01E51CACC00F71F0C /* Default.png */; };
@@ -108,6 +107,7 @@
 		71C9FA091E53356C0078070D /* UIEffectDesignerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9FA001E53356C0078070D /* UIEffectDesignerView.m */; };
 		71C9FA0E1E5335C40078070D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9FA0B1E5335C40078070D /* AppDelegate.m */; };
 		71C9FA201E5344EB0078070D /* UserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9FA1F1E5344EB0078070D /* UserListViewController.m */; };
+		D3AAA0AE224C303400CA1781 /* libMelodySmart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AAA0AD224C303400CA1781 /* libMelodySmart.a */; };
 		D3C9E07022136881000586FF /* LoginButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D3C9E0572213687A000586FF /* LoginButton.png */; };
 		D3C9E07122136881000586FF /* ModeButtonSEQUENCE.png in Resources */ = {isa = PBXBuildFile; fileRef = D3C9E0622213687B000586FF /* ModeButtonSEQUENCE.png */; };
 		D3C9E07222136881000586FF /* DifficultyButtonLOW.png in Resources */ = {isa = PBXBuildFile; fileRef = D3C9E0632213687B000586FF /* DifficultyButtonLOW.png */; };
@@ -374,6 +374,7 @@
 		71C9FA0B1E5335C40078070D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		71C9FA1E1E5344EB0078070D /* UserListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserListViewController.h; sourceTree = "<group>"; };
 		71C9FA1F1E5344EB0078070D /* UserListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserListViewController.m; sourceTree = "<group>"; };
+		D3AAA0AD224C303400CA1781 /* libMelodySmart.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMelodySmart.a; path = "../../../Rhoon/PEP-APP/PEP-APP/btlemanager/libMelodySmart/libMelodySmart.a"; sourceTree = "<group>"; };
 		D3C9E0572213687A000586FF /* LoginButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginButton.png; sourceTree = "<group>"; };
 		D3C9E0622213687B000586FF /* ModeButtonSEQUENCE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ModeButtonSEQUENCE.png; sourceTree = "<group>"; };
 		D3C9E0632213687B000586FF /* DifficultyButtonLOW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DifficultyButtonLOW.png; sourceTree = "<group>"; };
@@ -396,9 +397,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3AAA0AE224C303400CA1781 /* libMelodySmart.a in Frameworks */,
 				710857681E439B8A00479032 /* Accelerate.framework in Frameworks */,
 				710857651E439B6200479032 /* libCorePlot-CocoaTouch.a in Frameworks */,
-				7186DEB41E4DC59F00F71F0C /* libMelodySmart.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,6 +512,7 @@
 		710857661E439B8A00479032 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D3AAA0AD224C303400CA1781 /* libMelodySmart.a */,
 				710857671E439B8A00479032 /* Accelerate.framework */,
 			);
 			name = Frameworks;
@@ -794,6 +796,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);

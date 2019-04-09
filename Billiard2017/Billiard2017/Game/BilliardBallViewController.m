@@ -175,26 +175,26 @@
 
 -(void)pushBallsWithVelocity:(float)velocity
 {
-    float maxVelocity=30;
+    float maxVelocity=25;
     
     NSString * difficulty=[[NSUserDefaults standardUserDefaults]objectForKey:@"difficulty"];
     int difficultyAsInt = [difficulty intValue];
     
     switch (difficultyAsInt) {
         case 0:
-            maxVelocity=15;
+            maxVelocity=8; //15
             NSLog(@"POWER small");
            break;
         case 1:
-            maxVelocity=60;
+            maxVelocity=12; //60
             NSLog(@"POWER medium");
            break;
         case 2:
-            maxVelocity=70;
+            maxVelocity=17; //70
             NSLog(@"POWER hard");
           break;
         case 3:
-            maxVelocity=90;
+            maxVelocity=24; //90
             NSLog(@"POWER very hard");
             break;
             
@@ -223,11 +223,10 @@
     
     for (int i=0; i<numberOfBallsToMove; i++) {
 
-        
         if (perBallCount<=maxVelocity) {
             BilliardBall  *ball=[self.balls objectAtIndex:i];
             [ball blowingBegan];
-            [ball setForce:velocity*90];
+            [ball setForce:velocity*100];
             perBallCount+=perBall;
         }
     }
