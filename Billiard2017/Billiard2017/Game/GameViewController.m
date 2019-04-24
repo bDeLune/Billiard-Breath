@@ -410,6 +410,8 @@
     if (velocity==127) {
         return;
     }
+    
+    NSString *strengthtext=[NSString stringWithFormat:@"%0.1f",self.currentSession.sessionStrength];
 
     if (velocity>[self.currentSession.sessionStrength floatValue]) {
         
@@ -448,10 +450,10 @@
                 [self NoteContinuingForPower];
                 [self.durationLabel setText:durationtext];
                 //ß[self.strenghtLabel setText:[NSString stringWithFormat:@"%i",self.powerGameController.power]];
-                [self.strenghtLabel setText:[NSString stringWithFormat:@"%0.0f",velocity]];
+                [self.strenghtLabel setText:[NSString stringWithFormat:@"%0.01f",velocity]];
                 break;
             case gameTypeSequence:
-                [self.strenghtLabel setText:[NSString stringWithFormat:@"%0.0f",velocity]];
+                [self.strenghtLabel setText:[NSString stringWithFormat:@"%0.01f",velocity]];
                 [self NoteContinuingForSequence];
                 break;
             default:

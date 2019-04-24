@@ -177,24 +177,27 @@
 {
     float maxVelocity=25;
     
+    //reduce velocity figure by the threshold
+    velocity = velocity - 2;
+    
     NSString * difficulty=[[NSUserDefaults standardUserDefaults]objectForKey:@"difficulty"];
     int difficultyAsInt = [difficulty intValue];
     
     switch (difficultyAsInt) {
         case 0:
-            maxVelocity=8; //15
+            maxVelocity=8; //15 - 8
             NSLog(@"POWER small");
            break;
         case 1:
-            maxVelocity=12; //60
+            maxVelocity=12; //60 - 12
             NSLog(@"POWER medium");
            break;
         case 2:
-            maxVelocity=17; //70
+            maxVelocity=17; //70 - 17
             NSLog(@"POWER hard");
           break;
         case 3:
-            maxVelocity=24; //90
+            maxVelocity=21; //90 - 24
             NSLog(@"POWER very hard");
             break;
             
