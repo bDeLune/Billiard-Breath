@@ -608,9 +608,9 @@
             
             if (self.currentGameType==gameTypePowerMode) {
                 NSLog(@"Power mode %d", threshold);
-                threshold=2;  //was 18
+                threshold=3;  //was 18
             }else{
-                threshold=2;  //was 18
+                threshold=3;  //was 18
             }
             
             NSLog(@"SETTING DIFFICULTY THRESHOLD TO 0 or %d", threshold);
@@ -621,7 +621,7 @@
             
             if (self.currentGameType==gameTypePowerMode) {
                 NSLog(@"Power mode %d", threshold);
-                threshold=2;  //was 18
+                threshold=3;  //was 18
             }else{
                 threshold=18;  //was 18
             }
@@ -632,7 +632,7 @@
             break;
         case 2:
             if (self.currentGameType==gameTypePowerMode) {
-                threshold=2;  //was 18
+                threshold=3;  //was 18
                 NSLog(@"Power mode %d", threshold);
             }else{
                 threshold=25;  //was 18
@@ -643,7 +643,7 @@
             break;
         case 3:
             if (self.currentGameType==gameTypePowerMode) {
-                threshold=2;  //was 18
+                threshold=3;  //was 18
                 NSLog(@"Power mode %d", threshold);
             }else{
                 threshold=25;  //was 18
