@@ -29,6 +29,7 @@
     float speed;
     float velocity;
     float previousVelocity;
+    float last_velocity;
 }
 
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
@@ -453,7 +454,12 @@
                 [self.strenghtLabel setText:[NSString stringWithFormat:@"%0.01f",velocity]];
                 break;
             case gameTypeSequence:
-                [self.strenghtLabel setText:[NSString stringWithFormat:@"%0.01f",velocity]];
+                if (velocity > last_velocity){
+                    [self.strenghtLabel setText:[NSString stringWithFormat:@"%0.01f",velocity]];
+                }else{
+                    last_velocity = velocity;
+                }
+                
                 [self NoteContinuingForSequence];
                 break;
             default:
@@ -492,14 +498,14 @@
                 }
                 break;
             case 2:
-                if (self.sequenceGameController.currentSpeed>40) {
+                if (self.sequenceGameController.currentSpeed>20) {
                     [self.sequenceGameController setAllowNextBall:YES];
                 }else{
                     [self.sequenceGameController setAllowNextBall:NO];
                 }
                 break;
             case 3:
-                if (self.sequenceGameController.currentSpeed>50) {
+                if (self.sequenceGameController.currentSpeed>30) {
                     [self.sequenceGameController setAllowNextBall:YES];
                 }else{
                     [self.sequenceGameController setAllowNextBall:NO];
