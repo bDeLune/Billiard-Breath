@@ -361,6 +361,7 @@
 
 -(void)NoteBegan
 {
+    last_velocity = 0;
     if ((toggleIsON == 0 && wasExhaling == 1) || (toggleIsON == 1 && wasExhaling == 0)){
     
     [self.sequenceGameController startTimer];
@@ -411,8 +412,6 @@
     if (velocity==127) {
         return;
     }
-    
-    NSString *strengthtext=[NSString stringWithFormat:@"%0.1f",self.currentSession.sessionStrength];
 
     if (velocity>[self.currentSession.sessionStrength floatValue]) {
         
@@ -425,12 +424,10 @@
     {
         if (self.durationGameController.isRunning) {
             self.currentSession.sessionDuration=[NSNumber numberWithDouble:self.sequenceGameController.time];
-
         }
     }else
     {
         self.currentSession.sessionDuration=[NSNumber numberWithDouble:self.sequenceGameController.time];
-
     }
     
     self.currentSession.sessionSpeed=[NSNumber numberWithFloat:speed];
@@ -445,19 +442,21 @@
             case gameTypeDurationMode:
                 [self NoteContinuingForDuration];
                 [self.durationLabel setText:durationtext];
-                [self.strenghtLabel setText:[NSString stringWithFormat:@"%0.01f",velocity]];
+                [self.strenghtLabel setText:[NSString stringWithFormat:@"%0.01f",self->velocity]];
                 break;
             case gameTypePowerMode:
                 [self NoteContinuingForPower];
                 [self.durationLabel setText:durationtext];
-                //ß[self.strenghtLabel setText:[NSString stringWithFormat:@"%i",self.powerGameController.power]];
-                [self.strenghtLabel setText:[NSString stringWithFormat:@"%0.01f",velocity]];
+                if (self->velocity > self->last_velocity){
+                    [self.strenghtLabel setText:[NSString stringWithFormat:@"%0.01f",self->velocity]];
+                        self-> last_velocity= self->velocity;
+                }
                 break;
             case gameTypeSequence:
-                if (velocity > last_velocity){
-                    [self.strenghtLabel setText:[NSString stringWithFormat:@"%0.01f",velocity]];
+                if (self->velocity > self->last_velocity){
+                    [self.strenghtLabel setText:[NSString stringWithFormat:@"%0.01f",self->velocity]];
                 }else{
-                    last_velocity = velocity;
+                    self->last_velocity = self->velocity;
                 }
                 
                 [self NoteContinuingForSequence];
@@ -609,15 +608,15 @@
 
 -(void)setThreshold:(int)pvalue
 {
-    
     NSLog(@"Threshold set!");
     switch (pvalue) {
         case 0:
-            
             if (self.currentGameType==gameTypePowerMode) {
                 NSLog(@"Power mode %d", threshold);
                 threshold=3;  //was 18
-            }else{
+            }else if (self.currentGameType==gameTypeDurationMode){
+                threshold=3;  //was 18
+            }else if (self.currentGameType==gameTypeSequence){
                 threshold=3;  //was 18
             }
             
@@ -630,7 +629,9 @@
             if (self.currentGameType==gameTypePowerMode) {
                 NSLog(@"Power mode %d", threshold);
                 threshold=3;  //was 18
-            }else{
+            }else if (self.currentGameType==gameTypeDurationMode){
+                threshold=18;  //was 18
+            }else if (self.currentGameType==gameTypeSequence){
                 threshold=18;  //was 18
             }
             
@@ -642,20 +643,26 @@
             if (self.currentGameType==gameTypePowerMode) {
                 threshold=3;  //was 18
                 NSLog(@"Power mode %d", threshold);
-            }else{
+            }else if (self.currentGameType==gameTypeDurationMode){
                 threshold=25;  //was 18
+            }else if (self.currentGameType==gameTypeSequence){
+                threshold=20;  //was 18
             }
+            
              NSLog(@"SETTING DIFFICULTY THRESHOLD TO 2 or %d", threshold);
              [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:2] forKey:@"difficulty"];
             [self.settingsButton setBackgroundImage:[UIImage imageNamed:@"DifficultyButtonHIGH"] forState:UIControlStateNormal];
             break;
         case 3:
             if (self.currentGameType==gameTypePowerMode) {
-                threshold=3;  //was 18
+                threshold=15;  //was 18
                 NSLog(@"Power mode %d", threshold);
-            }else{
+            }else if (self.currentGameType==gameTypeDurationMode){
                 threshold=25;  //was 18
+            }else if (self.currentGameType==gameTypeSequence){
+                threshold=35;  //was 18
             }
+            
             NSLog(@"SETTING DIFFICULTY THRESHOLD TO 3 or %d", threshold);
             [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:3] forKey:@"difficulty"];
             [self.settingsButton setBackgroundImage:[UIImage imageNamed:@"DifficultyButtonVERYHIGH"] forState:UIControlStateNormal];

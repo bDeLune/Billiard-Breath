@@ -197,7 +197,7 @@
             NSLog(@"POWER hard");
           break;
         case 3:
-            maxVelocity=21; //90 - 24
+            maxVelocity=29; //90 - 24
             NSLog(@"POWER very hard");
             break;
             
