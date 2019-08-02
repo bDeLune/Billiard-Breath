@@ -590,10 +590,11 @@
 {
     float  vel=velocity;
 
-    if (vel<threshold) {
+    if (vel < threshold) {
         return;
     }
  
+    // Power balls will began pushing after threshold 
     [[GCDQueue mainQueue]queueBlock:^{
         [self.billiardViewController pushBallsWithVelocity:vel];
     }];
@@ -613,7 +614,7 @@
         case 0:
             if (self.currentGameType==gameTypePowerMode) {
                 NSLog(@"Power mode %d", threshold);
-                threshold=3;  //was 18
+                threshold=6;  //was 18
             }else if (self.currentGameType==gameTypeDurationMode){
                 threshold=3;  //was 18
             }else if (self.currentGameType==gameTypeSequence){
@@ -628,7 +629,7 @@
             
             if (self.currentGameType==gameTypePowerMode) {
                 NSLog(@"Power mode %d", threshold);
-                threshold=3;  //was 18
+                threshold=9;  //was 18
             }else if (self.currentGameType==gameTypeDurationMode){
                 threshold=18;  //was 18
             }else if (self.currentGameType==gameTypeSequence){
@@ -641,12 +642,12 @@
             break;
         case 2:
             if (self.currentGameType==gameTypePowerMode) {
-                threshold=3;  //was 18
+                threshold = 12;  //was 18
                 NSLog(@"Power mode %d", threshold);
             }else if (self.currentGameType==gameTypeDurationMode){
-                threshold=25;  //was 18
+                threshold = 25;  //was 18
             }else if (self.currentGameType==gameTypeSequence){
-                threshold=20;  //was 18
+                threshold = 20;  //was 18
             }
             
              NSLog(@"SETTING DIFFICULTY THRESHOLD TO 2 or %d", threshold);

@@ -12,6 +12,8 @@
     NSMutableArray *activeBallsForPower;
     int ballGameCount;
     AVAudioPlayer *audioPlayer;
+    NSTimer  *powerGameTimer;
+    double current_powergame_time;
 }
 
 @property(nonatomic,strong)    NSMutableArray  *balls;
@@ -175,86 +177,55 @@
 
 -(void)pushBallsWithVelocity:(float)velocity
 {
-    float maxVelocity=25;
+    // Power game will complete after 4 seconds
+    float maxTime = 4;
+    double current_time = CACurrentMediaTime();
+    double elapsed_time = current_time - current_powergame_time;
     
-    //reduce velocity figure by the threshold
-    velocity = velocity - 2;
-    
-    NSString * difficulty=[[NSUserDefaults standardUserDefaults]objectForKey:@"difficulty"];
-    int difficultyAsInt = [difficulty intValue];
-    
-    switch (difficultyAsInt) {
-        case 0:
-            maxVelocity=8; //15 - 8
-            NSLog(@"POWER small");
-           break;
-        case 1:
-            maxVelocity=12; //60 - 12
-            NSLog(@"POWER medium");
-           break;
-        case 2:
-            maxVelocity=17; //70 - 17
-            NSLog(@"POWER hard");
-          break;
-        case 3:
-            maxVelocity=29; //90 - 24
-            NSLog(@"POWER very hard");
-            break;
-            
-        default:
-            break;
-    }
-
-    NSLog(@"maxVelocity %f", maxVelocity);
-    NSLog(@"velocity %f", velocity);
-    
-    
-    if (velocity>maxVelocity) {
-        velocity=maxVelocity;
-    }
-    
-    NSLog(@"velocity %f", velocity);
-    
-    int  perBall=maxVelocity/8;
-
-    float perBallCount=0;
-
-    
-    int numberOfBallsToMove=(velocity/maxVelocity)*8;
+    int perBall = maxTime/8;
+    float perBallCount = 0;
+    int numberOfBallsToMove = (elapsed_time/maxTime) * 8;
     
     NSLog(@"numberOfBallsToMove %d", numberOfBallsToMove);
     
-    for (int i=0; i<numberOfBallsToMove; i++) {
-
-        if (perBallCount<=maxVelocity) {
-            BilliardBall  *ball=[self.balls objectAtIndex:i];
+    if (numberOfBallsToMove > 8){
+        return;
+    }
+    
+    for (int i = 0; i < numberOfBallsToMove; i++) {
+        
+        if (perBallCount <= maxTime) {
+            BilliardBall *ball = [self.balls objectAtIndex:i];
             [ball blowingBegan];
-            [ball setForce:velocity*100];
-            perBallCount+=perBall;
+            [ball setForce: velocity*100];
+            perBallCount += perBall;
         }
     }
     
-    for (int i=numberOfBallsToMove; i<[self.balls count]; i++) {
-        BilliardBall  *ball=[self.balls objectAtIndex:i];
+    for (int i = numberOfBallsToMove; i < [self.balls count]; i++) {
+        BilliardBall *ball = [self.balls objectAtIndex:i];
         [ball blowingEnded];
     }
 }
 
--(void)startBallsPowerGame
+-(void) startBallsPowerGame
 {
-    ballGameCount=0;
+    ballGameCount = 0;
     
-    for (int i=0; i<[self.balls count]; i++) {
-        BilliardBall  *ball=[self.balls objectAtIndex:i];
+    NSLog(@"starting power balls game");
+    current_powergame_time = CACurrentMediaTime();;
+    
+    for (int i = 0; i < [self.balls count]; i++) {
+        BilliardBall *ball = [self.balls objectAtIndex:i];
         [ball start];
         [ball blowingBegan];
     }
 }
 
--(void)endBallsPowerGame
+-(void) endBallsPowerGame
 {
-    for (int i=0; i<[self.balls count]; i++) {
-        BilliardBall  *ball=[self.balls objectAtIndex:i];
+    for (int i = 0; i < [self.balls count]; i++) {
+        BilliardBall *ball = [self.balls objectAtIndex:i];
         [ball blowingEnded];
     }
 }
@@ -262,20 +233,21 @@
 -(void)startDurationPowerGame
 {    
     NSLog(@"STARTING DURATION GAME");
-    self.durationGame.ballsCopy=[self.balls mutableCopy];
+    self.durationGame.ballsCopy = [self.balls mutableCopy];
     [self.durationGame startGame];
 }
 
 -(void)endDurationPowerGame
 {
-    NSLog(@"END ");
     
-    for (int i=0; i<[self.balls count]; i++) {
-        BilliardBall  *ball=[self.balls objectAtIndex:i];
+    current_powergame_time = 0;
+    
+    for (int i = 0; i < [self.balls count]; i++) {
+        BilliardBall *ball=[self.balls objectAtIndex:i];
         [ball stop];
         [ball blowingEnded];
-        
     }
+    
     [self.durationGame endGame];
 }
 
@@ -301,23 +273,25 @@
     }
 }
 -(void)ballReachedFinalTarget:(BilliardBall *)ball
-
 {
     [self playHitTop];
+    
     ballGameCount++;
     
-    if (self.currentGameType==gameTypePowerMode) {
-        if (ballGameCount>=[self.balls count]) {
+    if (self.currentGameType == gameTypePowerMode) {
+        
+        if (ballGameCount >= [self.balls count]) {
             [self.powerGame.delegate gameWon:self.powerGame];
         }
-    }else if (self.currentGameType==gameTypeDurationMode)
+    }else if (self.currentGameType == gameTypeDurationMode)
     {
-       int result= [self.durationGame nextBall];
+        int result = [self.durationGame nextBall];
         
-        if (result==-1) {
+        if (result == -1) {
             NSLog(@"COMPLETED DURATION MODE");
             [self.durationGame.delegate gameWon:self.durationGame];
         }
     }
 }
+
 @end
